@@ -1,0 +1,83 @@
+/* Design tokens — DESIGN.md §2. The single source of truth for raw values.
+   tailwind.config.js mirrors these so components never need an arbitrary value.
+   Imported once, from src/main.tsx. */
+
+:root {
+  /* Institutional */
+  --color-primary: #12508f; /* deep blue: nav, primary buttons, links, active state */
+  --color-primary-hover: #0e4272;
+  --color-primary-subtle: #eaf1f8; /* selected rows, active nav background */
+  --color-header: #0c3556; /* top identity band */
+
+  /* Neutrals */
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748b; /* lightest text permitted on white */
+  --color-border: #d7dee7;
+  --color-border-strong: #a9b4c2;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f8fa; /* table header, page background behind cards */
+
+  /* Status */
+  --color-error: #b42318;
+  --color-error-bg: #fef3f2;
+  --color-warning: #b54708;
+  --color-warning-bg: #fffaeb;
+  --color-info: #0b5a8a;
+  --color-info-bg: #eff8ff;
+  --color-success: #1b7f4b;
+  --color-success-bg: #ecfdf3;
+
+  /* Provenance — reserved, never reused for anything else */
+  --prov-synthetic: #8a4b08;
+  --prov-synthetic-bg: #fef6eb;
+  --prov-synthetic-border: #eec08a;
+  --prov-estimate: #5b21b6;
+  --prov-estimate-bg: #f5f3ff;
+  --prov-estimate-border: #ddd6fe;
+  --prov-aggregated: #334155;
+  --prov-aggregated-bg: #f1f5f9;
+  --prov-aggregated-border: #cbd5e1;
+
+  /* Layout */
+  --radius: 4px; /* 6px for cards; nothing rounder */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --nav-width: 232px;
+  --content-max: 1600px;
+
+  /* Chart palette — Okabe–Ito, colour-blind safe and projector-safe.
+     Used in this order, maximum 8 series. Never a provenance or status colour. */
+  --chart-1: #0072b2;
+  --chart-2: #e69f00;
+  --chart-3: #009e73;
+  --chart-4: #cc79a7;
+  --chart-5: #56b4e9;
+  --chart-6: #d55e00;
+  --chart-7: #8c6d1f;
+  --chart-8: #4d4d4d;
+}
+
+/* DESIGN.md §3: every figure aligns. Applied by the .figure utility and by
+   table cells, KPI values and axis labels. */
+.figure,
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* DESIGN.md §0.5 — visible focus everywhere, never removed. */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* DESIGN.md §0.4 — transitions only for state changes, 120–160ms, no flourish. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

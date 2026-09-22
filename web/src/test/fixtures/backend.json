@@ -1,0 +1,381 @@
+{
+ "health": {
+  "status": "ok",
+  "database": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\oiss.duckdb",
+  "database_present": true,
+  "fact_rows": {
+   "fact_price": 96864,
+   "fact_crop_ayp": 17952,
+   "fact_land_use": 8916,
+   "fact_state_series": 5632
+  },
+  "last_run_id": "build-e9e219cfd9ae",
+  "last_run_status": "succeeded"
+ },
+ "datasets": {
+  "items": [
+   {
+    "dataset_version_id": "earas_2022_23_block_land_use@1020fd4ae847",
+    "dataset_name": "earas_2022_23_block_land_use",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2022-23\\blockwise_LUS_202223.dta",
+    "source_type": "stata",
+    "sha256": "1020fd4ae84798f75f7a9132c80c4ef180964ac7a4753d654c16d8062f123315",
+    "row_count": 4128,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "dataset_name": "earas_2022_23_block_paddy",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2022-23\\blockwise_paddy_AYP_2022-23.dta",
+    "source_type": "stata",
+    "sha256": "33743b3c4831b2a8ebb46f9e3cfa738adfb047f7410acde927f2a5a661259952",
+    "row_count": 1032,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2022_23_district_minor_crops@9a9e758f1066",
+    "dataset_name": "earas_2022_23_district_minor_crops",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2022-23\\distwise_minorcrops_AYP2022-23.dta",
+    "source_type": "stata",
+    "sha256": "9a9e758f10669d6776e519af0237f11ed667f491345ddc36e749dae18302b8e6",
+    "row_count": 837,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2023_24_block_land_use@1b4f53580fab",
+    "dataset_name": "earas_2023_24_block_land_use",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2023-24\\blockwise_LUS_2023_24.csv",
+    "source_type": "csv",
+    "sha256": "1b4f53580fab8e766d7b18b50cdbeeb188957774997bc3690b9f7da42c74d019",
+    "row_count": 4128,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2023_24_block_paddy@e5c5684ec270",
+    "dataset_name": "earas_2023_24_block_paddy",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2023-24\\blockwise_paddy_AYP_2023_24.csv",
+    "source_type": "csv",
+    "sha256": "e5c5684ec27076398cd78064a9fec290a459ba588deb226da62fcf5a0b8e7874",
+    "row_count": 1032,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2023_24_district_minor_crops@e323a4e22f2c",
+    "dataset_name": "earas_2023_24_district_minor_crops",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2023-24\\distwise_minor_crop_AYP_2023-24.csv",
+    "source_type": "csv",
+    "sha256": "e323a4e22f2c5c42ebfa9ef03bfefd7452dd654992e4b98d7318d5a1a1c2ac18",
+    "row_count": 1170,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2023_24_district_paddy@5e8bdea5ea67",
+    "dataset_name": "earas_2023_24_district_paddy",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2023-24\\dist_paddy_AYP_2023-24.csv",
+    "source_type": "csv",
+    "sha256": "5e8bdea5ea67dffd9e85e4c6c4315e8e77e932e048c8673a9ad37ebeaa6b5aad",
+    "row_count": 180,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2024_25_district_crop_ayp@3087f1ec29e3",
+    "dataset_name": "earas_2024_25_district_crop_ayp",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\earas_2024_25_district_crop_ayp_raw.csv",
+    "source_type": "csv",
+    "sha256": "3087f1ec29e398b947f648483023dd0dc834e8ab832bdbc79eefbb16e14d4485",
+    "row_count": 5456,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_2024_25_district_land_use@1d21f023b7ba",
+    "dataset_name": "earas_2024_25_district_land_use",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\earas_2024_25_district_land_use_raw.csv",
+    "source_type": "csv",
+    "sha256": "1d21f023b7baf7993aa214d1fe5e1b14db6a1f26df1c693874d1e5d1b6d53c3a",
+    "row_count": 682,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "earas_state_series@d35b8a76b285",
+    "dataset_name": "earas_state_series",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\earas_state_series_latest.csv",
+    "source_type": "csv",
+    "sha256": "d35b8a76b285afad73ea0db285ac8a4e17e80ea35468e9c4f18ccf4cb4f50cbd",
+    "row_count": 5632,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+    "dataset_name": "price_statistics_2020",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv",
+    "source_type": "csv",
+    "sha256": "7b601ba6d90c9fe00db4da9c3f38e2857d48401349fc0242a2b38c65e3d3f8f2",
+    "row_count": 6300,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "synthetic_monthly_prices@cbb63a20c8ef",
+    "dataset_name": "synthetic_monthly_prices",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\synthetic\\synthetic_monthly_prices.csv",
+    "source_type": "csv",
+    "sha256": "cbb63a20c8ef7a91c4a9187928b77a6cdfe86b798ace90b93a0b2f9a5fef8d91",
+    "row_count": 90564,
+    "layer": "raw",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": "synthetic-prices-v1"
+   },
+   {
+    "dataset_version_id": "crop_master@139a3db2fed1",
+    "dataset_name": "crop_master",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\crop_master.csv",
+    "source_type": "csv",
+    "sha256": "139a3db2fed1e70681cb35597b76d254143d74c2248e7f1b1a2aa5482b5ca79e",
+    "row_count": 23,
+    "layer": "reference",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "district_aliases@69ecf41c345e",
+    "dataset_name": "district_aliases",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\district_aliases.csv",
+    "source_type": "csv",
+    "sha256": "69ecf41c345eb4d86e376938b5f0b5dd9bd4ccade82973faaa68e3ab9d3f7d83",
+    "row_count": 103,
+    "layer": "reference",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   },
+   {
+    "dataset_version_id": "district_master@4a36f5c903f7",
+    "dataset_name": "district_master",
+    "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\district_master.csv",
+    "source_type": "csv",
+    "sha256": "4a36f5c903f76ab1ee77ef5c9c0102c63a693b8fa0413013df02c395ae0505b3",
+    "row_count": 30,
+    "layer": "reference",
+    "loaded_at": "2026-09-18T05:03:05.299841",
+    "generator_version": null
+   }
+  ],
+  "total": 15,
+  "page": 1,
+  "size": 200
+ },
+ "validationSummary": {
+  "items": [
+   {
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "finding_count": 578,
+    "sample_row_ref": "row=0|district_id=OD01|block_name_as_published=Angul|crop_id=CR17|season=Autumn|measure=area",
+    "sample_message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "column_count": 1
+   },
+   {
+    "rule_code": "MISSING_VALUE",
+    "severity": "warning",
+    "finding_count": 123,
+    "sample_row_ref": "row=1004|district_id=OD30|block_name_as_published=Kutura|crop_id=CR17|season=Summer|measure=area",
+    "sample_message": "'value' has no value",
+    "column_count": 1
+   },
+   {
+    "rule_code": "UNKNOWN_BLOCK",
+    "severity": "warning",
+    "finding_count": 186,
+    "sample_row_ref": "row=1017|District=Sundargarh|Block=Rajagangpur|Season=Autumn",
+    "sample_message": "block 'Anandpur' does not match a coded block in Keonjhar; loaded with block_id = NULL",
+    "column_count": 1
+   }
+  ],
+  "total": 3,
+  "page": 1,
+  "size": 3
+ },
+ "layers": {
+  "items": [
+   {
+    "layer": "raw",
+    "label": "Raw / landing",
+    "table": "raw.earas_2022_23_block_paddy",
+    "row_count": 1032,
+    "purpose": "As published. Every column text, nothing repaired.",
+    "transition": "1,032 rows read from blockwise_paddy_AYP_2022-23.dta."
+   },
+   {
+    "layer": "quarantine",
+    "label": "Validation / quarantine",
+    "table": "quarantine.earas_2022_23_block_paddy",
+    "row_count": 0,
+    "purpose": "Rows an error-severity rule rejected, with the rule that rejected them.",
+    "transition": "No row failed an error rule."
+   },
+   {
+    "layer": "staging",
+    "label": "Cleansed / staging",
+    "table": "staging.earas_2022_23_block_paddy",
+    "row_count": 3096,
+    "purpose": "Typed, with canonical district, crop, block and period ids attached.",
+    "transition": "1,032 source rows became 3,096: area, yield and production are published side by side and split into 3 rows, one per measure."
+   },
+   {
+    "layer": "analytics",
+    "label": "Analytics-ready",
+    "table": "analytics.fact_crop_ayp",
+    "row_count": 3096,
+    "purpose": "Fact rows the dashboard and assistant read.",
+    "transition": "3,096 fact rows carrying data_origin and dataset_version_id."
+   }
+  ],
+  "total": 4,
+  "page": 1,
+  "size": 4
+ },
+ "lineage": {
+  "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+  "dataset_name": "earas_2022_23_block_paddy",
+  "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2022-23\\blockwise_paddy_AYP_2022-23.dta",
+  "edges": [
+   {
+    "from_node": "analytics.fact_crop_ayp[block]",
+    "to_node": "analytics.v_district_crop_ayp",
+    "edge_type": "aggregate",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831"
+   },
+   {
+    "from_node": "file:blockwise_paddy_AYP_2022-23.dta",
+    "to_node": "raw.earas_2022_23_block_paddy",
+    "edge_type": "extract",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831"
+   },
+   {
+    "from_node": "staging.earas_2022_23_block_paddy",
+    "to_node": "analytics.fact_crop_ayp",
+    "edge_type": "load",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831"
+   },
+   {
+    "from_node": "analytics.fact_crop_ayp",
+    "to_node": "export:fact_crop_ayp",
+    "edge_type": "publish",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831"
+   },
+   {
+    "from_node": "raw.earas_2022_23_block_paddy",
+    "to_node": "staging.earas_2022_23_block_paddy",
+    "edge_type": "transform",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831"
+   }
+  ]
+ },
+ "findings": {
+  "items": [
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=0|district_id=OD01|block_name_as_published=Angul|crop_id=CR17|season=Autumn|measure=area",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD01:ANGUL|CR17|Autumn"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=1001|district_id=OD30|block_name_as_published=Kuanramunda|crop_id=CR17|season=Summer|measure=area",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD30:KUANRAMUNDA|CR17|Summer"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=102|district_id=OD03|block_name_as_published=Simulia|crop_id=CR17|season=Autumn|measure=area",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD03:SIMULIA|CR17|Autumn"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=1032|district_id=OD01|block_name_as_published=Angul|crop_id=CR17|season=Autumn|measure=yield_rate",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD01:ANGUL|CR17|Autumn"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=1034|district_id=OD01|block_name_as_published=Angul|crop_id=CR17|season=Summer|measure=yield_rate",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD01:ANGUL|CR17|Summer"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=1038|district_id=OD01|block_name_as_published=Banarpal|crop_id=CR17|season=Autumn|measure=yield_rate",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD01:BANARPAL|CR17|Autumn"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=1040|district_id=OD01|block_name_as_published=Banarpal|crop_id=CR17|season=Summer|measure=yield_rate",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD01:BANARPAL|CR17|Summer"
+   },
+   {
+    "run_id": "build-e9e219cfd9ae",
+    "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+    "rule_code": "STRUCTURALLY_ABSENT",
+    "severity": "info",
+    "row_ref": "row=1043|district_id=OD01|block_name_as_published=Chhendipada|crop_id=CR17|season=Summer|measure=yield_rate",
+    "column_name": "value",
+    "message": "no value in any year of any source for this series; treated as not grown or not priced rather than as a missing value",
+    "observed_value": "ayp|OD01:CHHENDIPADA|CR17|Summer"
+   }
+  ],
+  "total": 887,
+  "page": 1,
+  "size": 8
+ }
+}

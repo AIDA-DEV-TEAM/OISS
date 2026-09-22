@@ -1,0 +1,683 @@
+reference_year,source_report,pdf_page,table_no,sl_no,district_as_published,is_state_total,land_use_category,measure,unit,raw_value,value,cell_status
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Forest,area,'000 ha,112,112,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Forest,pct_of_area_under_survey,%,26.42,26.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Land put to non-agricultural uses,area,'000 ha,59,59,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,13.92,13.92,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Barren and un-cultivable land,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.36,2.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Permanent pastures and other grazing land,area,'000 ha,21,21,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.95,4.95,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,5,5,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,1.18,1.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Cultivable waste,area,'000 ha,32,32,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Cultivable waste,pct_of_area_under_survey,%,7.55,7.55,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Old fallows,area,'000 ha,39,39,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Old fallows,pct_of_area_under_survey,%,9.20,9.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Current fallows,area,'000 ha,47,47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Current fallows,pct_of_area_under_survey,%,11.08,11.08,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Net area sown,area,'000 ha,99,99,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Net area sown,pct_of_area_under_survey,%,23.35,23.35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Total area under survey,area,'000 ha,424,424,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Total area under survey,pct_of_geographical_area,%,68.06,68.06,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Area not included under survey,area,'000 ha,199,199,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,1,Angul,0,Geographical area,area,'000 ha,623,623,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Forest,area,'000 ha,46,46,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Forest,pct_of_area_under_survey,%,8.47,8.47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Land put to non-agricultural uses,area,'000 ha,56,56,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,10.31,10.31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Barren and un-cultivable land,area,'000 ha,16,16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.95,2.95,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Permanent pastures and other grazing land,area,'000 ha,42,42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,7.73,7.73,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,1,1,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.18,0.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Cultivable waste,area,'000 ha,24,24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Cultivable waste,pct_of_area_under_survey,%,4.42,4.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Old fallows,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Old fallows,pct_of_area_under_survey,%,6.08,6.08,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Current fallows,area,'000 ha,61,61,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Current fallows,pct_of_area_under_survey,%,11.23,11.23,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Net area sown,area,'000 ha,264,264,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Net area sown,pct_of_area_under_survey,%,48.62,48.62,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Total area under survey,area,'000 ha,543,543,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Total area under survey,pct_of_geographical_area,%,82.65,82.65,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Area not included under survey,area,'000 ha,114,114,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,2,Bolangir,0,Geographical area,area,'000 ha,657,657,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Forest,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Forest,pct_of_area_under_survey,%,2.87,2.87,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Land put to non-agricultural uses,area,'000 ha,58,58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,16.62,16.62,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Barren and un-cultivable land,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.29,2.29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Permanent pastures and other grazing land,area,'000 ha,14,14,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.01,4.01,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.87,2.87,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Cultivable waste,area,'000 ha,22,22,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Cultivable waste,pct_of_area_under_survey,%,6.30,6.30,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Old fallows,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Old fallows,pct_of_area_under_survey,%,4.30,4.30,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Current fallows,area,'000 ha,24,24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Current fallows,pct_of_area_under_survey,%,6.88,6.88,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Net area sown,area,'000 ha,188,188,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Net area sown,pct_of_area_under_survey,%,53.87,53.87,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Total area under survey,area,'000 ha,349,349,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Total area under survey,pct_of_geographical_area,%,95.88,95.88,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Area not included under survey,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,3,Balasore,0,Geographical area,area,'000 ha,364,364,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Forest,area,'000 ha,25,25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Forest,pct_of_area_under_survey,%,5.31,5.31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Land put to non-agricultural uses,area,'000 ha,58,58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,12.31,12.31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Barren and un-cultivable land,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Barren and un-cultivable land,pct_of_area_under_survey,%,1.70,1.70,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Permanent pastures and other grazing land,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.61,3.61,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,1,1,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.21,0.21,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Cultivable waste,area,'000 ha,16,16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Cultivable waste,pct_of_area_under_survey,%,3.40,3.40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Old fallows,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Old fallows,pct_of_area_under_survey,%,7.01,7.01,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Current fallows,area,'000 ha,24,24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Current fallows,pct_of_area_under_survey,%,5.10,5.10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Net area sown,area,'000 ha,289,289,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Net area sown,pct_of_area_under_survey,%,61.36,61.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Total area under survey,area,'000 ha,471,471,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Total area under survey,pct_of_geographical_area,%,80.79,80.79,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Area not included under survey,area,'000 ha,112,112,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,4,Bargarh,0,Geographical area,area,'000 ha,583,583,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Forest,area,'000 ha,3,3,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Forest,pct_of_area_under_survey,%,1.26,1.26,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Land put to non-agricultural uses,area,'000 ha,41,41,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,17.15,17.15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Barren and un-cultivable land,area,'000 ha,3,3,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Barren and un-cultivable land,pct_of_area_under_survey,%,1.26,1.26,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Permanent pastures and other grazing land,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.60,4.60,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,1.67,1.67,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Cultivable waste,area,'000 ha,16,16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Cultivable waste,pct_of_area_under_survey,%,6.69,6.69,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Old fallows,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Old fallows,pct_of_area_under_survey,%,5.02,5.02,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Current fallows,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Current fallows,pct_of_area_under_survey,%,5.02,5.02,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Net area sown,area,'000 ha,137,137,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Net area sown,pct_of_area_under_survey,%,57.32,57.32,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Total area under survey,area,'000 ha,239,239,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Total area under survey,pct_of_geographical_area,%,89.18,89.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Area not included under survey,area,'000 ha,29,29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,5,Bhadrak,0,Geographical area,area,'000 ha,268,268,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Forest,area,'000 ha,31,31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Forest,pct_of_area_under_survey,%,15.35,15.35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Land put to non-agricultural uses,area,'000 ha,29,29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,14.36,14.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Barren and un-cultivable land,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Barren and un-cultivable land,pct_of_area_under_survey,%,5.94,5.94,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Permanent pastures and other grazing land,area,'000 ha,18,18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,8.91,8.91,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,S,,below_half_unit
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,-,,dash
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Cultivable waste,area,'000 ha,16,16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Cultivable waste,pct_of_area_under_survey,%,7.92,7.92,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Old fallows,area,'000 ha,13,13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Old fallows,pct_of_area_under_survey,%,6.44,6.44,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Current fallows,area,'000 ha,14,14,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Current fallows,pct_of_area_under_survey,%,6.93,6.93,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Net area sown,area,'000 ha,69,69,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Net area sown,pct_of_area_under_survey,%,34.16,34.16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Total area under survey,area,'000 ha,202,202,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Total area under survey,pct_of_geographical_area,%,58.72,58.72,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Area not included under survey,area,'000 ha,142,142,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,6,Boudh,0,Geographical area,area,'000 ha,344,344,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Forest,area,'000 ha,21,21,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Forest,pct_of_area_under_survey,%,6.29,6.29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Land put to non-agricultural uses,area,'000 ha,79,79,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,23.65,23.65,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Barren and un-cultivable land,area,'000 ha,7,7,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.10,2.10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Permanent pastures and other grazing land,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.59,3.59,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.40,2.40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Cultivable waste,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Cultivable waste,pct_of_area_under_survey,%,4.49,4.49,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Old fallows,area,'000 ha,21,21,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Old fallows,pct_of_area_under_survey,%,6.29,6.29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Current fallows,area,'000 ha,37,37,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Current fallows,pct_of_area_under_survey,%,11.08,11.08,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Net area sown,area,'000 ha,134,134,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Net area sown,pct_of_area_under_survey,%,40.12,40.12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Total area under survey,area,'000 ha,334,334,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Total area under survey,pct_of_geographical_area,%,89.54,89.54,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Area not included under survey,area,'000 ha,39,39,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,7,Cuttack,0,Geographical area,area,'000 ha,373,373,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Forest,area,'000 ha,72,72,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Forest,pct_of_area_under_survey,%,42.11,42.11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Land put to non-agricultural uses,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,8.77,8.77,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Barren and un-cultivable land,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.34,2.34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Permanent pastures and other grazing land,area,'000 ha,5,5,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,2.92,2.92,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,1,1,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.58,0.58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Cultivable waste,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Cultivable waste,pct_of_area_under_survey,%,6.43,6.43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Old fallows,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Old fallows,pct_of_area_under_survey,%,5.85,5.85,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Current fallows,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Current fallows,pct_of_area_under_survey,%,6.43,6.43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Net area sown,area,'000 ha,42,42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Net area sown,pct_of_area_under_survey,%,24.56,24.56,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Total area under survey,area,'000 ha,171,171,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Total area under survey,pct_of_geographical_area,%,61.51,61.51,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Area not included under survey,area,'000 ha,107,107,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,8,Deogarh,0,Geographical area,area,'000 ha,278,278,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Forest,area,'000 ha,51,51,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Forest,pct_of_area_under_survey,%,15.04,15.04,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Land put to non-agricultural uses,area,'000 ha,50,50,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,14.75,14.75,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Barren and un-cultivable land,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.36,2.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Permanent pastures and other grazing land,area,'000 ha,13,13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.83,3.83,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.95,2.95,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Cultivable waste,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Cultivable waste,pct_of_area_under_survey,%,9.73,9.73,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Old fallows,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Old fallows,pct_of_area_under_survey,%,9.73,9.73,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Current fallows,area,'000 ha,36,36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Current fallows,pct_of_area_under_survey,%,10.62,10.62,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Net area sown,area,'000 ha,105,105,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Net area sown,pct_of_area_under_survey,%,30.97,30.97,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Total area under survey,area,'000 ha,339,339,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Total area under survey,pct_of_geographical_area,%,73.70,73.70,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Area not included under survey,area,'000 ha,121,121,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,9,Dhenkanal,0,Geographical area,area,'000 ha,460,460,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Forest,area,'000 ha,65,65,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Forest,pct_of_area_under_survey,%,21.04,21.04,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Land put to non-agricultural uses,area,'000 ha,14,14,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,4.53,4.53,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Barren and un-cultivable land,area,'000 ha,122,122,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Barren and un-cultivable land,pct_of_area_under_survey,%,39.48,39.48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Permanent pastures and other grazing land,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.85,4.85,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,7,7,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.27,2.27,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Cultivable waste,area,'000 ha,9,9,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Cultivable waste,pct_of_area_under_survey,%,2.91,2.91,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Old fallows,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Old fallows,pct_of_area_under_survey,%,3.56,3.56,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Current fallows,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Current fallows,pct_of_area_under_survey,%,3.88,3.88,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Net area sown,area,'000 ha,54,54,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Net area sown,pct_of_area_under_survey,%,17.48,17.48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Total area under survey,area,'000 ha,309,309,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Total area under survey,pct_of_geographical_area,%,80.26,80.26,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Area not included under survey,area,'000 ha,76,76,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,10,Gajapati,0,Geographical area,area,'000 ha,385,385,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Forest,area,'000 ha,44,44,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Forest,pct_of_area_under_survey,%,7.24,7.24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Land put to non-agricultural uses,area,'000 ha,84,84,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,13.82,13.82,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Barren and un-cultivable land,area,'000 ha,63,63,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Barren and un-cultivable land,pct_of_area_under_survey,%,10.36,10.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Permanent pastures and other grazing land,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,2.47,2.47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,23,23,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,3.78,3.78,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Cultivable waste,area,'000 ha,26,26,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Cultivable waste,pct_of_area_under_survey,%,4.28,4.28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Old fallows,area,'000 ha,34,34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Old fallows,pct_of_area_under_survey,%,5.59,5.59,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Current fallows,area,'000 ha,40,40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Current fallows,pct_of_area_under_survey,%,6.58,6.58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Net area sown,area,'000 ha,279,279,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Net area sown,pct_of_area_under_survey,%,45.89,45.89,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Total area under survey,area,'000 ha,608,608,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Total area under survey,pct_of_geographical_area,%,69.80,69.80,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Area not included under survey,area,'000 ha,263,263,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,11,Ganjam,0,Geographical area,area,'000 ha,871,871,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Forest,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Forest,pct_of_area_under_survey,%,2.31,2.31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Land put to non-agricultural uses,area,'000 ha,52,52,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,30.06,30.06,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Barren and un-cultivable land,area,'000 ha,2,2,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Barren and un-cultivable land,pct_of_area_under_survey,%,1.16,1.16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Permanent pastures and other grazing land,area,'000 ha,9,9,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,5.20,5.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.31,2.31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Cultivable waste,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Cultivable waste,pct_of_area_under_survey,%,5.78,5.78,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Old fallows,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Old fallows,pct_of_area_under_survey,%,2.31,2.31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Current fallows,area,'000 ha,6,6,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Current fallows,pct_of_area_under_survey,%,3.47,3.47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Net area sown,area,'000 ha,82,82,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Net area sown,pct_of_area_under_survey,%,47.40,47.40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Total area under survey,area,'000 ha,173,173,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Total area under survey,pct_of_geographical_area,%,87.82,87.82,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Area not included under survey,area,'000 ha,24,24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,12,Jagatsinghpur,0,Geographical area,area,'000 ha,197,197,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Forest,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Forest,pct_of_area_under_survey,%,3.76,3.76,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Land put to non-agricultural uses,area,'000 ha,56,56,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,21.05,21.05,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Barren and un-cultivable land,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Barren and un-cultivable land,pct_of_area_under_survey,%,5.64,5.64,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Permanent pastures and other grazing land,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.51,4.51,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,5,5,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,1.88,1.88,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Cultivable waste,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Cultivable waste,pct_of_area_under_survey,%,3.01,3.01,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Old fallows,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Old fallows,pct_of_area_under_survey,%,4.14,4.14,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Current fallows,area,'000 ha,13,13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Current fallows,pct_of_area_under_survey,%,4.89,4.89,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Net area sown,area,'000 ha,136,136,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Net area sown,pct_of_area_under_survey,%,51.13,51.13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Total area under survey,area,'000 ha,266,266,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Total area under survey,pct_of_geographical_area,%,92.04,92.04,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Area not included under survey,area,'000 ha,23,23,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,13,Jajpur,0,Geographical area,area,'000 ha,289,289,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Forest,area,'000 ha,30,30,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Forest,pct_of_area_under_survey,%,17.54,17.54,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Land put to non-agricultural uses,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,19.30,19.30,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Barren and un-cultivable land,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.34,2.34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Permanent pastures and other grazing land,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,6.43,6.43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,1,1,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.58,0.58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Cultivable waste,area,'000 ha,14,14,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Cultivable waste,pct_of_area_under_survey,%,8.19,8.19,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Old fallows,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Old fallows,pct_of_area_under_survey,%,9.94,9.94,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Current fallows,area,'000 ha,19,19,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Current fallows,pct_of_area_under_survey,%,11.11,11.11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Net area sown,area,'000 ha,42,42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Net area sown,pct_of_area_under_survey,%,24.56,24.56,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Total area under survey,area,'000 ha,171,171,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Total area under survey,pct_of_geographical_area,%,77.73,77.73,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Area not included under survey,area,'000 ha,49,49,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,14,Jharsuguda,0,Geographical area,area,'000 ha,220,220,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Forest,area,'000 ha,64,64,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Forest,pct_of_area_under_survey,%,10.98,10.98,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Land put to non-agricultural uses,area,'000 ha,64,64,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,10.98,10.98,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Barren and un-cultivable land,area,'000 ha,57,57,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Barren and un-cultivable land,pct_of_area_under_survey,%,9.78,9.78,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Permanent pastures and other grazing land,area,'000 ha,25,25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.29,4.29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,2,2,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.34,0.34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Cultivable waste,area,'000 ha,39,39,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Cultivable waste,pct_of_area_under_survey,%,6.69,6.69,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Old fallows,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Old fallows,pct_of_area_under_survey,%,5.66,5.66,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Current fallows,area,'000 ha,35,35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Current fallows,pct_of_area_under_survey,%,6.00,6.00,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Net area sown,area,'000 ha,264,264,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Net area sown,pct_of_area_under_survey,%,45.28,45.28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Total area under survey,area,'000 ha,583,583,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Total area under survey,pct_of_geographical_area,%,69.74,69.74,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Area not included under survey,area,'000 ha,253,253,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,15,Kalahandi,0,Geographical area,area,'000 ha,836,836,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Forest,area,'000 ha,143,143,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Forest,pct_of_area_under_survey,%,32.43,32.43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Land put to non-agricultural uses,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,3.85,3.85,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Barren and un-cultivable land,area,'000 ha,134,134,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Barren and un-cultivable land,pct_of_area_under_survey,%,30.39,30.39,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Permanent pastures and other grazing land,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.40,3.40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,2,2,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.45,0.45,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Cultivable waste,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Cultivable waste,pct_of_area_under_survey,%,2.72,2.72,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Old fallows,area,'000 ha,33,33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Old fallows,pct_of_area_under_survey,%,7.48,7.48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Current fallows,area,'000 ha,30,30,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Current fallows,pct_of_area_under_survey,%,6.80,6.80,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Net area sown,area,'000 ha,55,55,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Net area sown,pct_of_area_under_survey,%,12.47,12.47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Total area under survey,area,'000 ha,441,441,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Total area under survey,pct_of_geographical_area,%,57.65,57.65,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Area not included under survey,area,'000 ha,324,324,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,16,Kandhamal,0,Geographical area,area,'000 ha,765,765,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Forest,area,'000 ha,2,2,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Forest,pct_of_area_under_survey,%,0.87,0.87,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Land put to non-agricultural uses,area,'000 ha,46,46,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,20.00,20.00,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Barren and un-cultivable land,area,'000 ha,1,1,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Barren and un-cultivable land,pct_of_area_under_survey,%,0.43,0.43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Permanent pastures and other grazing land,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.35,4.35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,2,2,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.87,0.87,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Cultivable waste,area,'000 ha,5,5,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Cultivable waste,pct_of_area_under_survey,%,2.17,2.17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Old fallows,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Old fallows,pct_of_area_under_survey,%,4.35,4.35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Current fallows,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Current fallows,pct_of_area_under_survey,%,7.39,7.39,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Net area sown,area,'000 ha,137,137,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Net area sown,pct_of_area_under_survey,%,59.57,59.57,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Total area under survey,area,'000 ha,230,230,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Total area under survey,pct_of_geographical_area,%,90.20,90.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Area not included under survey,area,'000 ha,25,25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,17,Kendrapara,0,Geographical area,area,'000 ha,255,255,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Forest,area,'000 ha,142,142,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Forest,pct_of_area_under_survey,%,21.91,21.91,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Land put to non-agricultural uses,area,'000 ha,76,76,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,11.73,11.73,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Barren and un-cultivable land,area,'000 ha,72,72,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Barren and un-cultivable land,pct_of_area_under_survey,%,11.11,11.11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Permanent pastures and other grazing land,area,'000 ha,24,24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.70,3.70,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,6,6,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.93,0.93,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Cultivable waste,area,'000 ha,47,47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Cultivable waste,pct_of_area_under_survey,%,7.25,7.25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Old fallows,area,'000 ha,42,42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Old fallows,pct_of_area_under_survey,%,6.48,6.48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Current fallows,area,'000 ha,50,50,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Current fallows,pct_of_area_under_survey,%,7.72,7.72,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Net area sown,area,'000 ha,189,189,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Net area sown,pct_of_area_under_survey,%,29.17,29.17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Total area under survey,area,'000 ha,648,648,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Total area under survey,pct_of_geographical_area,%,78.07,78.07,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Area not included under survey,area,'000 ha,182,182,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,18,Keonjhar,0,Geographical area,area,'000 ha,830,830,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Forest,area,'000 ha,35,35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Forest,pct_of_area_under_survey,%,12.77,12.77,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Land put to non-agricultural uses,area,'000 ha,54,54,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,19.71,19.71,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Barren and un-cultivable land,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Barren and un-cultivable land,pct_of_area_under_survey,%,6.20,6.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Permanent pastures and other grazing land,area,'000 ha,18,18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,6.57,6.57,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,18,18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,6.57,6.57,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Cultivable waste,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Cultivable waste,pct_of_area_under_survey,%,6.20,6.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Old fallows,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Old fallows,pct_of_area_under_survey,%,6.20,6.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Current fallows,area,'000 ha,9,9,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Current fallows,pct_of_area_under_survey,%,3.28,3.28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Net area sown,area,'000 ha,89,89,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Net area sown,pct_of_area_under_survey,%,32.48,32.48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Total area under survey,area,'000 ha,274,274,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Total area under survey,pct_of_geographical_area,%,94.81,94.81,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Area not included under survey,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,19,Khurda,0,Geographical area,area,'000 ha,289,289,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Forest,area,'000 ha,80,80,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Forest,pct_of_area_under_survey,%,13.33,13.33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Land put to non-agricultural uses,area,'000 ha,47,47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,7.83,7.83,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Barren and un-cultivable land,area,'000 ha,146,146,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Barren and un-cultivable land,pct_of_area_under_survey,%,24.33,24.33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Permanent pastures and other grazing land,area,'000 ha,22,22,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.67,3.67,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,35,35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,5.83,5.83,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Cultivable waste,area,'000 ha,21,21,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Cultivable waste,pct_of_area_under_survey,%,3.50,3.50,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Old fallows,area,'000 ha,34,34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Old fallows,pct_of_area_under_survey,%,5.67,5.67,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Current fallows,area,'000 ha,55,55,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Current fallows,pct_of_area_under_survey,%,9.17,9.17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Net area sown,area,'000 ha,160,160,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Net area sown,pct_of_area_under_survey,%,26.67,26.67,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Total area under survey,area,'000 ha,600,600,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Total area under survey,pct_of_geographical_area,%,75.95,75.95,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Area not included under survey,area,'000 ha,190,190,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,20,Koraput,0,Geographical area,area,'000 ha,790,790,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Forest,area,'000 ha,138,138,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Forest,pct_of_area_under_survey,%,32.62,32.62,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Land put to non-agricultural uses,area,'000 ha,44,44,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,10.40,10.40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Barren and un-cultivable land,area,'000 ha,48,48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Barren and un-cultivable land,pct_of_area_under_survey,%,11.35,11.35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Permanent pastures and other grazing land,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.02,4.02,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,1.89,1.89,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Cultivable waste,area,'000 ha,9,9,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Cultivable waste,pct_of_area_under_survey,%,2.13,2.13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Old fallows,area,'000 ha,9,9,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Old fallows,pct_of_area_under_survey,%,2.13,2.13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Current fallows,area,'000 ha,10,10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Current fallows,pct_of_area_under_survey,%,2.36,2.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Net area sown,area,'000 ha,140,140,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Net area sown,pct_of_area_under_survey,%,33.10,33.10,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Total area under survey,area,'000 ha,423,423,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Total area under survey,pct_of_geographical_area,%,68.34,68.34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Area not included under survey,area,'000 ha,196,196,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,21,Malkangiri,0,Geographical area,area,'000 ha,619,619,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Forest,area,'000 ha,75,75,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Forest,pct_of_area_under_survey,%,10.73,10.73,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Land put to non-agricultural uses,area,'000 ha,78,78,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,11.16,11.16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Barren and un-cultivable land,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Barren and un-cultivable land,pct_of_area_under_survey,%,1.72,1.72,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Permanent pastures and other grazing land,area,'000 ha,31,31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.43,4.43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,20,20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.86,2.86,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Cultivable waste,area,'000 ha,44,44,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Cultivable waste,pct_of_area_under_survey,%,6.29,6.29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Old fallows,area,'000 ha,43,43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Old fallows,pct_of_area_under_survey,%,6.15,6.15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Current fallows,area,'000 ha,37,37,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Current fallows,pct_of_area_under_survey,%,5.29,5.29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Net area sown,area,'000 ha,359,359,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Net area sown,pct_of_area_under_survey,%,51.36,51.36,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Total area under survey,area,'000 ha,699,699,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Total area under survey,pct_of_geographical_area,%,67.08,67.08,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Area not included under survey,area,'000 ha,343,343,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,22,Mayurbhanj,0,Geographical area,area,'000 ha,1042,1042,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Forest,area,'000 ha,47,47,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Forest,pct_of_area_under_survey,%,18.88,18.88,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Land put to non-agricultural uses,area,'000 ha,29,29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,11.65,11.65,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Barren and un-cultivable land,area,'000 ha,7,7,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.81,2.81,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Permanent pastures and other grazing land,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,6.02,6.02,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,1,1,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.40,0.40,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Cultivable waste,area,'000 ha,5,5,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Cultivable waste,pct_of_area_under_survey,%,2.01,2.01,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Old fallows,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Old fallows,pct_of_area_under_survey,%,4.42,4.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Current fallows,area,'000 ha,22,22,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Current fallows,pct_of_area_under_survey,%,8.84,8.84,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Net area sown,area,'000 ha,112,112,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Net area sown,pct_of_area_under_survey,%,44.98,44.98,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Total area under survey,area,'000 ha,249,249,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Total area under survey,pct_of_geographical_area,%,73.02,73.02,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Area not included under survey,area,'000 ha,92,92,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,23,Nuapada,0,Geographical area,area,'000 ha,341,341,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Forest,area,'000 ha,46,46,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Forest,pct_of_area_under_survey,%,18.33,18.33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Land put to non-agricultural uses,area,'000 ha,31,31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,12.35,12.35,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Barren and un-cultivable land,area,'000 ha,16,16,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Barren and un-cultivable land,pct_of_area_under_survey,%,6.37,6.37,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Permanent pastures and other grazing land,area,'000 ha,13,13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,5.18,5.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,4.78,4.78,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Cultivable waste,area,'000 ha,19,19,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Cultivable waste,pct_of_area_under_survey,%,7.57,7.57,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Old fallows,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Old fallows,pct_of_area_under_survey,%,4.78,4.78,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Current fallows,area,'000 ha,8,8,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Current fallows,pct_of_area_under_survey,%,3.19,3.19,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Net area sown,area,'000 ha,94,94,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Net area sown,pct_of_area_under_survey,%,37.45,37.45,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Total area under survey,area,'000 ha,251,251,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Total area under survey,pct_of_geographical_area,%,59.20,59.20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Area not included under survey,area,'000 ha,173,173,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,24,Nayagarh,0,Geographical area,area,'000 ha,424,424,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Forest,area,'000 ha,109,109,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Forest,pct_of_area_under_survey,%,27.18,27.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Land put to non-agricultural uses,area,'000 ha,28,28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,6.98,6.98,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Barren and un-cultivable land,area,'000 ha,20,20,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Barren and un-cultivable land,pct_of_area_under_survey,%,4.99,4.99,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Permanent pastures and other grazing land,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.74,3.74,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,18,18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,4.49,4.49,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Cultivable waste,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Cultivable waste,pct_of_area_under_survey,%,2.74,2.74,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Old fallows,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Old fallows,pct_of_area_under_survey,%,3.74,3.74,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Current fallows,area,'000 ha,17,17,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Current fallows,pct_of_area_under_survey,%,4.24,4.24,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Net area sown,area,'000 ha,168,168,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Net area sown,pct_of_area_under_survey,%,41.90,41.90,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Total area under survey,area,'000 ha,401,401,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Total area under survey,pct_of_geographical_area,%,75.80,75.80,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Area not included under survey,area,'000 ha,128,128,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,25,Nowarangpur,0,Geographical area,area,'000 ha,529,529,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Forest,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Forest,pct_of_area_under_survey,%,5.42,5.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Land put to non-agricultural uses,area,'000 ha,58,58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,20.94,20.94,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Barren and un-cultivable land,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Barren and un-cultivable land,pct_of_area_under_survey,%,4.33,4.33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Permanent pastures and other grazing land,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,3.97,3.97,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,15,15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,5.42,5.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Cultivable waste,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Cultivable waste,pct_of_area_under_survey,%,4.33,4.33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Old fallows,area,'000 ha,18,18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Old fallows,pct_of_area_under_survey,%,6.50,6.50,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Current fallows,area,'000 ha,28,28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Current fallows,pct_of_area_under_survey,%,10.11,10.11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Net area sown,area,'000 ha,108,108,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Net area sown,pct_of_area_under_survey,%,38.99,38.99,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Total area under survey,area,'000 ha,277,277,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Total area under survey,pct_of_geographical_area,%,90.82,90.82,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Area not included under survey,area,'000 ha,28,28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,26,Puri,0,Geographical area,area,'000 ha,305,305,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Forest,area,'000 ha,119,119,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Forest,pct_of_area_under_survey,%,20.84,20.84,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Land put to non-agricultural uses,area,'000 ha,25,25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,4.38,4.38,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Barren and un-cultivable land,area,'000 ha,192,192,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Barren and un-cultivable land,pct_of_area_under_survey,%,33.63,33.63,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Permanent pastures and other grazing land,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,1.93,1.93,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,25,25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,4.38,4.38,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Cultivable waste,area,'000 ha,13,13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Cultivable waste,pct_of_area_under_survey,%,2.28,2.28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Old fallows,area,'000 ha,23,23,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Old fallows,pct_of_area_under_survey,%,4.03,4.03,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Current fallows,area,'000 ha,41,41,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Current fallows,pct_of_area_under_survey,%,7.18,7.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Net area sown,area,'000 ha,122,122,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Net area sown,pct_of_area_under_survey,%,21.37,21.37,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Total area under survey,area,'000 ha,571,571,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Total area under survey,pct_of_geographical_area,%,75.33,75.33,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Area not included under survey,area,'000 ha,187,187,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,27,Rayagada,0,Geographical area,area,'000 ha,758,758,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Forest,area,'000 ha,113,113,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Forest,pct_of_area_under_survey,%,26.65,26.65,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Land put to non-agricultural uses,area,'000 ha,59,59,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,13.92,13.92,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Barren and un-cultivable land,area,'000 ha,11,11,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.59,2.59,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Permanent pastures and other grazing land,area,'000 ha,22,22,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,5.19,5.19,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,6,6,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,1.42,1.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Cultivable waste,area,'000 ha,29,29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Cultivable waste,pct_of_area_under_survey,%,6.84,6.84,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Old fallows,area,'000 ha,28,28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Old fallows,pct_of_area_under_survey,%,6.60,6.60,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Current fallows,area,'000 ha,22,22,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Current fallows,pct_of_area_under_survey,%,5.19,5.19,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Net area sown,area,'000 ha,134,134,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Net area sown,pct_of_area_under_survey,%,31.60,31.60,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Total area under survey,area,'000 ha,424,424,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Total area under survey,pct_of_geographical_area,%,63.28,63.28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Area not included under survey,area,'000 ha,246,246,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,28,Sambalpur,0,Geographical area,area,'000 ha,670,670,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Forest,area,'000 ha,13,13,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Forest,pct_of_area_under_survey,%,6.95,6.95,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Land put to non-agricultural uses,area,'000 ha,31,31,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,16.58,16.58,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Barren and un-cultivable land,area,'000 ha,4,4,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Barren and un-cultivable land,pct_of_area_under_survey,%,2.14,2.14,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Permanent pastures and other grazing land,area,'000 ha,9,9,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.81,4.81,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,S,,below_half_unit
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,-,,dash
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Cultivable waste,area,'000 ha,7,7,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Cultivable waste,pct_of_area_under_survey,%,3.74,3.74,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Old fallows,area,'000 ha,12,12,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Old fallows,pct_of_area_under_survey,%,6.42,6.42,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Current fallows,area,'000 ha,6,6,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Current fallows,pct_of_area_under_survey,%,3.21,3.21,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Net area sown,area,'000 ha,105,105,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Net area sown,pct_of_area_under_survey,%,56.15,56.15,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Total area under survey,area,'000 ha,187,187,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Total area under survey,pct_of_geographical_area,%,79.57,79.57,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Area not included under survey,area,'000 ha,48,48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,29,Subarnapur,0,Geographical area,area,'000 ha,235,235,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Forest,area,'000 ha,175,175,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Forest,pct_of_area_under_survey,%,24.48,24.48,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Land put to non-agricultural uses,area,'000 ha,77,77,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Land put to non-agricultural uses,pct_of_area_under_survey,%,10.77,10.77,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Barren and un-cultivable land,area,'000 ha,64,64,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Barren and un-cultivable land,pct_of_area_under_survey,%,8.95,8.95,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Permanent pastures and other grazing land,area,'000 ha,29,29,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.06,4.06,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,2,2,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,0.28,0.28,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Cultivable waste,area,'000 ha,43,43,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Cultivable waste,pct_of_area_under_survey,%,6.01,6.01,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Old fallows,area,'000 ha,52,52,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Old fallows,pct_of_area_under_survey,%,7.27,7.27,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Current fallows,area,'000 ha,71,71,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Current fallows,pct_of_area_under_survey,%,9.93,9.93,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Net area sown,area,'000 ha,202,202,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Net area sown,pct_of_area_under_survey,%,28.25,28.25,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Total area under survey,area,'000 ha,715,715,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Total area under survey,pct_of_geographical_area,%,73.64,73.64,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Area not included under survey,area,'000 ha,256,256,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,30,Sundargarh,0,Geographical area,area,'000 ha,971,971,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Forest,area,'000 ha,1840,1840,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Forest,pct_of_area_under_survey,%,15.90,15.90,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Land put to non-agricultural uses,area,'000 ha,1448,1448,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Land put to non-agricultural uses,pct_of_area_under_survey,%,12.51,12.51,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Barren and un-cultivable land,area,'000 ha,1095,1095,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Barren and un-cultivable land,pct_of_area_under_survey,%,9.46,9.46,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Permanent pastures and other grazing land,area,'000 ha,502,502,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Permanent pastures and other grazing land,pct_of_area_under_survey,%,4.34,4.34,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Land under misc. tree crops & groves not included in net area sown,area,'000 ha,252,252,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Land under misc. tree crops & groves not included in net area sown,pct_of_area_under_survey,%,2.18,2.18,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Cultivable waste,area,'000 ha,585,585,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Cultivable waste,pct_of_area_under_survey,%,5.06,5.06,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Old fallows,area,'000 ha,678,678,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Old fallows,pct_of_area_under_survey,%,5.86,5.86,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Current fallows,area,'000 ha,814,814,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Current fallows,pct_of_area_under_survey,%,7.03,7.03,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Net area sown,area,'000 ha,4358,4358,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Net area sown,pct_of_area_under_survey,%,37.66,37.66,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Total area under survey,area,'000 ha,11572,11572,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Total area under survey,pct_of_geographical_area,%,74.32,74.32,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Area not included under survey,area,'000 ha,3999,3999,ok
+2024-25,..\raw\earas\2024-25\Technical_Report_EARAS_2024-25_Odisha.pdf,65,1.1,,STATE,1,Geographical area,area,'000 ha,15571,15571,ok

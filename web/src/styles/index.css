@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    /* DESIGN.md §8: 14px minimum body text on a washed-out projector. */
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-surface-alt font-sans text-body text-ink antialiased;
+  }
+
+  /* DESIGN.md §3: tabular figures are non-negotiable, so table cells and any
+     element marked as a figure opt in without each component remembering. */
+  td,
+  th {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* DESIGN.md §0.1: sober and factual. Headings carry no decoration. */
+  h1,
+  h2,
+  h3 {
+    @apply text-ink;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* DESIGN.md §0.5: skip-to-content, visible only when focused. */
+  .skip-link {
+    @apply sr-only;
+  }
+
+  .skip-link:focus {
+    @apply not-sr-only fixed left-gutter top-2 z-50 rounded bg-surface px-3 py-2 text-body
+      font-medium text-primary shadow-card;
+  }
+}

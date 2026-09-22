@@ -1,0 +1,44 @@
+name_as_published,normalised_key,crop_id,display_name
+Arhar,ARHAR,CR01,Arhar
+Pigeonpea,PIGEONPEA,CR01,Arhar
+Tur,TUR,CR01,Arhar
+Bajra,BAJRA,CR02,Bajra
+Biri,BIRI,CR03,Biri
+Blackgram,BLACKGRAM,CR03,Biri
+Urad,URAD,CR03,Biri
+Castor,CASTOR,CR04,Castor
+Cotton,COTTON,CR05,Cotton
+Bengal Gram,BENGALGRAM,CR06,Gram
+Chana,CHANA,CR06,Gram
+Gram,GRAM,CR06,Gram
+Groundnut,GROUNDNUT,CR07,Groundnut
+Grountnut,GROUNTNUT,CR07,Groundnut
+Jowar,JOWAR,CR08,Jowar
+Jute,JUTE,CR09,Jute
+Horsegram,HORSEGRAM,CR10,Kulthi
+Kulthi,KULTHI,CR10,Kulthi
+Linseed,LINSEED,CR11,Linseed
+Maize,MAIZE,CR12,Maize
+Greengram,GREENGRAM,CR13,Mung
+Moong,MOONG,CR13,Mung
+Mung,MUNG,CR13,Mung
+Mustard,MUSTARD,CR14,Mustard
+Rape & Mustard,RAPEMUSTARD,CR14,Mustard
+Rapeseed & Mustard,RAPESEEDMUSTARD,CR14,Mustard
+Niger,NIGER,CR15,Nizer
+Nigerseed,NIGERSEED,CR15,Nizer
+Nizer,NIZER,CR15,Nizer
+Onion,ONION,CR16,Onion
+Paddy,PADDY,CR17,Paddy
+Paddy/Rice,PADDYRICE,CR17,Paddy
+Rice,RICE,CR17,Paddy
+Potato,POTATO,CR18,Potato
+Finger Millet,FINGERMILLET,CR19,Ragi
+Mandia,MANDIA,CR19,Ragi
+Ragi,RAGI,CR19,Ragi
+Sugarcane,SUGARCANE,CR20,Sugarcane
+Sunflower,SUNFLOWER,CR21,Sunflower
+Sesame,SESAME,CR22,Til
+Sesamum,SESAMUM,CR22,Til
+Til,TIL,CR22,Til
+Wheat,WHEAT,CR23,Wheat

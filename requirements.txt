@@ -1,0 +1,10 @@
+duckdb==1.5.5
+fastapi==0.141.1
+pandas==3.0.5
+pydantic==2.13.5
+python-multipart==0.0.32
+uvicorn==0.53.0
+
+# tests
+pytest==9.1.1
+httpx==0.28.1

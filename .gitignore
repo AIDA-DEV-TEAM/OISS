@@ -1,0 +1,75 @@
+# --------------------------------------------------------------------------
+# Python
+# --------------------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --------------------------------------------------------------------------
+# Node / frontend
+# --------------------------------------------------------------------------
+node_modules/
+web/dist/
+web/dist-ssr/
+*.tsbuildinfo
+.vite/
+npm-debug.log*
+yarn-error.log*
+
+# --------------------------------------------------------------------------
+# Built database
+#
+# `python -m app.cli build` reproduces this deterministically from the files in
+# data/raw, data/extracted and data/synthetic, which ARE committed. The same
+# inputs always give the same run_id, so the 27 MB artefact is not worth
+# versioning -- and committing it would let a stale copy disagree with the
+# sources that built it.
+# --------------------------------------------------------------------------
+data/oiss.duckdb
+data/oiss.duckdb.wal
+*.duckdb
+*.duckdb.wal
+
+# --------------------------------------------------------------------------
+# Secrets
+#
+# .env.example is committed (names only, never values); real .env files are not.
+# --------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --------------------------------------------------------------------------
+# Exports written at run time by the export service (RFP area 8)
+# --------------------------------------------------------------------------
+data/exports/
+*.xlsx.tmp
+
+# --------------------------------------------------------------------------
+# Editors and OS
+# --------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --------------------------------------------------------------------------
+# Scratch
+#
+# Captured test output and other one-off dumps. If something here turns out to
+# be worth keeping, give it a name and a home rather than widening this.
+# --------------------------------------------------------------------------
+test_out.txt
+*.log
+scratch/
+tmp/
