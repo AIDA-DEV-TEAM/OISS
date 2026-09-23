@@ -1,0 +1,700 @@
+{
+  "_source": "Captured from the backend (schema v2) over a fresh build, against the live model service on :8000. Test data only; never rendered by the app.",
+  "modelConfig": {
+    "checked": true,
+    "message": null,
+    "config": {
+      "service_url": "http://127.0.0.1:8000",
+      "fetched_at": "2026-09-23T07:09:06.371536+00:00",
+      "model_name": {
+        "value": "Tuned Gradient Boosting Regressor",
+        "source": "GET /health"
+      },
+      "target": {
+        "value": "Yield_rate_qtl_per_ha",
+        "source": "GET /health"
+      },
+      "model_version": {
+        "value": null,
+        "source": null
+      },
+      "training_period": {
+        "value": null,
+        "source": null
+      },
+      "features": {
+        "value": [
+          {
+            "name": "district",
+            "type": "string",
+            "description": "Name of the district in Odisha (e.g., ANUGUL, CUTTACK, BALANGIR)"
+          },
+          {
+            "name": "season",
+            "type": "string",
+            "description": "Cultivation season: Autumn, Winter, or Summer"
+          },
+          {
+            "name": "minor_crop",
+            "type": "string",
+            "description": "Crop name (e.g., POTATO, MAIZE, GREENGRAM, SUGARCANE)"
+          },
+          {
+            "name": "area_ha",
+            "type": "number",
+            "description": "Cultivated land area in Hectares (must be greater than 0)"
+          }
+        ],
+        "source": "GET /openapi.json (POST /predict request schema)"
+      },
+      "input_domains": {
+        "value": {
+          "districts": [
+            "ANUGUL",
+            "BALANGIR",
+            "BALASORE",
+            "BARGARH",
+            "BHADRAK",
+            "BOUDH",
+            "CUTTACK",
+            "DEOGARH",
+            "DHENKANAL",
+            "GAJAPATI",
+            "GANJAM",
+            "JAGATSINGHPUR",
+            "JAJPUR",
+            "JHARSUGUDA",
+            "KALAHANDI",
+            "KANDHAMAL",
+            "KENDRAPARA",
+            "KEONJHAR",
+            "KHURDA",
+            "KORAPUT",
+            "MALKANGIRI",
+            "MAYURBHANJ",
+            "NAWARANGPUR",
+            "NAYAGARH",
+            "NUAPADA",
+            "PURI",
+            "RAYGADA",
+            "SAMBALPUR",
+            "SUBARNAPUR",
+            "SUNDARGARH"
+          ],
+          "seasons": [
+            "Autumn",
+            "Winter",
+            "Summer"
+          ],
+          "minor_crops": [
+            "BLACKGRAM",
+            "GREENGRAM",
+            "GROUNDNUT",
+            "HORSEGRAM",
+            "JUTE",
+            "MAIZE",
+            "MUSTARD",
+            "NIGER",
+            "POTATO",
+            "RAGI",
+            "SUGARCANE",
+            "TIL",
+            "WHEAT"
+          ],
+          "area_ha_range": {
+            "min": 0.25,
+            "max": 85465.0
+          }
+        },
+        "source": "GET /metadata"
+      }
+    },
+    "config_hash": "c0ac4f45c603168dd92e96657f422b63d7f21e134aa54e8227f10ec040aef61f",
+    "use_case": {
+      "id": "minor_crop_yield",
+      "label": "Minor-crop yield estimation",
+      "description": "Yield in quintals per hectare for a district, season, minor crop and sown area, from the model service's POST /predict.",
+      "fixed_reason": "The model service exposes one model (Tuned Gradient Boosting Regressor) with one target (Yield_rate_qtl_per_ha), both stated by GET /health, so there is nothing to choose."
+    }
+  },
+  "datasets": {
+    "items": [
+      {
+        "dataset_id": "earas_2022_23_block_land_use@1020fd4ae847",
+        "label": "earas_2022_23_block_land_use",
+        "years": "2022-23",
+        "row_count": 4128,
+        "compatible": false,
+        "missing_fields": [
+          {
+            "field": "season",
+            "reason": "the dataset has no season values"
+          },
+          {
+            "field": "minor_crop",
+            "reason": "the dataset has no crop_id values"
+          },
+          {
+            "field": "area_ha",
+            "reason": "the dataset has no area values"
+          }
+        ],
+        "input_summary": null
+      },
+      {
+        "dataset_id": "earas_2022_23_block_paddy@33743b3c4831",
+        "label": "earas_2022_23_block_paddy",
+        "years": "2022-23",
+        "row_count": 3096,
+        "compatible": false,
+        "missing_fields": [],
+        "input_summary": {
+          "agri_years": [
+            "2022-23"
+          ],
+          "combinations": 85,
+          "sent": 0,
+          "out_of_domain": [
+            {
+              "reason": "crop not in the model's minor_crops (GET /metadata)",
+              "count": 85
+            }
+          ],
+          "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+        }
+      },
+      {
+        "dataset_id": "earas_2022_23_district_minor_crops@9a9e758f1066",
+        "label": "earas_2022_23_district_minor_crops",
+        "years": "2022-23",
+        "row_count": 2430,
+        "compatible": true,
+        "missing_fields": [],
+        "input_summary": {
+          "agri_years": [
+            "2022-23"
+          ],
+          "combinations": 472,
+          "sent": 472,
+          "out_of_domain": [],
+          "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+        }
+      },
+      {
+        "dataset_id": "earas_2023_24_block_land_use@1b4f53580fab",
+        "label": "earas_2023_24_block_land_use",
+        "years": "2023-24",
+        "row_count": 4128,
+        "compatible": false,
+        "missing_fields": [
+          {
+            "field": "season",
+            "reason": "the dataset has no season values"
+          },
+          {
+            "field": "minor_crop",
+            "reason": "the dataset has no crop_id values"
+          },
+          {
+            "field": "area_ha",
+            "reason": "the dataset has no area values"
+          }
+        ],
+        "input_summary": null
+      },
+      {
+        "dataset_id": "earas_2023_24_block_paddy@e5c5684ec270",
+        "label": "earas_2023_24_block_paddy",
+        "years": "2023-24",
+        "row_count": 3096,
+        "compatible": false,
+        "missing_fields": [],
+        "input_summary": {
+          "agri_years": [
+            "2023-24"
+          ],
+          "combinations": 86,
+          "sent": 0,
+          "out_of_domain": [
+            {
+              "reason": "crop not in the model's minor_crops (GET /metadata)",
+              "count": 86
+            }
+          ],
+          "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+        }
+      },
+      {
+        "dataset_id": "earas_2023_24_district_minor_crops@e323a4e22f2c",
+        "label": "earas_2023_24_district_minor_crops",
+        "years": "2023-24",
+        "row_count": 3510,
+        "compatible": true,
+        "missing_fields": [],
+        "input_summary": {
+          "agri_years": [
+            "2023-24"
+          ],
+          "combinations": 517,
+          "sent": 517,
+          "out_of_domain": [],
+          "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+        }
+      },
+      {
+        "dataset_id": "earas_2023_24_district_paddy@5e8bdea5ea67",
+        "label": "earas_2023_24_district_paddy",
+        "years": "2023-24",
+        "row_count": 540,
+        "compatible": false,
+        "missing_fields": [],
+        "input_summary": {
+          "agri_years": [
+            "2023-24"
+          ],
+          "combinations": 86,
+          "sent": 0,
+          "out_of_domain": [
+            {
+              "reason": "crop not in the model's minor_crops (GET /metadata)",
+              "count": 86
+            }
+          ],
+          "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+        }
+      },
+      {
+        "dataset_id": "earas_2024_25_district_crop_ayp@3087f1ec29e3",
+        "label": "earas_2024_25_district_crop_ayp",
+        "years": "2024-25",
+        "row_count": 5280,
+        "compatible": true,
+        "missing_fields": [],
+        "input_summary": {
+          "agri_years": [
+            "2024-25"
+          ],
+          "combinations": 622,
+          "sent": 536,
+          "out_of_domain": [
+            {
+              "reason": "crop not in the model's minor_crops (GET /metadata)",
+              "count": 86
+            }
+          ],
+          "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+        }
+      },
+      {
+        "dataset_id": "earas_2024_25_district_land_use@1d21f023b7ba",
+        "label": "earas_2024_25_district_land_use",
+        "years": "2024-25",
+        "row_count": 660,
+        "compatible": false,
+        "missing_fields": [
+          {
+            "field": "season",
+            "reason": "the dataset has no season values"
+          },
+          {
+            "field": "minor_crop",
+            "reason": "the dataset has no crop_id values"
+          },
+          {
+            "field": "area_ha",
+            "reason": "the dataset has no area values"
+          }
+        ],
+        "input_summary": null
+      },
+      {
+        "dataset_id": "earas_state_series@d35b8a76b285",
+        "label": "earas_state_series",
+        "years": "1993-94 to 2024-25",
+        "row_count": 5632,
+        "compatible": false,
+        "missing_fields": [
+          {
+            "field": "district",
+            "reason": "the dataset has no district_id values"
+          }
+        ],
+        "input_summary": null
+      },
+      {
+        "dataset_id": "price_statistics_2020@7b601ba6d90c",
+        "label": "price_statistics_2020",
+        "years": "2013-14 to 2018-19",
+        "row_count": 6300,
+        "compatible": false,
+        "missing_fields": [
+          {
+            "field": "season",
+            "reason": "the dataset has no season values"
+          },
+          {
+            "field": "area_ha",
+            "reason": "the dataset has no area values"
+          }
+        ],
+        "input_summary": null
+      },
+      {
+        "dataset_id": "synthetic_monthly_prices@cbb63a20c8ef",
+        "label": "synthetic_monthly_prices",
+        "years": "2013-14 to 2024-25",
+        "row_count": 90564,
+        "compatible": false,
+        "missing_fields": [
+          {
+            "field": "season",
+            "reason": "the dataset has no season values"
+          },
+          {
+            "field": "area_ha",
+            "reason": "the dataset has no area values"
+          }
+        ],
+        "input_summary": null
+      }
+    ],
+    "total": 12,
+    "page": 1,
+    "size": 12,
+    "model_checked": true,
+    "message": null
+  },
+  "forecasts": [
+    {
+      "crop_id": "CR03",
+      "crop_name": "Biri",
+      "district_id": "OD01",
+      "district_name": "Angul",
+      "season": "Autumn",
+      "agri_year": "2024-25",
+      "actual_yield": 4.32,
+      "forecast_yield": 5.73,
+      "unit": "qtl/ha",
+      "version_id": "ver-minor-yield-e084cb",
+      "output_label": "Analytical Estimates",
+      "model_config_hash": "c0ac4f45c603168dd92e96657f422b63d7f21e134aa54e8227f10ec040aef61f",
+      "data_origin": {
+        "model": 1
+      }
+    },
+    {
+      "crop_id": "CR03",
+      "crop_name": "Biri",
+      "district_id": "OD01",
+      "district_name": "Angul",
+      "season": "Summer",
+      "agri_year": "2024-25",
+      "actual_yield": 4.25,
+      "forecast_yield": 7.53,
+      "unit": "qtl/ha",
+      "version_id": "ver-minor-yield-e084cb",
+      "output_label": "Analytical Estimates",
+      "model_config_hash": "c0ac4f45c603168dd92e96657f422b63d7f21e134aa54e8227f10ec040aef61f",
+      "data_origin": {
+        "model": 1
+      }
+    },
+    {
+      "crop_id": "CR03",
+      "crop_name": "Biri",
+      "district_id": "OD01",
+      "district_name": "Angul",
+      "season": "Winter",
+      "agri_year": "2024-25",
+      "actual_yield": 4.28,
+      "forecast_yield": 5.73,
+      "unit": "qtl/ha",
+      "version_id": "ver-minor-yield-e084cb",
+      "output_label": "Analytical Estimates",
+      "model_config_hash": "c0ac4f45c603168dd92e96657f422b63d7f21e134aa54e8227f10ec040aef61f",
+      "data_origin": {
+        "model": 1
+      }
+    }
+  ],
+  "runWithWarnings": {
+    "_source": "POST /sandbox/runs and GET /sandbox/runs/{id}/results against the live service, except /actual-vs-predicted: forced on this side to a 422 in the shape the service returns for an out-of-range limit (the live service accepts limit=200). Predictions cut from 536 to 6.",
+    "status": {
+      "run_id": "run-minor-yield-84f5812f",
+      "status": "completed_with_warnings",
+      "progress": 100,
+      "message": "Run complete with warnings: 536 estimates from the model service. 86 of the dataset's 622 combinations were outside the model's input domains and were not sent. Model evaluation is unavailable: The model service rejected a request: GET /actual-vs-predicted?limit=200 returned 422: query.limit: Input should be less than or equal to 200.",
+      "error_code": null
+    },
+    "results": {
+      "run_id": "run-minor-yield-84f5812f",
+      "status": "completed_with_warnings",
+      "warnings": [
+        "Model evaluation is unavailable: The model service rejected a request: GET /actual-vs-predicted?limit=200 returned 422: query.limit: Input should be less than or equal to 200."
+      ],
+      "pooled": null,
+      "per_crop": [],
+      "actual_vs_predicted": [],
+      "feature_importance": [
+        {
+          "feature": "Minor_Crop_SUGARCANE",
+          "label": "Minor Crop SUGARCANE",
+          "weight": 0.9220866979284206
+        },
+        {
+          "feature": "Minor_Crop_POTATO",
+          "label": "Minor Crop POTATO",
+          "weight": 0.036626722769361436
+        },
+        {
+          "feature": "Area_ha",
+          "label": "Area ha",
+          "weight": 0.013014442016033334
+        },
+        {
+          "feature": "District_JHARSUGUDA",
+          "label": "District JHARSUGUDA",
+          "weight": 0.01112532897931734
+        },
+        {
+          "feature": "District_NUAPADA",
+          "label": "District NUAPADA",
+          "weight": 0.004653692199919067
+        }
+      ],
+      "explanation": "Feature Importance Analysis: Minor Crop identity is the primary driver of yield variation in Odisha, accounting for the vast majority of predictive weight. High-biomass crops (Sugarcane, Potato) have natural biological yield rates orders of magnitude greater than pulses or oilseeds. Cultivated area ranks next as an indicator of cultivation scale and resource intensity, followed by district-specific agro-climatic zones (such as Jharsuguda, Nuapada, Dhenkanal, Sambalpur, and Puri) and seasonal factors (Autumn vs. Winter vs. Summer).",
+      "predictions": [
+        {
+          "district_id": "OD01",
+          "district_name": "Angul",
+          "crop_id": "CR03",
+          "crop_name": "Biri",
+          "season": "Autumn",
+          "agri_year": "2024-25",
+          "area_ha": 678.0,
+          "predicted_yield_qtl_per_ha": 5.73,
+          "estimated_production_qtls": 3884.94,
+          "output_label": "Analytical Estimates",
+          "actual_yield_qtl_per_ha": 4.32
+        },
+        {
+          "district_id": "OD01",
+          "district_name": "Angul",
+          "crop_id": "CR03",
+          "crop_name": "Biri",
+          "season": "Summer",
+          "agri_year": "2024-25",
+          "area_ha": 601.0,
+          "predicted_yield_qtl_per_ha": 7.53,
+          "estimated_production_qtls": 4525.53,
+          "output_label": "Analytical Estimates",
+          "actual_yield_qtl_per_ha": 4.25
+        },
+        {
+          "district_id": "OD01",
+          "district_name": "Angul",
+          "crop_id": "CR03",
+          "crop_name": "Biri",
+          "season": "Winter",
+          "agri_year": "2024-25",
+          "area_ha": 749.0,
+          "predicted_yield_qtl_per_ha": 5.73,
+          "estimated_production_qtls": 4291.77,
+          "output_label": "Analytical Estimates",
+          "actual_yield_qtl_per_ha": 4.28
+        },
+        {
+          "district_id": "OD01",
+          "district_name": "Angul",
+          "crop_id": "CR07",
+          "crop_name": "Groundnut",
+          "season": "Autumn",
+          "agri_year": "2024-25",
+          "area_ha": 640.0,
+          "predicted_yield_qtl_per_ha": 16.3,
+          "estimated_production_qtls": 10432.0,
+          "output_label": "Analytical Estimates",
+          "actual_yield_qtl_per_ha": 19.43
+        },
+        {
+          "district_id": "OD01",
+          "district_name": "Angul",
+          "crop_id": "CR07",
+          "crop_name": "Groundnut",
+          "season": "Summer",
+          "agri_year": "2024-25",
+          "area_ha": 513.0,
+          "predicted_yield_qtl_per_ha": 17.08,
+          "estimated_production_qtls": 8762.04,
+          "output_label": "Analytical Estimates",
+          "actual_yield_qtl_per_ha": 19.4
+        },
+        {
+          "district_id": "OD01",
+          "district_name": "Angul",
+          "crop_id": "CR07",
+          "crop_name": "Groundnut",
+          "season": "Winter",
+          "agri_year": "2024-25",
+          "area_ha": 149.0,
+          "predicted_yield_qtl_per_ha": 17.08,
+          "estimated_production_qtls": 2544.92,
+          "output_label": "Analytical Estimates",
+          "actual_yield_qtl_per_ha": 17.71
+        }
+      ],
+      "data_origin": {
+        "model": 536
+      },
+      "served_from_cache": false,
+      "replayed_from": null,
+      "replayed_run_at": null,
+      "model_configuration": {
+        "service_url": "http://localhost:8000",
+        "fetched_at": "2026-09-23T07:09:09.281251+00:00",
+        "model_name": {
+          "value": "Tuned Gradient Boosting Regressor",
+          "source": "GET /health"
+        },
+        "target": {
+          "value": "Yield_rate_qtl_per_ha",
+          "source": "GET /health"
+        },
+        "model_version": {
+          "value": null,
+          "source": null
+        },
+        "training_period": {
+          "value": null,
+          "source": null
+        },
+        "features": {
+          "value": [
+            {
+              "name": "district",
+              "type": "string",
+              "description": "Name of the district in Odisha (e.g., ANUGUL, CUTTACK, BALANGIR)"
+            },
+            {
+              "name": "season",
+              "type": "string",
+              "description": "Cultivation season: Autumn, Winter, or Summer"
+            },
+            {
+              "name": "minor_crop",
+              "type": "string",
+              "description": "Crop name (e.g., POTATO, MAIZE, GREENGRAM, SUGARCANE)"
+            },
+            {
+              "name": "area_ha",
+              "type": "number",
+              "description": "Cultivated land area in Hectares (must be greater than 0)"
+            }
+          ],
+          "source": "GET /openapi.json (POST /predict request schema)"
+        },
+        "input_domains": {
+          "value": {
+            "districts": [
+              "ANUGUL",
+              "BALANGIR",
+              "BALASORE",
+              "BARGARH",
+              "BHADRAK",
+              "BOUDH",
+              "CUTTACK",
+              "DEOGARH",
+              "DHENKANAL",
+              "GAJAPATI",
+              "GANJAM",
+              "JAGATSINGHPUR",
+              "JAJPUR",
+              "JHARSUGUDA",
+              "KALAHANDI",
+              "KANDHAMAL",
+              "KENDRAPARA",
+              "KEONJHAR",
+              "KHURDA",
+              "KORAPUT",
+              "MALKANGIRI",
+              "MAYURBHANJ",
+              "NAWARANGPUR",
+              "NAYAGARH",
+              "NUAPADA",
+              "PURI",
+              "RAYGADA",
+              "SAMBALPUR",
+              "SUBARNAPUR",
+              "SUNDARGARH"
+            ],
+            "seasons": [
+              "Autumn",
+              "Winter",
+              "Summer"
+            ],
+            "minor_crops": [
+              "BLACKGRAM",
+              "GREENGRAM",
+              "GROUNDNUT",
+              "HORSEGRAM",
+              "JUTE",
+              "MAIZE",
+              "MUSTARD",
+              "NIGER",
+              "POTATO",
+              "RAGI",
+              "SUGARCANE",
+              "TIL",
+              "WHEAT"
+            ],
+            "area_ha_range": {
+              "min": 0.25,
+              "max": 85465.0
+            }
+          },
+          "source": "GET /metadata"
+        }
+      },
+      "model_config_hash": "c0ac4f45c603168dd92e96657f422b63d7f21e134aa54e8227f10ec040aef61f",
+      "model_checked": true,
+      "input_summary": {
+        "agri_years": [
+          "2024-25"
+        ],
+        "combinations": 622,
+        "sent": 536,
+        "out_of_domain": [
+          {
+            "reason": "crop not in the model's minor_crops (GET /metadata)",
+            "count": 86
+          }
+        ],
+        "rule": "Each combination is counted once, under the first check it fails: district, crop, season, then area."
+      },
+      "agri_years": [
+        "2024-25"
+      ],
+      "comparison_label": "Model estimate vs published 2024-25 actual"
+    }
+  },
+  "runIncompatible": {
+    "_source": "POST /sandbox/runs for price_statistics_2020, live service.",
+    "status": {
+      "run_id": "run-minor-yield-ef1963cd",
+      "status": "failed",
+      "progress": 100,
+      "message": "Run failed. dataset price_statistics_2020@7b601ba6d90c cannot supply the model's request fields (season: the dataset has no season values; area_ha: the dataset has no area values).",
+      "error_code": "DATASET_INCOMPATIBLE"
+    }
+  },
+  "runStorageFailed": {
+    "_source": "POST /sandbox/runs, live service, with storing the evaluation forced to fail on this side.",
+    "status": {
+      "run_id": "run-minor-yield-0ef8858a",
+      "status": "failed",
+      "progress": 100,
+      "message": "Run failed. The 536 estimates were stored, but storing the model's evaluation failed, so the run's results are incomplete and are not shown.",
+      "error_code": "STORAGE_FAILED"
+    }
+  }
+}

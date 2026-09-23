@@ -48,6 +48,10 @@ class CompiledQuery:
     has_grain_source: bool = False
     has_basis: bool = False
     extra_columns: list[str] = field(default_factory=list)
+    # The same query with no LIMIT, so a caller that needs the true size of a
+    # result can count it without taking the SQL apart by hand.
+    sql_unlimited: str = ""
+    params_unlimited: list[object] = field(default_factory=list)
 
 
 def _quote(identifier: str) -> str:
@@ -98,6 +102,37 @@ def _period_sql(spec: QuerySpec) -> tuple[list[str], list[object]]:
     return clauses, params
 
 
+# --------------------------------------------------------------------------
+# The three always-on guards
+#
+# Every fact query carries these whether or not the caller asked for them,
+# because each one prevents the same class of error: counting the same harvest,
+# the same season or the same file twice. They are applied together in
+# build_base so there is one place to read.
+#
+# 1. relation.base_predicate  -- declared per relation in the registry.
+#    The crop reports publish per-season rows *and* a Total row that repeats
+#    their sum, so querying both doubles every figure.
+#
+# 2. product                  -- applied when the relation carries it.
+#    DE&S publishes paddy twice, once in paddy terms and once in rice (milled)
+#    terms, restating the same area. `product` is a unit of account, not an
+#    additive partition, so summing across it double-counts. Absent an explicit
+#    product filter or grouping, only paddy and minor crops are counted; rice
+#    stays reachable by asking for it.
+#
+# 3. active version           -- applied when the relation carries it.
+#    An uploaded file is promoted into the fact tables under its own
+#    dataset_version_id. Two versions of one dataset would sum together, so a
+#    query reads only the version marked active for each dataset.
+# --------------------------------------------------------------------------
+ACTIVE_VERSION_PREDICATE = (
+    "dataset_version_id IN ("
+    "SELECT dataset_version_id FROM analytics.dataset_version WHERE is_active"
+    ")"
+)
+
+
 def build_base(
     spec: QuerySpec, relation: Relation, drop_dimension: Optional[str] = None
 ) -> tuple[str, list[object]]:
@@ -107,13 +142,22 @@ def build_base(
     period_clauses, period_params = _period_sql(spec)
     clauses += period_clauses
     params += period_params
+
+    # Guard 1: declared per relation.
     if relation.base_predicate:
         clauses.insert(0, relation.base_predicate)
+
+    # Guard 2: unit of account.
     if "product" in relation.dimensions:
         has_product_filter = any(f.dimension == "product" for f in kept)
         has_product_dimension = "product" in spec.dimensions
         if not has_product_filter and not has_product_dimension:
             clauses.append("(product = 'paddy' OR product = 'minor')")
+
+    # Guard 3: one version per dataset.
+    if relation.carries_version:
+        clauses.append(ACTIVE_VERSION_PREDICATE)
+
     where = f" WHERE {' AND '.join(clauses)}" if clauses else ""
     return f"SELECT * FROM {_quote(relation.name)}{where}", params
 
@@ -148,6 +192,7 @@ AGGREGATES: dict[str, tuple[str, Optional[str]]] = {
     "production_share_pct": (_measure_sum("production"), None),
     "cropping_area_share_pct": (_measure_sum("area"), None),
     "land_use_share_pct": (_measure_sum("area"), None),
+    "predicted_yield": ("avg(value)", None),
 }
 
 # Share metrics: the dimension whose filter is dropped when computing the
@@ -316,17 +361,20 @@ def compile_query(spec: QuerySpec) -> CompiledQuery:
         + (["_aggregated_rows"] if has_grain else [])
         + [value_select]
     )
-    sql = (
+    sql_unlimited = (
         "WITH "
         + ", ".join(parts)
         + f" SELECT {', '.join(projected)} FROM {outer_source}{outer_where}"
         + order_clause
-        + " LIMIT ?"
     )
+    sql = sql_unlimited + " LIMIT ?"
+    params_unlimited = list(params)
     params.append(spec.limit)
 
     return CompiledQuery(
         sql=sql,
+        sql_unlimited=sql_unlimited,
+        params_unlimited=params_unlimited,
         params=params,
         base_sql=base_sql,
         base_params=base_params,

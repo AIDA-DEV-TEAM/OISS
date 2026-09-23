@@ -72,6 +72,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/datasets/{dataset_version_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate Version
+         * @description Make this version the one queries count for its dataset.
+         */
+        post: operations["activate_version_datasets__dataset_version_id__activate_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/datasets/{dataset_version_id}/deactivate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Deactivate Version
+         * @description Stop counting this version, returning the dataset to the build's.
+         */
+        post: operations["deactivate_version_datasets__dataset_version_id__deactivate_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/datasets/{dataset_version_id}/layers": {
         parameters: {
             query?: never;
@@ -185,6 +225,9 @@ export interface paths {
         /**
          * Ingest Upload
          * @description Validate an uploaded file against a known dataset's schema and rules.
+         *
+         *     An empty ``dataset_name`` means the file matches no declared schema: it is
+         *     still read and validated, for the problems that hold for any table.
          *
          *     Bad rows are quarantined and reported; the request succeeds regardless, so
          *     the demo can show findings rather than an error page.
@@ -310,10 +353,361 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Export
+         * @description Produce a file and record it, synchronously.
+         *
+         *     A request carrying a query spec has its context derived from running that
+         *     spec here; one carrying an inline payload says so inside the file.
+         */
+        post: operations["create_export_export_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/exports/limits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Export Limits
+         * @description The row ceiling, so the export dialog warns with the figure that applies.
+         */
+        get: operations["get_export_limits_exports_limits_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/exports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Exports */
+        get: operations["list_exports_exports_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/export/{export_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Export */
+        get: operations["get_export_export__export_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/export/{export_id}/download": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Download Export
+         * @description The file itself, named as it was generated.
+         */
+        get: operations["download_export_export__export_id__download_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/model-config": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Sandbox Model Config
+         * @description The model configuration as the model service states it, each field sourced.
+         */
+        get: operations["get_sandbox_model_config_sandbox_model_config_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/datasets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Sandbox Datasets
+         * @description Every dataset, with its compatibility against the model's request.
+         */
+        get: operations["list_sandbox_datasets_sandbox_datasets_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/runs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Sandbox Run
+         * @description Run the pre-trained model over a dataset; returns when the run has ended.
+         *
+         *     Several hundred model calls take a while, so they run off the event loop on
+         *     their own cursor. This is not a background job: the request waits.
+         */
+        post: operations["create_sandbox_run_sandbox_runs_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/runs/{run_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Sandbox Run Status
+         * @description Check the status and progress of a sandbox run.
+         */
+        get: operations["get_sandbox_run_status_sandbox_runs__run_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/runs/{run_id}/results": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Sandbox Run Results
+         * @description Retrieve full evaluation metrics, feature importance, and sample predictions.
+         */
+        get: operations["get_sandbox_run_results_sandbox_runs__run_id__results_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/runs/{run_id}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Save Sandbox Version
+         * @description Save a run as a named model version for governance.
+         */
+        post: operations["save_sandbox_version_sandbox_runs__run_id__versions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sandbox/versions/{version_id}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Publish Sandbox Version
+         * @description Publish a model version's forecasts to the dashboard and record lineage.
+         */
+        post: operations["publish_sandbox_version_sandbox_versions__version_id__publish_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/dashboard/forecasts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Dashboard Forecasts
+         * @description Retrieve published crop-yield forecasts with actual-vs-forecast comparison.
+         */
+        get: operations["get_dashboard_forecasts_dashboard_forecasts_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/assistant/questions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Assistant Questions
+         * @description Starter questions, answered from the shipped cache with no API key.
+         */
+        get: operations["list_assistant_questions_assistant_questions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/assistant/ask": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Ask Assistant
+         * @description A free-text question, answered from the loaded data or declined.
+         *
+         *     A model call can take seconds, so it runs off the event loop on its own
+         *     cursor rather than holding every other request behind it.
+         */
+        post: operations["ask_assistant_assistant_ask_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/narrative/dashboard": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Dashboard Narrative
+         * @description "What this view shows": prose over the view's SQL fact bundle.
+         *
+         *     Written by the model when one is available and its figures check out;
+         *     otherwise rendered from the same facts by a template, and labelled so.
+         */
+        post: operations["dashboard_narrative_narrative_dashboard_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * ActivationResult
+         * @description Which version now feeds the facts for a dataset.
+         */
+        ActivationResult: {
+            /** Dataset Name */
+            dataset_name: string;
+            /** Activated */
+            activated?: string | null;
+            /** Deactivated */
+            deactivated?: string[];
+        };
+        /** ActualVsPredicted */
+        ActualVsPredicted: {
+            /** District Name */
+            district_name: string;
+            /** Crop Name */
+            crop_name: string;
+            /** Actual */
+            actual: number;
+            /** Predicted */
+            predicted: number;
+            /** Residual */
+            residual: number;
+        };
         /**
          * AppliedContext
          * @description What was asked, what was read, and how much of it.
@@ -353,13 +747,80 @@ export interface components {
             underlying_row_count: number;
             /** Generated At */
             generated_at: string;
+            /** Provenance Notes */
+            provenance_notes?: string[];
+        };
+        /** AskRequest */
+        AskRequest: {
+            /** Question */
+            question: string;
+        };
+        /** AssistantAnswer */
+        AssistantAnswer: {
+            /** Question */
+            question: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "answered" | "declined" | "unavailable";
+            /** Answer */
+            answer: string;
+            /** Answer Source */
+            answer_source?: ("model" | "template") | null;
+            /** Limitation */
+            limitation?: string | null;
+            interpretation?: components["schemas"]["Interpretation"] | null;
+            query_spec?: components["schemas"]["QuerySpec"] | null;
+            chart_spec?: components["schemas"]["ChartSpec"] | null;
+            /** Applied Filters */
+            applied_filters: components["schemas"]["DescribedFilter"][];
+            /** Source Datasets */
+            source_datasets: components["schemas"]["SourceDataset"][];
+            /** Period */
+            period?: string | null;
+            /** Rows */
+            rows: {
+                [key: string]: unknown;
+            }[];
+            /** Records Preview */
+            records_preview: {
+                [key: string]: unknown;
+            }[];
+            /** Records Total */
+            records_total: number;
+            /** Caveats */
+            caveats: components["schemas"]["Caveat"][];
+            applied_context?: components["schemas"]["AppliedContext"] | null;
+            /** Data Origin */
+            data_origin: {
+                [key: string]: number;
+            };
+            /** Grain Source */
+            grain_source: {
+                [key: string]: number;
+            };
+            /** Provenance Notes */
+            provenance_notes: string[];
+            /** Llm Calls */
+            llm_calls: components["schemas"]["LlmCall"][];
+            /** Served From Cache */
+            served_from_cache: boolean;
         };
         /** Body_ingest_upload_ingest_upload_post */
         Body_ingest_upload_ingest_upload_post: {
-            /** Dataset Name */
-            dataset_name: string;
             /** File */
             file: string;
+            /**
+             * Dataset Name
+             * @default
+             */
+            dataset_name: string;
+            /**
+             * Data Origin
+             * @default
+             */
+            data_origin: string;
         };
         /** Caveat */
         Caveat: {
@@ -371,6 +832,62 @@ export interface components {
             message: string;
             /** Affected Rows */
             affected_rows: number;
+        };
+        /** ChartSpec */
+        ChartSpec: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "bar" | "line";
+            /** X Key */
+            x_key: string;
+            /** Y Key */
+            y_key: string;
+            /** Unit */
+            unit: string;
+            /** Series Label */
+            series_label: string;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            }[];
+        };
+        /** CreateRunRequest */
+        CreateRunRequest: {
+            /** Dataset Id */
+            dataset_id: string;
+            /**
+             * Use Case
+             * @default minor_crop_yield
+             * @constant
+             */
+            use_case: "minor_crop_yield";
+        };
+        /** DashboardNarrative */
+        DashboardNarrative: {
+            /** Narrative */
+            narrative: string;
+            /**
+             * Narrative Source
+             * @enum {string}
+             */
+            narrative_source: "model" | "template";
+            /** Model */
+            model?: string | null;
+            /** Facts Used */
+            facts_used: components["schemas"]["NarrativeFact"][];
+            /** Caveats */
+            caveats: components["schemas"]["Caveat"][];
+            applied_context: components["schemas"]["AppliedContext"];
+            /** Data Origin */
+            data_origin: {
+                [key: string]: number;
+            };
+            /** Served From Cache */
+            served_from_cache: boolean;
+            /** Llm Calls */
+            llm_calls: components["schemas"]["LlmCall"][];
         };
         /** DatasetVersion */
         DatasetVersion: {
@@ -395,6 +912,28 @@ export interface components {
             loaded_at: string;
             /** Generator Version */
             generator_version?: string | null;
+            /**
+             * Is Active
+             * @description Whether queries count this version. Exactly one version per dataset is active; an upload starts inactive.
+             * @default true
+             */
+            is_active: boolean;
+        };
+        /**
+         * DescribedFilter
+         * @description A filter as applied, with the master's display names beside its codes.
+         */
+        DescribedFilter: {
+            /** Dimension */
+            dimension: string;
+            /** Op */
+            op: string;
+            /** Values */
+            values: string[];
+            /** Dimension Label */
+            dimension_label: string;
+            /** Values Display */
+            values_display: string[];
         };
         /** DimensionInfo */
         DimensionInfo: {
@@ -411,12 +950,198 @@ export interface components {
             /** Available On */
             available_on: string[];
         };
+        /** DimensionRef */
+        DimensionRef: {
+            /** Id */
+            id: string;
+            /** Label */
+            label: string;
+        };
         /** DimensionValue */
         DimensionValue: {
             /** Value */
             value: string;
             /** Label */
             label: string;
+        };
+        /** DomainCount */
+        DomainCount: {
+            /** Reason */
+            reason: string;
+            /** Count */
+            count: number;
+        };
+        /**
+         * ExportLimits
+         * @description Limits the export service enforces.
+         */
+        ExportLimits: {
+            /** Row Ceiling */
+            row_ceiling: number;
+        };
+        /**
+         * ExportOptions
+         * @description What the caller wants inside the file.
+         */
+        ExportOptions: {
+            /**
+             * Include Context
+             * @default true
+             */
+            include_context: boolean;
+            /**
+             * Include Caveats
+             * @default true
+             */
+            include_caveats: boolean;
+            /**
+             * Include Records
+             * @default true
+             */
+            include_records: boolean;
+        };
+        /**
+         * ExportPayload
+         * @description Rows and context for a surface that has no query spec yet.
+         *
+         *     The assistant and the sandbox are still fixture-backed, so their exports
+         *     cannot be reproduced from a spec. A file built this way says so.
+         */
+        ExportPayload: {
+            /** Rows */
+            rows?: {
+                [key: string]: unknown;
+            }[];
+            /** Context */
+            context?: {
+                [key: string]: unknown;
+            };
+            /** Caveats */
+            caveats?: components["schemas"]["Caveat"][];
+        };
+        /**
+         * ExportRecord
+         * @description One produced file, with the context it carries.
+         */
+        ExportRecord: {
+            /** Export Id */
+            export_id: string;
+            /** Export Type */
+            export_type: string;
+            /** Format */
+            format: string;
+            /** Status */
+            status: string;
+            /** Filename */
+            filename: string;
+            /** Size Bytes */
+            size_bytes: number;
+            /** Created At */
+            created_at: string;
+            context: components["schemas"]["ExportedContext"];
+        };
+        /** ExportRequest */
+        ExportRequest: {
+            /**
+             * Export Type
+             * @enum {string}
+             */
+            export_type: "dashboard_panel" | "records_grid" | "assistant_answer" | "model_output" | "narrative";
+            /**
+             * Format
+             * @enum {string}
+             */
+            format: "csv" | "xlsx" | "pdf" | "json" | "png";
+            /** Panel Title */
+            panel_title: string;
+            query_spec?: components["schemas"]["QuerySpec"] | null;
+            payload?: components["schemas"]["ExportPayload"] | null;
+            options?: components["schemas"]["ExportOptions"];
+        };
+        /**
+         * ExportedContext
+         * @description The context written into an export file and shown on the Exports screen.
+         *
+         *     A superset of :class:`AppliedContext`: it adds what the file needs and the
+         *     query does not have -- which panel asked, how the context was obtained, the
+         *     disclosure lines, the caveats and a period phrase a reader can read. Every
+         *     field is optional except the panel, because an export of a surface with no
+         *     query spec has fewer of them and must not pretend otherwise.
+         */
+        ExportedContext: {
+            /** Panel Title */
+            panel_title: string;
+            /** Metric */
+            metric?: string | null;
+            /** Metric Label */
+            metric_label?: string | null;
+            /** Unit */
+            unit?: string | null;
+            /** Dimensions */
+            dimensions?: string[];
+            /** Filters */
+            filters?: {
+                [key: string]: unknown;
+            }[];
+            /** Period */
+            period?: {
+                [key: string]: unknown;
+            } | null;
+            /** Period Label */
+            period_label?: string | null;
+            /** Relation */
+            relation?: string | null;
+            /** Source Datasets */
+            source_datasets?: components["schemas"]["SourceDataset"][];
+            /** Data Origin */
+            data_origin?: {
+                [key: string]: number;
+            };
+            /** Grain Source */
+            grain_source?: {
+                [key: string]: number;
+            };
+            /**
+             * Row Count
+             * @default 0
+             */
+            row_count: number;
+            /**
+             * Underlying Row Count
+             * @default 0
+             */
+            underlying_row_count: number;
+            /**
+             * Truncated
+             * @default false
+             */
+            truncated: boolean;
+            /** Matching Row Count */
+            matching_row_count?: number | null;
+            /** Provenance Notes */
+            provenance_notes?: string[];
+            /** Caveats */
+            caveats?: components["schemas"]["Caveat"][];
+            /**
+             * Context Origin
+             * @default derived
+             */
+            context_origin: string;
+            /** Generated At */
+            generated_at?: string | null;
+            /** Model Configurations */
+            model_configurations?: {
+                [key: string]: string;
+            }[];
+        };
+        /** FeatureImportance */
+        FeatureImportance: {
+            /** Feature */
+            feature: string;
+            /** Label */
+            label: string;
+            /** Weight */
+            weight: number;
         };
         /** Filter */
         Filter: {
@@ -452,6 +1177,8 @@ export interface components {
             last_run_id?: string | null;
             /** Last Run Status */
             last_run_status?: string | null;
+            /** Schema Version */
+            schema_version?: number | null;
         };
         /**
          * IngestResult
@@ -470,8 +1197,17 @@ export interface components {
             data_origin: string;
             /** Rows Read */
             rows_read: number;
-            /** Rows Staged */
+            /**
+             * Rows Staged
+             * @description Rows written to the upload's staging table; 0 when nothing was staged.
+             */
             rows_staged: number;
+            /**
+             * Rows Promoted
+             * @description Rows appended to the analytics fact table under this version.
+             * @default 0
+             */
+            rows_promoted: number;
             /** Rows Quarantined */
             rows_quarantined: number;
             /** Error Count */
@@ -489,6 +1225,20 @@ export interface components {
             findings: components["schemas"]["ValidationFinding"][];
             /** Quarantine Table */
             quarantine_table?: string | null;
+            /** Staging Table */
+            staging_table?: string | null;
+            /** Promoted To */
+            promoted_to?: string | null;
+            /**
+             * Duplicate Of
+             * @description Set when these exact bytes are already loaded. Nothing was written: the named version already describes this content.
+             */
+            duplicate_of?: string | null;
+            /**
+             * Duplicate Layer
+             * @description Which layer created the version already holding it.
+             */
+            duplicate_layer?: string | null;
         };
         /**
          * IngestSchema
@@ -504,6 +1254,48 @@ export interface components {
             source_type: string;
             /** Expected Columns */
             expected_columns: string[];
+        };
+        /**
+         * InputSummary
+         * @description A dataset's combinations checked against the model's input domains.
+         */
+        InputSummary: {
+            /** Agri Years */
+            agri_years: string[];
+            /** Combinations */
+            combinations: number;
+            /** Sent */
+            sent: number;
+            /** Out Of Domain */
+            out_of_domain: components["schemas"]["DomainCount"][];
+            /** Rule */
+            rule: string;
+        };
+        /**
+         * Interpretation
+         * @description How the question was read: the query the model chose, after validation.
+         */
+        Interpretation: {
+            /** Metric */
+            metric: string;
+            /** Metric Label */
+            metric_label: string;
+            /** Unit */
+            unit: string;
+            /** Dimensions */
+            dimensions: components["schemas"]["DimensionRef"][];
+            /** Filters */
+            filters: components["schemas"]["DescribedFilter"][];
+            /** Period */
+            period?: string | null;
+            /** Order */
+            order?: string | null;
+            /** Limit */
+            limit: number;
+            /** Corrected */
+            corrected: boolean;
+            /** Model */
+            model: string;
         };
         /**
          * LayerStage
@@ -545,6 +1337,22 @@ export interface components {
             /** Dataset Version Id */
             dataset_version_id: string;
         };
+        /** LlmCall */
+        LlmCall: {
+            /** Purpose */
+            purpose: string;
+            /** Model */
+            model: string;
+            /** Served From Cache */
+            served_from_cache: boolean;
+            /**
+             * Outcome
+             * @enum {string}
+             */
+            outcome: "ok" | "unavailable" | "error";
+            /** Error */
+            error?: string | null;
+        };
         /** MetricInfo */
         MetricInfo: {
             /** Metric Id */
@@ -567,6 +1375,60 @@ export interface components {
             default_aggregation: string;
             /** Facts */
             facts: string[];
+        };
+        /** MetricSet */
+        MetricSet: {
+            /** R2 */
+            r2?: number | null;
+            /** Rmse */
+            rmse: number;
+            /** Mae */
+            mae: number;
+            /** N */
+            n: number;
+        };
+        /** MissingField */
+        MissingField: {
+            /** Field */
+            field: string;
+            /** Reason */
+            reason: string;
+        };
+        /** ModelConfig */
+        ModelConfig: {
+            /** Service Url */
+            service_url: string;
+            /** Fetched At */
+            fetched_at: string;
+            model_name: components["schemas"]["StatedText"];
+            target: components["schemas"]["StatedText"];
+            model_version: components["schemas"]["StatedText"];
+            training_period: components["schemas"]["StatedText"];
+            features: components["schemas"]["StatedFeatures"];
+            input_domains: components["schemas"]["StatedDomains"];
+        };
+        /** ModelFeature */
+        ModelFeature: {
+            /** Name */
+            name: string;
+            /** Type */
+            type: string;
+            /** Description */
+            description: string;
+        };
+        /**
+         * NarrativeFact
+         * @description One figure the narrative may quote, computed in SQL.
+         */
+        NarrativeFact: {
+            /** Label */
+            label: string;
+            /** Value */
+            value?: number | null;
+            /** Unit */
+            unit: string;
+            /** Scope */
+            scope?: string | null;
         };
         /**
          * NarrativeFactsResponse
@@ -600,6 +1462,10 @@ export interface components {
             applied_context: components["schemas"]["AppliedContext"];
             /** Caveats */
             caveats: components["schemas"]["Caveat"][];
+        };
+        /** NarrativeRequest */
+        NarrativeRequest: {
+            query_spec: components["schemas"]["QuerySpec"];
         };
         /** OrderBy */
         OrderBy: {
@@ -641,6 +1507,17 @@ export interface components {
         Page_DimensionValue_: {
             /** Items */
             items: components["schemas"]["DimensionValue"][];
+            /** Total */
+            total: number;
+            /** Page */
+            page: number;
+            /** Size */
+            size: number;
+        };
+        /** Page[ExportRecord] */
+        Page_ExportRecord_: {
+            /** Items */
+            items: components["schemas"]["ExportRecord"][];
             /** Total */
             total: number;
             /** Page */
@@ -703,6 +1580,17 @@ export interface components {
             /** Size */
             size: number;
         };
+        /** Page[StarterQuestion] */
+        Page_StarterQuestion_: {
+            /** Items */
+            items: components["schemas"]["StarterQuestion"][];
+            /** Total */
+            total: number;
+            /** Page */
+            page: number;
+            /** Size */
+            size: number;
+        };
         /** Page[ValidationFinding] */
         Page_ValidationFinding_: {
             /** Items */
@@ -714,6 +1602,21 @@ export interface components {
             /** Size */
             size: number;
         };
+        /** PerCropMetric */
+        PerCropMetric: {
+            /** R2 */
+            r2?: number | null;
+            /** Rmse */
+            rmse: number;
+            /** Mae */
+            mae: number;
+            /** N */
+            n: number;
+            /** Crop Id */
+            crop_id: string;
+            /** Crop Name */
+            crop_name: string;
+        };
         /**
          * Period
          * @description Inclusive agricultural-year range, e.g. 2022-23 to 2024-25.
@@ -723,6 +1626,81 @@ export interface components {
             from?: string | null;
             /** To */
             to?: string | null;
+        };
+        /** PredictionRow */
+        PredictionRow: {
+            /** District Id */
+            district_id: string;
+            /** District Name */
+            district_name: string;
+            /** Crop Id */
+            crop_id: string;
+            /** Crop Name */
+            crop_name: string;
+            /** Season */
+            season: string;
+            /** Agri Year */
+            agri_year: string;
+            /** Area Ha */
+            area_ha: number;
+            /** Predicted Yield Qtl Per Ha */
+            predicted_yield_qtl_per_ha: number;
+            /** Estimated Production Qtls */
+            estimated_production_qtls: number;
+            /**
+             * Output Label
+             * @default Analytical Estimates
+             */
+            output_label: string;
+            /** Actual Yield Qtl Per Ha */
+            actual_yield_qtl_per_ha?: number | null;
+        };
+        /** PublishVersionResponse */
+        PublishVersionResponse: {
+            /** Version Id */
+            version_id: string;
+            /**
+             * Published
+             * @default true
+             */
+            published: boolean;
+        };
+        /** PublishedForecast */
+        PublishedForecast: {
+            /** Crop Id */
+            crop_id: string;
+            /** Crop Name */
+            crop_name: string;
+            /** District Id */
+            district_id: string;
+            /** District Name */
+            district_name: string;
+            /** Season */
+            season: string;
+            /** Agri Year */
+            agri_year: string;
+            /** Actual Yield */
+            actual_yield?: number | null;
+            /** Forecast Yield */
+            forecast_yield: number;
+            /**
+             * Unit
+             * @default qtl/ha
+             */
+            unit: string;
+            /** Version Id */
+            version_id: string;
+            /**
+             * Output Label
+             * @default Analytical Estimates
+             */
+            output_label: string;
+            /** Model Config Hash */
+            model_config_hash?: string | null;
+            /** Data Origin */
+            data_origin: {
+                [key: string]: number;
+            };
         };
         /** QueryResponse */
         QueryResponse: {
@@ -804,6 +1782,143 @@ export interface components {
             /** Column Count */
             column_count: number;
         };
+        /** SandboxDataset */
+        SandboxDataset: {
+            /** Dataset Id */
+            dataset_id: string;
+            /** Label */
+            label: string;
+            /** Years */
+            years: string;
+            /** Row Count */
+            row_count: number;
+            /** Compatible */
+            compatible?: boolean | null;
+            /** Missing Fields */
+            missing_fields: components["schemas"]["MissingField"][];
+            input_summary?: components["schemas"]["InputSummary"] | null;
+        };
+        /** SandboxDatasetList */
+        SandboxDatasetList: {
+            /** Items */
+            items: components["schemas"]["SandboxDataset"][];
+            /** Total */
+            total: number;
+            /** Page */
+            page: number;
+            /** Size */
+            size: number;
+            /** Model Checked */
+            model_checked: boolean;
+            /** Message */
+            message?: string | null;
+        };
+        /** SandboxModelConfig */
+        SandboxModelConfig: {
+            /** Checked */
+            checked: boolean;
+            /** Message */
+            message?: string | null;
+            config?: components["schemas"]["ModelConfig"] | null;
+            /** Config Hash */
+            config_hash?: string | null;
+            use_case: components["schemas"]["SandboxUseCase"];
+        };
+        /** SandboxResults */
+        SandboxResults: {
+            /** Run Id */
+            run_id: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "completed" | "completed_with_warnings";
+            /** Warnings */
+            warnings: string[];
+            pooled?: components["schemas"]["MetricSet"] | null;
+            /** Per Crop */
+            per_crop: components["schemas"]["PerCropMetric"][];
+            /** Actual Vs Predicted */
+            actual_vs_predicted: components["schemas"]["ActualVsPredicted"][];
+            /** Feature Importance */
+            feature_importance: components["schemas"]["FeatureImportance"][];
+            /** Explanation */
+            explanation: string;
+            /** Predictions */
+            predictions: components["schemas"]["PredictionRow"][];
+            /** Data Origin */
+            data_origin: {
+                [key: string]: number;
+            };
+            /**
+             * Served From Cache
+             * @default false
+             */
+            served_from_cache: boolean;
+            /** Replayed From */
+            replayed_from?: string | null;
+            /** Replayed Run At */
+            replayed_run_at?: string | null;
+            model_configuration?: components["schemas"]["ModelConfig"] | null;
+            /** Model Config Hash */
+            model_config_hash?: string | null;
+            /** Model Checked */
+            model_checked: boolean;
+            input_summary?: components["schemas"]["InputSummary"] | null;
+            /** Agri Years */
+            agri_years: string[];
+            /** Comparison Label */
+            comparison_label: string;
+        };
+        /** SandboxRunStatus */
+        SandboxRunStatus: {
+            /** Run Id */
+            run_id: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "queued" | "running" | "completed" | "completed_with_warnings" | "failed";
+            /** Progress */
+            progress: number;
+            /** Message */
+            message: string;
+            /** Error Code */
+            error_code?: string | null;
+        };
+        /** SandboxUseCase */
+        SandboxUseCase: {
+            /** Id */
+            id: string;
+            /** Label */
+            label: string;
+            /** Description */
+            description: string;
+            /** Fixed Reason */
+            fixed_reason: string;
+        };
+        /** SandboxVersion */
+        SandboxVersion: {
+            /** Version Id */
+            version_id: string;
+            /** Run Id */
+            run_id: string;
+            /** Label */
+            label: string;
+            /** Created At */
+            created_at: string;
+            /** Published */
+            published: boolean;
+            /** Parameters */
+            parameters: {
+                [key: string]: string;
+            };
+        };
+        /** SaveVersionRequest */
+        SaveVersionRequest: {
+            /** Label */
+            label: string;
+        };
         /** SourceDataset */
         SourceDataset: {
             /** Dataset Version Id */
@@ -828,6 +1943,44 @@ export interface components {
             field: string;
             /** Allowed Values */
             allowed_values: string[];
+        };
+        /** StarterQuestion */
+        StarterQuestion: {
+            /** Question Id */
+            question_id: string;
+            /** Question */
+            question: string;
+        };
+        /**
+         * StatedDomains
+         * @description The /metadata lists that bound what the model accepts. Input domains,
+         *     not features: the features are the /predict request fields.
+         */
+        StatedDomains: {
+            /** Value */
+            value: {
+                [key: string]: unknown;
+            };
+            /** Source */
+            source: string;
+        };
+        /** StatedFeatures */
+        StatedFeatures: {
+            /** Value */
+            value: components["schemas"]["ModelFeature"][];
+            /** Source */
+            source: string;
+        };
+        /**
+         * StatedText
+         * @description A value the model service stated, and the endpoint that stated it.
+         *     Both None when the service does not state it: shown as not stated.
+         */
+        StatedText: {
+            /** Value */
+            value?: string | null;
+            /** Source */
+            source?: string | null;
         };
         /** ValidationError */
         ValidationError: {
@@ -977,6 +2130,68 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Page_ValidationFinding_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    activate_version_datasets__dataset_version_id__activate_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dataset_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ActivationResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    deactivate_version_datasets__dataset_version_id__deactivate_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dataset_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ActivationResult"];
                 };
             };
             /** @description Validation Error */
@@ -1327,6 +2542,460 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["NarrativeFactsResponse"];
+                };
+            };
+            /** @description Unprocessable Content */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecErrorResponse"];
+                };
+            };
+        };
+    };
+    create_export_export_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExportRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportRecord"];
+                };
+            };
+            /** @description Unprocessable Content */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecErrorResponse"];
+                };
+            };
+        };
+    };
+    get_export_limits_exports_limits_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportLimits"];
+                };
+            };
+        };
+    };
+    list_exports_exports_get: {
+        parameters: {
+            query?: {
+                page?: number;
+                size?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Page_ExportRecord_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_export_export__export_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                export_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportRecord"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    download_export_export__export_id__download_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                export_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_sandbox_model_config_sandbox_model_config_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SandboxModelConfig"];
+                };
+            };
+        };
+    };
+    list_sandbox_datasets_sandbox_datasets_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SandboxDatasetList"];
+                };
+            };
+        };
+    };
+    create_sandbox_run_sandbox_runs_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateRunRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SandboxRunStatus"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_sandbox_run_status_sandbox_runs__run_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SandboxRunStatus"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_sandbox_run_results_sandbox_runs__run_id__results_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SandboxResults"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    save_sandbox_version_sandbox_runs__run_id__versions_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SaveVersionRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SandboxVersion"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    publish_sandbox_version_sandbox_versions__version_id__publish_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PublishVersionResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_dashboard_forecasts_dashboard_forecasts_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PublishedForecast"][];
+                };
+            };
+        };
+    };
+    list_assistant_questions_assistant_questions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Page_StarterQuestion_"];
+                };
+            };
+        };
+    };
+    ask_assistant_assistant_ask_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AskRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AssistantAnswer"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    dashboard_narrative_narrative_dashboard_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NarrativeRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardNarrative"];
                 };
             };
             /** @description Unprocessable Content */

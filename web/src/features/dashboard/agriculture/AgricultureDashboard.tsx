@@ -22,18 +22,27 @@ import { NarrativePanel } from '@/features/dashboard/NarrativePanel';
 import {
   ALL_DISTRICTS,
   CHART_COLORS,
-  PADDY_CROP_ID,
 } from '../constants';
 import { ExportButton } from '@/components/ExportButton';
+import { contextFromApplied, cropDisplayName, toExportContext } from '@/lib/exportContext';
+import type { PanelExport } from '@/lib/exportContext';
 import type { DashboardFilters } from '../useDashboardFilters';
 
 export interface AgricultureDashboardProps {
   filters: DashboardFilters;
   onDrillDown: (spec: QuerySpec, title: string) => void;
-  onExport: (title: string, rowCount?: number) => void;
+  onExport: (panel: PanelExport) => void;
   onUpdateFilters: (updates: Partial<DashboardFilters>) => void;
   onContextUpdate?: (context: AppliedContext, caveats: Caveat[]) => void;
 }
+
+const NOT_NINE_FOLD = new Set([
+  'Geographical area',
+  'Total area under survey',
+  'Area not included under survey',
+  'Net area sown (irrigated)',
+  'Net area sown (unirrigated)',
+]);
 
 export function AgricultureDashboard({
   filters,
@@ -42,10 +51,24 @@ export function AgricultureDashboard({
   onUpdateFilters,
   onContextUpdate,
 }: AgricultureDashboardProps) {
-  const { from, to, districts, crops, season, landUseDistrict, stateSeriesMetric } = filters;
-  const activeCrop = crops[0] || PADDY_CROP_ID;
+  const { from, to, districts, crop, season, landUseDistrict, stateSeriesMetric } = filters;
+  const activeCrop = crop;
+  const periodLabel = from === to ? from : `${from} to ${to}`;
+  // What the KPIs sum over: the period, and the season when one is chosen.
+  const sumScope = `${periodLabel}${season ? `, ${season} season` : ', all seasons'}`;
 
   // 1. KPI Queries
+  /** One panel's export, carrying that panel's own query rather than the KPI's. */
+  const panelExport = (
+    title: string,
+    spec: QuerySpec,
+    result?: { applied_context: AppliedContext; caveats?: Caveat[] },
+  ): PanelExport => ({
+    title,
+    spec,
+    context: contextFromApplied(title, result?.applied_context, result?.caveats ?? []),
+  });
+
   const areaSpec: QuerySpec = useMemo(
     () => ({
       metric: 'area',
@@ -104,6 +127,8 @@ export function AgricultureDashboard({
   const areaVal = areaQuery.data?.rows[0]?.value;
   const prodVal = prodQuery.data?.rows[0]?.value;
   const yieldVal = yieldQuery.data?.rows[0]?.value;
+
+  const cropName = cropDisplayName(prodQuery.data?.applied_context);
 
   // 2. District Comparison (Yield and Production) Query
   const districtAgSpec: QuerySpec = useMemo(
@@ -226,28 +251,9 @@ export function AgricultureDashboard({
     [landUseDistrict, from, to],
   );
 
-  const landUseAreaSpec: QuerySpec = useMemo(
-    () => ({
-      metric: 'area',
-      dimensions: ['land_use_category'],
-      filters: [
-        { dimension: 'district', op: 'eq' as const, values: [landUseDistrict] },
-      ],
-      period: { from, to },
-      limit: 20,
-      include_records: false,
-    }),
-    [landUseDistrict, from, to],
-  );
-
   const landUseQuery = useQuery({
     queryKey: ['ag-land-use-share', landUseSpec],
     queryFn: () => api.query(landUseSpec),
-  });
-
-  const landUseAreaQuery = useQuery({
-    queryKey: ['ag-land-use-area', landUseAreaSpec],
-    queryFn: () => api.query(landUseAreaSpec),
   });
 
   const landUseData = useMemo(() => {
@@ -255,21 +261,13 @@ export function AgricultureDashboard({
       land_use_category: string;
       value: number;
     }>;
-    const areaRows = (landUseAreaQuery.data?.rows || []) as Array<{
-      land_use_category: string;
-      value: number;
-    }>;
-    const areaMap = new Map(areaRows.map((r) => [r.land_use_category, r.value]));
-
     return shareRows
-      .filter((r) => r.land_use_category !== 'Total area under survey' && r.land_use_category !== 'Geographical area')
+      .filter((r) => !NOT_NINE_FOLD.has(r.land_use_category) && r.value !== null)
       .map((r) => ({
         category: r.land_use_category,
         sharePct: Number(r.value.toFixed(1)),
-        areaHa: areaMap.get(r.land_use_category) ?? 0,
-        areaThousandHa: Number(((areaMap.get(r.land_use_category) ?? 0) / 1000).toFixed(1)),
       }));
-  }, [landUseQuery.data, landUseAreaQuery.data]);
+  }, [landUseQuery.data]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -292,10 +290,10 @@ export function AgricultureDashboard({
           hint={
             areaVal ? (
               <span className="tabular-nums font-mono text-badge">
-                <Figure>{Number(areaVal).toLocaleString('en-IN')}</Figure> ha
+                <Figure>{Number(areaVal).toLocaleString('en-IN')}</Figure> ha, summed over {sumScope}
               </span>
             ) : (
-              'Total harvested area'
+              `Summed over ${sumScope}`
             )
           }
         />
@@ -317,10 +315,10 @@ export function AgricultureDashboard({
           hint={
             prodVal ? (
               <span className="tabular-nums font-mono text-badge">
-                <Figure>{Number(prodVal).toLocaleString('en-IN')}</Figure> quintals
+                <Figure>{Number(prodVal).toLocaleString('en-IN')}</Figure> quintals, summed over {sumScope}
               </span>
             ) : (
-              'Harvested volume'
+              `Summed over ${sumScope}`
             )
           }
         />
@@ -345,7 +343,10 @@ export function AgricultureDashboard({
       <Card
         title={
           <div className="flex flex-wrap items-center gap-2">
-            <span>Long-Run State Historical Series (1993-94 to 2024-25)</span>
+            <span>
+              Long-Run State Historical Series{cropName ? `: ${cropName}` : ''}
+              {season ? `, ${season} season` : ', all seasons'} (1993-94 to 2024-25)
+            </span>
             <span className="rounded bg-primary-subtle px-2 py-0.5 text-caption font-semibold text-primary border border-primary/20">
               32 Years of Genuine DE&S Official Data
             </span>
@@ -379,8 +380,11 @@ export function AgricultureDashboard({
             <ExportButton
               onClick={() =>
                 onExport(
-                  `Long-Run State Series (${stateSeriesMetric})`,
-                  stateSeriesQuery.data?.applied_context.row_count,
+                  panelExport(
+                    `Long-Run State Series (${stateSeriesMetric})`,
+                    stateSeriesSpec,
+                    stateSeriesQuery.data,
+                  ),
                 )
               }
             />
@@ -485,11 +489,19 @@ export function AgricultureDashboard({
 
       {/* District Comparison Grid: Yield Rate & Production */}
       <Card
-        title={`District Yield & Production Comparison (${activeCrop})`}
-        description="District comparison of yield rate and production. Notice districts badged 'Aggregated from blocks' where DE&S did not publish a district-grain report."
+        title={`District Yield & Production Comparison${cropName ? `: ${cropName}` : ''}`}
+        description={`Yield rate and production by district, ${periodLabel}${season ? `, ${season} season` : ''}. Production is summed over the period; yield is total production divided by total area.`}
         actions={
           <ExportButton
-            onClick={() => onExport('District Yield & Production Comparison', districtComparisonData.length)}
+            onClick={() =>
+              onExport(
+                panelExport(
+                  'District Yield & Production Comparison',
+                  districtAgSpec,
+                  districtYieldQuery.data,
+                ),
+              )
+            }
           />
         }
         chart
@@ -601,7 +613,7 @@ export function AgricultureDashboard({
         {/* Land-Use Composition (Nine-fold Split) */}
         <Card
           title="Land-Use Composition (Nine-fold Classification)"
-          description="Nine-fold land use split showing percentage shares of surveyed area."
+          description="The nine-fold classification, as shares of the district's total area under survey."
           actions={
             <div className="flex items-center gap-2">
               <label htmlFor="lu-dist-select" className="text-caption font-medium uppercase tracking-header text-ink-subtle">
@@ -619,7 +631,11 @@ export function AgricultureDashboard({
                   </option>
                 ))}
               </select>
-              <ExportButton onClick={() => onExport('Land-Use Composition', landUseData.length)} />
+              <ExportButton
+                onClick={() =>
+                  onExport(panelExport('Land-Use Composition', landUseSpec, landUseQuery.data))
+                }
+              />
             </div>
           }
           chart
@@ -651,16 +667,12 @@ export function AgricultureDashboard({
                         const data = payload[0].payload as {
                           category: string;
                           sharePct: number;
-                          areaThousandHa: number;
                         };
                         return (
                           <div className="rounded border border-line bg-surface p-2 shadow-md text-caption text-ink">
                             <p className="font-semibold">{data.category}</p>
                             <p className="tabular-nums font-medium text-primary">
                               {data.sharePct}% of surveyed area
-                            </p>
-                            <p className="tabular-nums text-ink-muted">
-                              {data.areaThousandHa.toLocaleString('en-IN')} '000 ha
                             </p>
                           </div>
                         );
@@ -673,11 +685,15 @@ export function AgricultureDashboard({
                         const c = entry as unknown as { category: string };
                         onDrillDown(
                           {
-                            metric: 'area',
+                            // The records behind a share are the land-use rows
+                            // themselves, in hectares.
+                            metric: 'land_use_share_pct',
+                            dimensions: ['land_use_category'],
                             filters: [
                               { dimension: 'district', op: 'eq', values: [landUseDistrict] },
                               { dimension: 'land_use_category', op: 'eq', values: [c.category] },
                             ],
+                            period: { from, to },
                             include_records: false,
                             limit: 50,
                           },
@@ -700,7 +716,6 @@ export function AgricultureDashboard({
                   <thead className="border-b border-line bg-surface-alt font-semibold text-ink-subtle">
                     <tr>
                       <th className="px-3 py-1.5">Category</th>
-                      <th className="px-3 py-1.5 text-right">Area ('000 ha)</th>
                       <th className="px-3 py-1.5 text-right">Share (%)</th>
                     </tr>
                   </thead>
@@ -708,9 +723,6 @@ export function AgricultureDashboard({
                     {landUseData.map((row) => (
                       <tr key={row.category} className="hover:bg-surface-alt/60">
                         <td className="px-3 py-1 text-ink">{row.category}</td>
-                        <td className="px-3 py-1 text-right tabular-nums text-ink font-mono">
-                          {row.areaThousandHa.toLocaleString('en-IN')}
-                        </td>
                         <td className="px-3 py-1 text-right tabular-nums font-semibold text-primary">
                           {row.sharePct}%
                         </td>
@@ -725,12 +737,21 @@ export function AgricultureDashboard({
 
         {/* Published model estimates, and the grounded narrative for this view. */}
         <ActualVsForecastPanel
-          onExport={() => onExport('Actual against model estimate', undefined)}
+          onExport={() =>
+            onExport({
+              // This panel reads GET /dashboard/forecasts, which is not a query
+              // spec, so it exports by payload -- and without the panel's rows.
+              title: 'Actual against model estimate',
+              spec: null,
+              context: toExportContext({ panelTitle: 'Actual against model estimate' }),
+            })
+          }
         />
 
         <NarrativePanel
-          view="agriculture"
-          onExport={() => onExport('Agriculture dashboard narrative', undefined)}
+          spec={prodSpec}
+          title="Agriculture dashboard narrative"
+          onExport={onExport}
         />
       </div>
     </div>

@@ -19,6 +19,7 @@ export type RuleCount = Schemas['RuleCount'];
 export type LayerStage = Schemas['LayerStage'];
 export type RuleSummary = Schemas['RuleSummary'];
 export type IngestSchema = Schemas['IngestSchema'];
+export type ActivationResult = Schemas['ActivationResult'];
 export type Caveat = Schemas['Caveat'];
 export type AppliedContext = Schemas['AppliedContext'];
 export type SourceDataset = Schemas['SourceDataset'];
@@ -32,6 +33,31 @@ export type DimensionValue = Schemas['DimensionValue'];
 export type Filter = Schemas['Filter'];
 export type Period = Schemas['Period'];
 export type OrderBy = Schemas['OrderBy'];
+export type ExportRecord = Schemas['ExportRecord'];
+export type ExportLimits = Schemas['ExportLimits'];
+export type ExportRequest = Schemas['ExportRequest'];
+export type ExportedContext = Schemas['ExportedContext'];
+export type ExportOptions = Schemas['ExportOptions'];
+export type ExportFormat = ExportRequest['format'];
+export type ExportType = ExportRequest['export_type'];
+export type SandboxModelConfig = Schemas['SandboxModelConfig'];
+export type ModelConfig = Schemas['ModelConfig'];
+export type StatedText = Schemas['StatedText'];
+export type InputSummary = Schemas['InputSummary'];
+export type SandboxDataset = Schemas['SandboxDataset'];
+export type SandboxDatasetList = Schemas['SandboxDatasetList'];
+export type CreateRunRequest = Schemas['CreateRunRequest'];
+export type SandboxRunStatus = Schemas['SandboxRunStatus'];
+export type SandboxResults = Schemas['SandboxResults'];
+export type SandboxVersion = Schemas['SandboxVersion'];
+export type PublishedForecast = Schemas['PublishedForecast'];
+export type StarterQuestion = Schemas['StarterQuestion'];
+export type AssistantAnswer = Schemas['AssistantAnswer'];
+export type Interpretation = Schemas['Interpretation'];
+export type ChartSpec = Schemas['ChartSpec'];
+export type DescribedFilter = Schemas['DescribedFilter'];
+export type DashboardNarrative = Schemas['DashboardNarrative'];
+export type NarrativeFact = Schemas['NarrativeFact'];
 
 export type Page<T> = { items: T[]; total: number; page: number; size: number };
 
@@ -135,14 +161,28 @@ export const api = {
   lineage: (versionId: string) =>
     request<Lineage>(`/lineage/${encodeURIComponent(versionId)}`),
 
-  upload: (datasetName: string, file: File | Blob, filename: string) => {
+  upload: (
+    datasetName: string,
+    file: File | Blob,
+    filename: string,
+    dataOrigin?: string,
+  ) => {
     const form = new FormData();
     form.set('dataset_name', datasetName);
+    // Declared by the uploader for a file with no registered schema; a
+    // registered dataset declares its own and this is ignored.
+    if (dataOrigin) form.set('data_origin', dataOrigin);
     form.set('file', file, filename);
     return request<IngestResult>('/ingest/upload', { method: 'POST', body: form });
   },
 
   ingestSchemas: () => request<Page<IngestSchema>>('/ingest/schemas'),
+
+  setActive: (versionId: string, active: boolean) =>
+    request<ActivationResult>(
+      `/datasets/${encodeURIComponent(versionId)}/${active ? 'activate' : 'deactivate'}`,
+      { method: 'POST' },
+    ),
 
   metrics: () => request<Page<MetricInfo>>('/semantic/metrics'),
 
@@ -172,5 +212,73 @@ export const api = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(spec),
+    }),
+
+  createExport: (body: ExportRequest) =>
+    request<ExportRecord>('/export', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }),
+
+  exportLimits: () => request<ExportLimits>('/exports/limits'),
+
+  exports: (params: { page?: number; size?: number } = {}) =>
+    request<Page<ExportRecord>>(`/exports${query(params)}`),
+
+  /** Where the browser fetches the generated file. Not a JSON call, so it
+   *  bypasses `request` and is used as an anchor href. */
+  exportDownloadUrl: (exportId: string) =>
+    `${BASE}/export/${encodeURIComponent(exportId)}/download`,
+
+  // --------------------------------------------------------------------------
+  // Sandbox & Forecasting (Task 7)
+  // --------------------------------------------------------------------------
+  sandboxModelConfig: () => request<SandboxModelConfig>('/sandbox/model-config'),
+
+  sandboxDatasets: () => request<SandboxDatasetList>('/sandbox/datasets'),
+
+  createSandboxRun: (payload: CreateRunRequest) =>
+    request<SandboxRunStatus>('/sandbox/runs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }),
+
+  sandboxRunStatus: (runId: string) =>
+    request<SandboxRunStatus>(`/sandbox/runs/${encodeURIComponent(runId)}`),
+
+  sandboxRunResults: (runId: string) =>
+    request<SandboxResults>(`/sandbox/runs/${encodeURIComponent(runId)}/results`),
+
+  saveSandboxVersion: (runId: string, label: string) =>
+    request<SandboxVersion>(`/sandbox/runs/${encodeURIComponent(runId)}/versions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ label }),
+    }),
+
+  publishSandboxVersion: (versionId: string) =>
+    request<{ version_id: string; published: boolean }>(
+      `/sandbox/versions/${encodeURIComponent(versionId)}/publish`,
+      { method: 'POST' },
+    ),
+
+  dashboardForecasts: () => request<PublishedForecast[]>('/dashboard/forecasts'),
+
+  narrative: (spec: QuerySpec) =>
+    request<DashboardNarrative>('/narrative/dashboard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query_spec: spec }),
+    }),
+
+  assistantQuestions: () => request<Page<StarterQuestion>>('/assistant/questions'),
+
+  ask: (question: string) =>
+    request<AssistantAnswer>('/assistant/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question }),
     }),
 };

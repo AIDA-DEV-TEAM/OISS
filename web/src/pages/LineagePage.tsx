@@ -9,11 +9,13 @@
  * because district paddy for that year was never published at district grain —
  * it was summed from block records, and a reviewer will ask.
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import type { DatasetVersion } from '@/api/client';
 import {
   useDataset,
+  useSetActive,
   useDatasets,
   useLayers,
   useLineage,
@@ -42,7 +44,13 @@ function nodeDatasetName(node: string): string | null {
 
 export function LineagePage() {
   const datasets = useDatasets();
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Other screens link here at a specific version — the Ingest screen does it
+  // when an upload turns out to be one already loaded.
+  const [params] = useSearchParams();
+  const requested = params.get('version');
+  const [selectedId, setSelectedId] = useState<string | null>(requested);
+  // Honour each linked version once; after that the selection is the user's.
+  const honoured = useRef(requested);
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
   const sourceDatasets = useMemo(
@@ -51,6 +59,11 @@ export function LineagePage() {
   );
 
   useEffect(() => {
+    if (requested && requested !== honoured.current) {
+      honoured.current = requested;
+      setSelectedId(requested);
+      return;
+    }
     if (!selectedId && sourceDatasets.length > 0) {
       // Default to the 2022-23 paddy dataset: it is the one carrying the block
       // rollup, which is what a reviewer usually asks about first.
@@ -59,12 +72,13 @@ export function LineagePage() {
       );
       setSelectedId((rollup ?? sourceDatasets[0]).dataset_version_id);
     }
-  }, [sourceDatasets, selectedId]);
+  }, [sourceDatasets, selectedId, requested]);
 
   const selected = sourceDatasets.find((d) => d.dataset_version_id === selectedId);
   const layers = useLayers(selectedId ?? undefined);
   const lineage = useLineage(selectedId ?? undefined);
   const summary = useValidationSummary(selectedId ?? undefined);
+  const setActive = useSetActive();
 
   const nodeVersion = useDataset(
     selectedNode ? (selectedNode.startsWith('file:') ? undefined : selectedId ?? undefined) : undefined,
@@ -98,6 +112,17 @@ export function LineagePage() {
           {shortHash(dataset.sha256)}
         </code>
       ),
+    },
+    {
+      key: 'active',
+      header: 'Active',
+      width: '90px',
+      render: (dataset) =>
+        dataset.is_active ? (
+          <Badge tone="success">Active</Badge>
+        ) : (
+          <span className="text-caption text-ink-subtle">—</span>
+        ),
     },
     {
       key: 'loaded',
@@ -187,6 +212,33 @@ export function LineagePage() {
                       value: <code className="text-caption">{selected.dataset_version_id}</code>,
                     },
                     { term: 'Source type', value: selected.source_type },
+                    {
+                      term: 'Counted by queries',
+                      value: (
+                        <span className="flex flex-wrap items-center gap-2">
+                          <Badge tone={selected.is_active ? 'success' : 'neutral'}>
+                            {selected.is_active ? 'Active' : 'Not active'}
+                          </Badge>
+                          <button
+                            type="button"
+                            disabled={setActive.isPending}
+                            onClick={() =>
+                              setActive.mutate({
+                                versionId: selected.dataset_version_id,
+                                active: !selected.is_active,
+                              })
+                            }
+                            className="rounded border border-line bg-surface px-2 py-0.5 text-caption font-medium text-primary transition-colors duration-state hover:bg-primary-subtle disabled:opacity-50"
+                          >
+                            {setActive.isPending
+                              ? 'Working…'
+                              : selected.is_active
+                                ? 'Deactivate'
+                                : 'Activate'}
+                          </button>
+                        </span>
+                      ),
+                    },
                     {
                       term: 'Rows read',
                       value: <Figure>{formatCount(selected.row_count)}</Figure>,

@@ -33,24 +33,9 @@ export const CHART_INK = {
 
 export const PADDY_CROP_ID = 'CR17';
 
-/** The 13 crops published with both Farm Harvest and Wholesale prices */
-export const DUAL_PRICE_CROPS = [
-  { id: 'CR03', name: 'Biri' },
-  { id: 'CR07', name: 'Groundnut' },
-  { id: 'CR09', name: 'Jute' },
-  { id: 'CR10', name: 'Kulthi' },
-  { id: 'CR12', name: 'Maize' },
-  { id: 'CR13', name: 'Mung' },
-  { id: 'CR14', name: 'Mustard' },
-  { id: 'CR17', name: 'Paddy' },
-  { id: 'CR18', name: 'Potato' },
-  { id: 'CR19', name: 'Ragi' },
-  { id: 'CR20', name: 'Sugarcane' },
-  { id: 'CR22', name: 'Til' },
-  { id: 'CR23', name: 'Wheat' },
-];
-
-export const SEASONS = ['Autumn', 'Winter', 'Summer', 'Total'] as const;
+// The crop reports' Total row repeats the three seasons' sum and is never
+// queried directly; "All seasons" sums the three instead.
+export const SEASONS = ['Autumn', 'Winter', 'Summer'] as const;
 export type Season = (typeof SEASONS)[number];
 
 export const PRICE_TYPES = [
@@ -104,32 +89,6 @@ export const ALL_DISTRICTS = [
   { id: 'OD28', name: 'Sambalpur' },
   { id: 'OD29', name: 'Subarnapur' },
   { id: 'OD30', name: 'Sundargarh' },
-];
-
-export const ALL_CROPS = [
-  { id: 'CR01', name: 'Arhar' },
-  { id: 'CR02', name: 'Bajra' },
-  { id: 'CR03', name: 'Biri' },
-  { id: 'CR04', name: 'Castor' },
-  { id: 'CR05', name: 'Cotton' },
-  { id: 'CR06', name: 'Gram' },
-  { id: 'CR07', name: 'Groundnut' },
-  { id: 'CR08', name: 'Jowar' },
-  { id: 'CR09', name: 'Jute' },
-  { id: 'CR10', name: 'Kulthi' },
-  { id: 'CR11', name: 'Linseed' },
-  { id: 'CR12', name: 'Maize' },
-  { id: 'CR13', name: 'Mung' },
-  { id: 'CR14', name: 'Mustard' },
-  { id: 'CR15', name: 'Nizer' },
-  { id: 'CR16', name: 'Onion' },
-  { id: 'CR17', name: 'Paddy' },
-  { id: 'CR18', name: 'Potato' },
-  { id: 'CR19', name: 'Ragi' },
-  { id: 'CR20', name: 'Sugarcane' },
-  { id: 'CR21', name: 'Sunflower' },
-  { id: 'CR22', name: 'Til' },
-  { id: 'CR23', name: 'Wheat' },
 ];
 
 export const LAND_USE_CATEGORIES = [

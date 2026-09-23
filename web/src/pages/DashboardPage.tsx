@@ -10,7 +10,7 @@ import { ExportModal } from '@/components/ExportModal';
 import { AgricultureDashboard } from '@/features/dashboard/agriculture/AgricultureDashboard';
 import { PriceDashboard } from '@/features/dashboard/price/PriceDashboard';
 import { useDashboardFilters } from '@/features/dashboard/useDashboardFilters';
-import { contextFromApplied } from '@/lib/exportContext';
+import type { PanelExport } from '@/lib/exportContext';
 
 export function DashboardPage() {
   const { filters, updateFilters, resetFilters } = useDashboardFilters();
@@ -24,9 +24,11 @@ export function DashboardPage() {
   const [drillDownTitle, setDrillDownTitle] = useState('');
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  // Export modal state (Task 5 stub)
+  // Export modal state. The panel that opened the dialog is held whole:
+  // exporting used to attach the dashboard's KPI context to whichever panel
+  // was clicked, so a chart's file described someone else's query.
   const [exportOpen, setExportOpen] = useState(false);
-  const [exportTitle, setExportTitle] = useState('');
+  const [exportPanel, setExportPanel] = useState<PanelExport | null>(null);
 
   const handleDrillDown = (spec: QuerySpec, title: string) => {
     setDrillDownSpec(spec);
@@ -34,8 +36,8 @@ export function DashboardPage() {
     setDrawerOpen(true);
   };
 
-  const handleExport = (title: string) => {
-    setExportTitle(title);
+  const handleExport = (panel: PanelExport) => {
+    setExportPanel(panel);
     setExportOpen(true);
   };
 
@@ -109,7 +111,7 @@ export function DashboardPage() {
         open={exportOpen}
         onClose={() => setExportOpen(false)}
         exportType="dashboard_panel"
-        context={contextFromApplied(exportTitle, activeContext, activeCaveats)}
+        panel={exportPanel}
       />
     </div>
   );

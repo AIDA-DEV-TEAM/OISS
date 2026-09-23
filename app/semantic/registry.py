@@ -52,7 +52,7 @@ DIMENSIONS: tuple[Dimension, ...] = (
     Dimension("month", "Month", "Calendar month, written YYYY-MM; monthly price "
               "series only", "month", "month"),
     Dimension("price_type", "Price type", "farm_harvest or wholesale",
-              "price_type", "price_type"),
+              "price_type", "price_type_name"),
     Dimension("land_use_category", "Land use category",
               "One of the published land-use categories",
               "land_use_category", "land_use_category"),
@@ -62,6 +62,7 @@ DIMENSIONS: tuple[Dimension, ...] = (
     Dimension("grain_source", "Grain source",
               "published_district, published_block, published_state or aggregated_from_blocks",
               "grain_source", "grain_source"),
+    Dimension("run_id", "Run ID", "Sandbox run ID", "run_id", "run_id"),
 )
 
 DIMENSIONS_BY_ID: dict[str, Dimension] = {d.id: d for d in DIMENSIONS}
@@ -80,6 +81,9 @@ class Relation:
     # Always applied. The crop reports publish per-season rows *and* a Total row
     # that repeats their sum, so querying both would double every figure.
     base_predicate: Optional[str] = None
+    # Whether the relation exposes dataset_version_id, and so can be filtered to
+    # the active version of each dataset. See the guards in compiler.py.
+    carries_version: bool = True
 
 
 RELATIONS: dict[str, Relation] = {
@@ -114,6 +118,12 @@ RELATIONS: dict[str, Relation] = {
         frozenset({"district", "block", "land_use_category", "agri_year",
                    "data_origin", "grain_source"}),
         measure_column="measure",
+    ),
+    "sandbox_prediction": Relation(
+        "analytics.v_sandbox_prediction",
+        frozenset({"district", "crop", "crop_group", "season", "agri_year",
+                   "run_id", "data_origin", "grain_source"}),
+        carries_version=False,
     ),
 }
 
@@ -231,6 +241,15 @@ METRICS: tuple[Metric, ...] = (
         "season and year.",
         ("crop_ayp_district",), _AYP_DIMENSIONS - {"block", "grain_source"}, "sum",
         required_dimensions=frozenset({"crop"}), facts=("fact_crop_ayp",),
+    ),
+    Metric(
+        "predicted_yield", "Predicted yield", "qtl/ha",
+        "Estimated crop yield rate from sandbox machine learning model.",
+        ("sandbox_prediction",),
+        frozenset({"district", "crop", "crop_group", "season", "agri_year",
+                   "run_id", "data_origin", "grain_source"}),
+        "avg",
+        facts=("sandbox_prediction",),
     ),
 )
 

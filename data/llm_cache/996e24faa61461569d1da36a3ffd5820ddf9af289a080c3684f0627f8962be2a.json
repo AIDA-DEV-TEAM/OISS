@@ -1,0 +1,6 @@
+{
+  "key": "996e24faa61461569d1da36a3ffd5820ddf9af289a080c3684f0627f8962be2a",
+  "model": "fixture",
+  "created_at": "2026-09-22T20:19:51+00:00",
+  "response": "{\"action\": \"query\", \"spec\": {\"metric\": \"yield_rate\", \"dimensions\": [\"district\"], \"filters\": [{\"dimension\": \"crop\", \"op\": \"eq\", \"values\": [\"CR17\"]}, {\"dimension\": \"agri_year\", \"op\": \"eq\", \"values\": [\"2024-25\"]}], \"order_by\": {\"field\": \"value\", \"direction\": \"desc\"}, \"limit\": 10}}"
+}

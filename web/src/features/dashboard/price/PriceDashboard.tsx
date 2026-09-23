@@ -8,7 +8,6 @@ import {
   Legend,
   Line,
   LineChart,
-  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -22,38 +21,54 @@ import { NarrativePanel } from '@/features/dashboard/NarrativePanel';
 import {
   CHART_COLORS,
   CHART_INK,
-  DUAL_PRICE_CROPS,
   PADDY_CROP_ID,
 } from '../constants';
 import { ExportButton } from '@/components/ExportButton';
+import { contextFromApplied, cropDisplayName, toExportContext } from '@/lib/exportContext';
+import type { PanelExport } from '@/lib/exportContext';
 import type { DashboardFilters } from '../useDashboardFilters';
 
 export interface PriceDashboardProps {
   filters: DashboardFilters;
   onDrillDown: (spec: QuerySpec, title: string) => void;
-  onExport: (title: string, rowCount?: number) => void;
+  onExport: (panel: PanelExport) => void;
   onContextUpdate?: (context: AppliedContext, caveats: Caveat[]) => void;
 }
 
 export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate }: PriceDashboardProps) {
-  const { from, to, districts, crops, priceType } = filters;
-  const isPaddyInScope = crops.includes(PADDY_CROP_ID);
+  const { from, to, districts, crop, priceType, priceSeries } = filters;
+
+  /**
+   * One panel's export. The spec is the panel's own, so the backend re-runs
+   * that query and the file describes this panel rather than the dashboard's
+   * KPI query, which is what it used to carry.
+   */
+  const panelExport = (
+    title: string,
+    spec: QuerySpec,
+    result?: { applied_context: AppliedContext; caveats?: Caveat[] },
+  ): PanelExport => ({
+    title,
+    spec,
+    context: contextFromApplied(title, result?.applied_context, result?.caveats ?? []),
+  });
+  const isPaddyInScope = crop === PADDY_CROP_ID;
 
   // 1. KPI Queries
   const avgPriceSpec: QuerySpec = useMemo(
     () => ({
       metric: 'avg_price',
       filters: [
-        ...(crops.length ? [{ dimension: 'crop', op: 'in' as const, values: crops }] : []),
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
         { dimension: 'price_type', op: 'eq' as const, values: [priceType] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       limit: 10,
       include_records: false,
     }),
-    [crops, districts, priceType, from, to],
+    [crop, districts, priceType, priceSeries, from, to],
   );
 
   const yoyPriceSpec: QuerySpec = useMemo(
@@ -61,47 +76,47 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
       metric: 'price_yoy_pct',
       dimensions: ['agri_year'],
       filters: [
-        ...(crops.length ? [{ dimension: 'crop', op: 'in' as const, values: crops }] : []),
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
         { dimension: 'price_type', op: 'eq' as const, values: [priceType] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       order_by: { field: 'agri_year', direction: 'desc' as const },
       limit: 5,
       include_records: false,
     }),
-    [crops, districts, priceType, from, to],
+    [crop, districts, priceType, priceSeries, from, to],
   );
 
   const fhpGapSpec: QuerySpec = useMemo(
     () => ({
       metric: 'fhp_wholesale_gap',
       filters: [
-        ...(crops.length ? [{ dimension: 'crop', op: 'in' as const, values: crops }] : []),
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       limit: 10,
       include_records: false,
     }),
-    [crops, districts, from, to],
+    [crop, districts, priceSeries, from, to],
   );
 
   const fhpGapPctSpec: QuerySpec = useMemo(
     () => ({
       metric: 'fhp_wholesale_gap_pct',
       filters: [
-        ...(crops.length ? [{ dimension: 'crop', op: 'in' as const, values: crops }] : []),
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       limit: 10,
       include_records: false,
     }),
-    [crops, districts, from, to],
+    [crop, districts, priceSeries, from, to],
   );
 
   const avgPriceQuery = useQuery({
@@ -124,26 +139,30 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
     queryFn: () => api.query(fhpGapPctSpec),
   });
 
-  // 2. Trend Chart Query (Monthly series over time)
-  const trendDimension = crops.length > 1 ? 'crop' : 'district';
+  // 2. Trend Chart Query. The synthetic series is monthly; the official series
+  // is published annually and has no months, so it is drawn by year. With no
+  // districts chosen there is one statewide line rather than an arbitrary
+  // handful of the 30 districts.
+  const trendTime = priceSeries === 'synthetic' ? 'month' : 'agri_year';
+  const trendByDistrict = districts.length > 0;
   const trendSpec: QuerySpec = useMemo(
     () => ({
       metric: 'avg_price',
-      dimensions: ['month', trendDimension],
+      dimensions: trendByDistrict ? [trendTime, 'district'] : [trendTime],
       filters: [
-        ...(crops.length ? [{ dimension: 'crop', op: 'in' as const, values: crops.slice(0, 6) }] : []),
-        ...(districts.length
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
+        ...(trendByDistrict
           ? [{ dimension: 'district', op: 'in' as const, values: districts.slice(0, 6) }]
           : []),
         { dimension: 'price_type', op: 'eq' as const, values: [priceType] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
-      order_by: { field: 'month', direction: 'asc' as const },
+      order_by: { field: trendTime, direction: 'asc' as const },
       limit: 1000,
       include_records: false,
     }),
-    [trendDimension, crops, districts, priceType, from, to],
+    [trendTime, trendByDistrict, crop, districts, priceType, priceSeries, from, to],
   );
 
   const trendQuery = useQuery({
@@ -153,32 +172,28 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
 
   // Transform trend rows to Recharts friendly format
   const { trendData, seriesKeys } = useMemo(() => {
-    const rows = (trendQuery.data?.rows || []) as Array<{
-      month?: string;
-      crop?: string;
-      district?: string;
-      value: number | null;
-      grain_source?: string;
-    }>;
+    const rows = (trendQuery.data?.rows || []) as Array<Record<string, unknown>>;
 
     const keySet = new Set<string>();
-    const monthMap = new Map<string, Record<string, unknown>>();
+    const periodMap = new Map<string, Record<string, unknown>>();
 
     for (const r of rows) {
-      if (!r.month) continue;
-      const key = trendDimension === 'crop' ? r.crop || 'Crop' : r.district || 'District';
+      const period = r[trendTime];
+      if (typeof period !== 'string') continue;
+      const key = trendByDistrict ? String(r.district ?? 'District') : 'All districts';
       keySet.add(key);
 
-      const existing = monthMap.get(r.month) || { month: r.month, isSynthetic: r.month >= '2019-07' };
+      const existing = periodMap.get(period) || { period };
       existing[key] = r.value;
-      monthMap.set(r.month, existing);
+      periodMap.set(period, existing);
     }
 
-    const sortedMonths = Array.from(monthMap.keys()).sort();
-    const formatted = sortedMonths.map((m) => monthMap.get(m)!);
+    const sortedPeriods = Array.from(periodMap.keys()).sort();
+    // Every key was set in the loop above, so the lookup cannot miss.
+    const formatted = sortedPeriods.map((m) => periodMap.get(m) as Record<string, unknown>);
 
-    return { trendData: formatted, seriesKeys: Array.from(keySet).slice(0, 8) };
-  }, [trendQuery.data, trendDimension]);
+    return { trendData: formatted, seriesKeys: Array.from(keySet) };
+  }, [trendQuery.data, trendTime, trendByDistrict]);
 
   // 3. District Comparison Query
   const districtSpec: QuerySpec = useMemo(
@@ -186,18 +201,16 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
       metric: 'avg_price',
       dimensions: ['district'],
       filters: [
-        ...(crops.length
-          ? [{ dimension: 'crop', op: 'in' as const, values: [crops[0]] }]
-          : [{ dimension: 'crop', op: 'in' as const, values: [PADDY_CROP_ID] }]),
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
         { dimension: 'price_type', op: 'eq' as const, values: [priceType] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       order_by: { field: 'value', direction: 'desc' as const },
       limit: 30,
       include_records: false,
     }),
-    [crops, priceType, from, to],
+    [crop, priceType, priceSeries, from, to],
   );
 
   const districtQuery = useQuery({
@@ -213,14 +226,14 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
       filters: [
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
         { dimension: 'price_type', op: 'eq' as const, values: [priceType] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       order_by: { field: 'value', direction: 'desc' as const },
       limit: 30,
       include_records: false,
     }),
-    [districts, priceType, from, to],
+    [districts, priceType, priceSeries, from, to],
   );
 
   const cropQuery = useQuery({
@@ -228,75 +241,82 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
     queryFn: () => api.query(cropSpec),
   });
 
-  // 5. Farm Harvest vs Wholesale Paired View Query (13 crops)
-  const pairedCropsList = DUAL_PRICE_CROPS.map((c) => c.id);
-  const farmHarvestPairedSpec: QuerySpec = useMemo(
-    () => ({
-      metric: 'avg_price',
+  // 5. Farm Harvest vs Wholesale, for every crop priced in both series. The
+  // crops come from the data, and the spread is the registry's
+  // fhp_wholesale_gap, matched district by district and year by year in SQL:
+  // not the difference of two averages, and never a zero where wholesale is
+  // missing.
+  const pairedSpecs = useMemo(() => {
+    const spec = (metric: string, priceTypeFilter?: string): QuerySpec => ({
+      metric,
       dimensions: ['crop'],
       filters: [
-        { dimension: 'crop', op: 'in' as const, values: pairedCropsList },
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
-        { dimension: 'price_type', op: 'eq' as const, values: ['farm_harvest'] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        ...(priceTypeFilter
+          ? [{ dimension: 'price_type', op: 'eq' as const, values: [priceTypeFilter] }]
+          : []),
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
-      limit: 30,
+      limit: 100,
       include_records: false,
-    }),
-    [pairedCropsList, districts, from, to],
-  );
-
-  const wholesalePairedSpec: QuerySpec = useMemo(
-    () => ({
-      metric: 'avg_price',
-      dimensions: ['crop'],
-      filters: [
-        { dimension: 'crop', op: 'in' as const, values: pairedCropsList },
-        ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
-        { dimension: 'price_type', op: 'eq' as const, values: ['wholesale'] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
-      ],
-      period: { from, to },
-      limit: 30,
-      include_records: false,
-    }),
-    [pairedCropsList, districts, from, to],
-  );
+    });
+    return {
+      farmHarvest: spec('avg_price', 'farm_harvest'),
+      wholesale: spec('avg_price', 'wholesale'),
+      gap: spec('fhp_wholesale_gap'),
+      gapPct: spec('fhp_wholesale_gap_pct'),
+    };
+  }, [districts, priceSeries, from, to]);
 
   const farmHarvestPairedQuery = useQuery({
-    queryKey: ['price-paired-fhp', farmHarvestPairedSpec],
-    queryFn: () => api.query(farmHarvestPairedSpec),
+    queryKey: ['price-paired-fhp', pairedSpecs.farmHarvest],
+    queryFn: () => api.query(pairedSpecs.farmHarvest),
+  });
+  const wholesalePairedQuery = useQuery({
+    queryKey: ['price-paired-ws', pairedSpecs.wholesale],
+    queryFn: () => api.query(pairedSpecs.wholesale),
+  });
+  const gapPairedQuery = useQuery({
+    queryKey: ['price-paired-gap', pairedSpecs.gap],
+    queryFn: () => api.query(pairedSpecs.gap),
+  });
+  const gapPctPairedQuery = useQuery({
+    queryKey: ['price-paired-gap-pct', pairedSpecs.gapPct],
+    queryFn: () => api.query(pairedSpecs.gapPct),
   });
 
-  const wholesalePairedQuery = useQuery({
-    queryKey: ['price-paired-ws', wholesalePairedSpec],
-    queryFn: () => api.query(wholesalePairedSpec),
-  });
+  const pairedLoading =
+    farmHarvestPairedQuery.isLoading ||
+    wholesalePairedQuery.isLoading ||
+    gapPairedQuery.isLoading ||
+    gapPctPairedQuery.isLoading;
 
   const pairedData = useMemo(() => {
-    const fhpRows = (farmHarvestPairedQuery.data?.rows || []) as Array<{ crop: string; crop_id: string; value: number }>;
-    const wsRows = (wholesalePairedQuery.data?.rows || []) as Array<{ crop: string; crop_id: string; value: number }>;
+    type CropRow = { crop: string; crop_id: string; value: number | null };
+    const byCrop = (rows: unknown[] | undefined) =>
+      new Map(((rows || []) as CropRow[]).map((r) => [r.crop_id, r.value]));
+    const fhp = byCrop(farmHarvestPairedQuery.data?.rows);
+    const gap = byCrop(gapPairedQuery.data?.rows);
+    const gapPct = byCrop(gapPctPairedQuery.data?.rows);
 
-    const wsMap = new Map(wsRows.map((r) => [r.crop, r.value]));
-
-    return fhpRows
-      .map((r) => {
-        const ws = wsMap.get(r.crop);
-        const fhp = r.value;
-        const gap = ws !== undefined && fhp !== null ? ws - fhp : 0;
-        const gapPct = fhp ? (gap / fhp) * 100 : 0;
-        return {
-          crop: r.crop,
-          crop_id: r.crop_id,
-          farm_harvest: fhp,
-          wholesale: ws ?? null,
-          gap: Number(gap.toFixed(2)),
-          gapPct: Number(gapPct.toFixed(1)),
-        };
-      })
-      .sort((a, b) => b.gap - a.gap);
-  }, [farmHarvestPairedQuery.data, wholesalePairedQuery.data]);
+    return ((wholesalePairedQuery.data?.rows || []) as CropRow[])
+      .filter((r) => r.value !== null && fhp.get(r.crop_id) != null)
+      .map((r) => ({
+        crop: r.crop,
+        crop_id: r.crop_id,
+        farm_harvest: fhp.get(r.crop_id) ?? null,
+        wholesale: r.value,
+        gap: gap.get(r.crop_id) ?? null,
+        gapPct: gapPct.get(r.crop_id) ?? null,
+      }))
+      .sort((a, b) => (b.gap ?? -Infinity) - (a.gap ?? -Infinity));
+  }, [
+    farmHarvestPairedQuery.data,
+    wholesalePairedQuery.data,
+    gapPairedQuery.data,
+    gapPctPairedQuery.data,
+  ]);
 
   // 6. Records Grid Query
   const [gridPage, setGridPage] = useState(1);
@@ -305,17 +325,17 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
       metric: 'avg_price',
       dimensions: ['agri_year', 'month', 'district', 'crop', 'price_type'],
       filters: [
-        ...(crops.length ? [{ dimension: 'crop', op: 'in' as const, values: crops }] : []),
+        { dimension: 'crop', op: 'eq' as const, values: [crop] },
         ...(districts.length ? [{ dimension: 'district', op: 'in' as const, values: districts }] : []),
         { dimension: 'price_type', op: 'eq' as const, values: [priceType] },
-        { dimension: 'data_origin', op: 'in' as const, values: ['official', 'synthetic'] },
+        { dimension: 'data_origin', op: 'eq' as const, values: [priceSeries] },
       ],
       period: { from, to },
       order_by: { field: 'month', direction: 'desc' as const },
       limit: 100,
       include_records: false,
     }),
-    [crops, districts, priceType, from, to],
+    [crop, districts, priceType, priceSeries, from, to],
   );
 
   const gridQuery = useQuery({
@@ -335,6 +355,9 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
   const gapVal = fhpGapQuery.data?.rows[0]?.value as number | undefined;
   const gapPctVal = fhpGapPctQuery.data?.rows[0]?.value as number | undefined;
 
+  const cropName = cropDisplayName(
+    districtQuery.data?.applied_context ?? avgPriceQuery.data?.applied_context,
+  );
   const districtRows = (districtQuery.data?.rows || []) as Array<{ district: string; district_id: string; value: number }>;
   const cropRows = (cropQuery.data?.rows || []) as Array<{ crop: string; crop_id: string; value: number }>;
 
@@ -391,7 +414,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
           unit={yoyVal !== null && yoyVal !== undefined ? 'YoY' : undefined}
           hint={
             yoyPriceQuery.data?.rows[0]?.agri_year
-              ? `Compared to preceding year (${yoyPriceQuery.data.rows[0].agri_year})`
+              ? `${yoyPriceQuery.data.rows[0].agri_year} against the year before`
               : 'Requires prior period'
           }
         />
@@ -402,7 +425,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
             fhpGapQuery.isLoading || fhpGapPctQuery.isLoading ? (
               '…'
             ) : gapVal !== undefined && gapVal !== null ? (
-              `+${Number(gapVal).toLocaleString('en-IN', { maximumFractionDigits: 0 })}`
+              `${gapVal > 0 ? '+' : ''}${Number(gapVal).toLocaleString('en-IN', { maximumFractionDigits: 0 })}`
             ) : (
               '—'
             )
@@ -410,8 +433,8 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
           unit="Rs/qtl"
           hint={
             gapPctVal !== undefined && gapPctVal !== null
-              ? `Wholesale is +${Number(gapPctVal).toFixed(1)}% over farm harvest`
-              : 'Gap across common crops'
+              ? `Wholesale is ${gapPctVal > 0 ? '+' : ''}${Number(gapPctVal).toFixed(1)}% against farm harvest`
+              : 'No wholesale price for this crop'
           }
         />
 
@@ -419,23 +442,25 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
           label="Scope in View"
           value={<Figure>{districts.length === 0 ? '30' : String(districts.length)}</Figure>}
           unit="districts"
-          hint={`${crops.length} crop${crops.length === 1 ? '' : 's'} · ${from} to ${to}`}
+          hint={`${cropName ?? crop} · ${from} to ${to}`}
         />
       </div>
 
       {/* Primary Chart: Monthly Price Over Time with Official / Synthetic Boundary */}
       <Card
-        title="Monthly Price Trend (2013-14 to 2024-25)"
-        description="Official DE&S price statistics end at 2018-19. Series post-2018-19 are synthetic monthly fits, visually differentiated with dashed lines."
+        title={`${priceSeries === 'synthetic' ? 'Monthly' : 'Annual'} Price Trend${cropName ? `: ${cropName}` : ''} (${from} to ${to})`}
+        description={
+          priceSeries === 'synthetic'
+            ? 'Synthetic monthly series, modelled for the demo from the published annual prices. Not DE&S statistics.'
+            : 'Annual prices as published by DE&S. The published series ends at 2018-19.'
+        }
         actions={
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 text-caption text-ink-muted">
-              <span className="h-0.5 w-4 bg-chart-1"></span> Official (solid)
-            </span>
-            <span className="inline-flex items-center gap-1 text-caption text-ink-muted">
-              <span className="h-0.5 w-4 border-b border-dashed border-chart-1"></span> Synthetic (dashed)
-            </span>
-            <ExportButton onClick={() => onExport('Monthly Price Trend', trendQuery.data?.applied_context.row_count)} />
+            <ExportButton
+              onClick={() =>
+                onExport(panelExport('Monthly Price Trend', trendSpec, trendQuery.data))
+              }
+            />
           </div>
         }
         chart
@@ -459,7 +484,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
               <LineChart data={trendData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.5} stroke="var(--color-border)" />
                 <XAxis
-                  dataKey="month"
+                  dataKey="period"
                   tick={{ fontSize: 12, fill: 'var(--color-text-muted)' }}
                   tickLine={false}
                   interval="preserveStartEnd"
@@ -496,19 +521,6 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
                   }}
                 />
                 <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
-                {/* Official vs Synthetic 2018-19 Boundary Line */}
-                <ReferenceLine
-                  x="2019-06"
-                  stroke="var(--prov-synthetic)"
-                  strokeDasharray="4 4"
-                  label={{
-                    value: '2018-19: Official data ends ➔ Synthetic begins',
-                    position: 'top',
-                    fill: 'var(--prov-synthetic)',
-                    fontSize: 12,
-                    fontWeight: 500,
-                  }}
-                />
                 {seriesKeys.map((key, i) => {
                   const color = CHART_COLORS[i % CHART_COLORS.length];
                   return (
@@ -523,17 +535,17 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
                       activeDot={{
                         r: 5,
                         onClick: (_, event) => {
-                          const month = trendData[(event as { activeIndex?: number })?.activeIndex || 0]?.month as string;
+                          const period = trendData[(event as { activeIndex?: number })?.activeIndex || 0]?.period as string;
                           onDrillDown(
                             {
                               ...trendSpec,
                               filters: [
                                 ...(trendSpec.filters || []),
-                                { dimension: 'month', op: 'eq', values: [month] },
+                                { dimension: trendTime, op: 'eq', values: [period] },
                               ],
                               limit: 100,
                             },
-                            `Drill-down: ${key} price for ${month}`,
+                            `Drill-down: ${key} price for ${period}`,
                           );
                         },
                       }}
@@ -550,11 +562,15 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* District Comparison Bar Chart */}
         <Card
-          title={`Average Price by District (${crops.length ? crops[0] : PADDY_CROP_ID})`}
+          title={`Average Price by District${cropName ? `: ${cropName}` : ''}`}
           description="Ranked average price across districts for selected crop. Leaders and laggards highlighted."
           actions={
             <ExportButton
-              onClick={() => onExport('District Price Comparison', districtRows.length)}
+              onClick={() =>
+                onExport(
+                  panelExport('District Price Comparison', districtSpec, districtQuery.data),
+                )
+              }
             />
           }
           chart
@@ -651,8 +667,14 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
         {/* Crop Comparison Bar Chart */}
         <Card
           title="Price Comparison Across Commodities"
-          description="Average price in Rs/quintal across selected crops."
-          actions={<ExportButton onClick={() => onExport('Crop Price Comparison', cropRows.length)} />}
+          description="Average price in Rs/quintal for every crop priced in this selection."
+          actions={
+            <ExportButton
+              onClick={() =>
+                onExport(panelExport('Crop Price Comparison', cropSpec, cropQuery.data))
+              }
+            />
+          }
           chart
         >
           {cropQuery.isLoading && <LoadingState label="Comparing crops..." />}
@@ -663,7 +685,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
             />
           )}
           {!cropQuery.isLoading && !cropQuery.error && cropRows.length === 0 && (
-            <EmptyState title="No crop data" detail="No data for selected crops." />
+            <EmptyState title="No crop data" detail="No crop is priced in this selection." />
           )}
           {!cropQuery.isLoading && !cropQuery.error && cropRows.length > 0 && (
             <div className="h-80 w-full">
@@ -717,18 +739,42 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
         </Card>
       </div>
 
-      {/* Farm Harvest vs Wholesale Paired Comparison for 13 crops */}
+      {/* Farm Harvest vs Wholesale, for the crops priced in both series */}
       <Card
-        title="Farm Harvest vs Wholesale Price Spread (13 Common Crops)"
-        description="Pairwise comparison for commodities published in both price streams. The gap represents the wholesale trading premium over harvest prices."
+        title={`Farm Harvest vs Wholesale Price Spread (${pairedData.length} crops priced in both)`}
+        description="Crops with both a farm harvest and a wholesale price in this selection. The spread is wholesale minus farm harvest, matched by district and year."
         actions={
           <ExportButton
-            onClick={() => onExport('Farm Harvest vs Wholesale Paired View', pairedData.length)}
+            onClick={() =>
+              onExport({
+                // Two queries produce this panel, so no single spec reproduces
+                // it. Its rows travel with the request and the file records
+                // that its context was supplied rather than derived.
+                title: 'Farm Harvest vs Wholesale Paired View',
+                spec: null,
+                rows: pairedData,
+                context: toExportContext({
+                  panelTitle: 'Farm Harvest vs Wholesale Paired View',
+                  filters: [
+                    { dimension: 'crop', values: pairedData.map((c) => c.crop_id) },
+                    { dimension: 'data_origin', values: [priceSeries] },
+                  ],
+                  period: from === to ? from : `${from} to ${to}`,
+                  rowCount: pairedData.length,
+                  sources: [
+                    ...(farmHarvestPairedQuery.data?.applied_context.source_datasets ?? []),
+                    ...(wholesalePairedQuery.data?.applied_context.source_datasets ?? []),
+                  ],
+                  dataOrigin: farmHarvestPairedQuery.data?.applied_context.data_origin,
+                  caveats: farmHarvestPairedQuery.data?.caveats ?? [],
+                }),
+              })
+            }
           />
         }
         chart
       >
-        {farmHarvestPairedQuery.isLoading || wholesalePairedQuery.isLoading ? (
+        {pairedLoading ? (
           <LoadingState label="Calculating harvest and wholesale gap..." />
         ) : pairedData.length === 0 ? (
           <EmptyState title="No paired records" detail="No overlapping price data for these crops." />
@@ -751,10 +797,10 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
                       if (!active || !payload?.length) return null;
                       const item = payload[0].payload as {
                         crop: string;
-                        farm_harvest: number;
-                        wholesale: number;
-                        gap: number;
-                        gapPct: number;
+                        farm_harvest: number | null;
+                        wholesale: number | null;
+                        gap: number | null;
+                        gapPct: number | null;
                       };
                       return (
                         <div className="rounded border border-line bg-surface p-2.5 shadow-md text-caption text-ink">
@@ -767,8 +813,13 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
                               Farm Harvest: ₹{item.farm_harvest?.toLocaleString('en-IN')} / qtl
                             </p>
                             <p className="font-semibold text-ink border-t border-line pt-1">
-                              Spread Gap: ₹{item.gap.toLocaleString('en-IN')} ({item.gapPct > 0 ? '+' : ''}
-                              {item.gapPct}%)
+                              {item.gap === null
+                                ? 'Spread: not computable for this selection'
+                                : `Spread: ₹${item.gap.toLocaleString('en-IN', { maximumFractionDigits: 2 })}${
+                                    item.gapPct === null
+                                      ? ''
+                                      : ` (${item.gapPct > 0 ? '+' : ''}${item.gapPct.toFixed(1)}%)`
+                                  }`}
                             </p>
                           </div>
                         </div>
@@ -788,6 +839,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
                           filters: [
                             { dimension: 'crop', op: 'in', values: [c.crop_id] },
                             { dimension: 'price_type', op: 'eq', values: ['farm_harvest'] },
+                            { dimension: 'data_origin', op: 'eq', values: [priceSeries] },
                           ],
                           period: { from, to },
                           limit: 50,
@@ -810,6 +862,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
                           filters: [
                             { dimension: 'crop', op: 'in', values: [c.crop_id] },
                             { dimension: 'price_type', op: 'eq', values: ['wholesale'] },
+                            { dimension: 'data_origin', op: 'eq', values: [priceSeries] },
                           ],
                           period: { from, to },
                           limit: 50,
@@ -831,7 +884,13 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
       <Card
         title="Filtered Price Records"
         description="Underlying price records from DuckDB analytics.fact_price with provenance."
-        actions={<ExportButton onClick={() => onExport('Filtered Price Records', gridQuery.data?.rows.length)} />}
+        actions={
+          <ExportButton
+            onClick={() =>
+              onExport(panelExport('Filtered Price Records', gridSpec, gridQuery.data))
+            }
+          />
+        }
       >
         {gridQuery.isLoading && <LoadingState label="Loading records grid..." />}
         {gridQuery.error && (
@@ -943,10 +1002,7 @@ export function PriceDashboard({ filters, onDrillDown, onExport, onContextUpdate
         )}
       </Card>
 
-      <NarrativePanel
-        view="price"
-        onExport={() => onExport('Price dashboard narrative', undefined)}
-      />
+      <NarrativePanel spec={avgPriceSpec} title="Price dashboard narrative" onExport={onExport} />
     </div>
   );
 }

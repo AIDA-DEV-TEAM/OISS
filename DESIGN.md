@@ -10,8 +10,9 @@ statistics audience: **institutional, minimal, dense, legible on a projector.**
    No hero sections, no gradients, no illustrations, no marketing voice.
 2. **Data first.** Density over whitespace. An evaluator wants to see many rows and several charts at once.
 3. **Provenance is part of the design.** Synthetic, analytical-estimate and aggregated data is disclosed as a single
-   quiet line in the panel header — once per panel, never beside each figure. The wording is owned by
-   `src/lib/provenance.ts` and derived from the backend fields, never typed into a component. See §5.
+   quiet line in the panel header — once per panel, never beside each figure. The wording is owned by the backend
+   (`app/exports/provenance.py`), derived from its own fields, and travels with both the screen and the exported
+   file, never typed into a component. See §5.
 4. **Nothing decorative moves.** Transitions only for state changes (open, close, load), 120–160 ms, no easing
    flourishes, no animated charts on load.
 5. **Accessible by default.** WCAG 2.1 AA contrast, full keyboard operation, visible focus rings, skip-to-content —
@@ -124,13 +125,19 @@ The three wordings, which are fixed:
 | Condition | Line |
 |---|---|
 | `data_origin` includes `synthetic` | Representative dataset modelled on DE&S Price Statistics, 2013-19 |
-| `data_origin` includes `model` | Analytical estimates |
+| `data_origin` includes `model` | Analytical Estimates |
 | `grain_source` includes `aggregated_from_blocks` | District figures aggregated from block-level data |
 
-**The wording is derived, never typed into a component.** `src/lib/provenance.ts` owns the strings and maps them
-from the backend fields `data_origin`, `annual_level_basis` and `grain_source`; `ProvenanceNote` renders whatever
-that returns. A component that hard-codes one of these sentences is a bug. Panels reading mocked data carry the same
-field shape, so they disclose identically once wired to a real endpoint.
+**The wording is derived, never typed into a component.** It is owned by `app/exports/provenance.py` and sent with
+every result as `applied_context.provenance_notes`, because an exported file has to carry the same line as the panel
+it came from and the two must not be able to drift apart. `src/lib/provenance.ts` renders what the backend sends and
+falls back to the same derivation — from `data_origin`, `annual_level_basis` and `grain_source` — for panels still
+fed by fixtures, which have no backend context to quote. `ProvenanceNote` renders whatever that returns. A component
+that hard-codes one of these sentences is a bug. Panels reading mocked data carry the same field shape, so they
+disclose identically once wired to a real endpoint.
+
+In an export the same line goes into the file: the CSV header block, the Excel **Context** sheet, the PDF footer,
+the PNG caption and the JSON `applied_context`. Never as a per-figure badge, there or on screen.
 
 The reserved provenance colours in §2 remain reserved — they are still never reused for a data series or a status —
 but they are no longer painted onto per-figure chips.
@@ -167,3 +174,11 @@ white, no hairline borders under 1px, no thin-weight type. Check every screen on
 
 Map these tokens in `tailwind.config.js` (`theme.extend.colors`, `fontSize`, `spacing`, `borderRadius`) and use the
 mapped names. No arbitrary values like `text-[#12508F]` in components — if a value is missing, add it to the theme.
+
+## 10. Database schema version
+
+Any change to DDL in app/db.py bumps SCHEMA_VERSION.
+
+`app.cli build` writes the version into `analytics.schema_meta`, and the backend refuses to start against a database
+built at another version ("DB schema vN, code expects vM: stop the backend and run app.cli build."). There are no
+ALTER-based migrations: DuckDB cannot change a CHECK constraint in place, so rebuilding is the supported upgrade.

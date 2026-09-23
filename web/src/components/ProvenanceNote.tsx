@@ -7,7 +7,7 @@
  */
 import type { AppliedContext } from '@/api/client';
 import { cn } from '@/components/primitives';
-import { notesFromContext, provenanceNotes } from '@/lib/provenance';
+import { notesFor, provenanceNotes } from '@/lib/provenance';
 import type { ProvenanceSignals } from '@/lib/provenance';
 
 /**
@@ -23,7 +23,7 @@ export function ProvenanceNote({
   context?: AppliedContext | null;
   className?: string;
 }) {
-  const notes = signals ? provenanceNotes(signals) : notesFromContext(context);
+  const notes = signals ? provenanceNotes(signals) : notesFor(context);
   if (notes.length === 0) return null;
   return (
     <p className={cn('text-badge font-normal text-ink-subtle', className)}>

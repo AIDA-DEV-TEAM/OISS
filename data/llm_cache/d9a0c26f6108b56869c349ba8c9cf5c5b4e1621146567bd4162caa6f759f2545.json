@@ -1,0 +1,6 @@
+{
+  "key": "d9a0c26f6108b56869c349ba8c9cf5c5b4e1621146567bd4162caa6f759f2545",
+  "model": "fixture",
+  "created_at": "2026-09-22T20:19:53+00:00",
+  "response": "{\"action\": \"query\", \"spec\": {\"metric\": \"fhp_wholesale_gap\", \"dimensions\": [\"crop\"], \"filters\": [{\"dimension\": \"data_origin\", \"op\": \"eq\", \"values\": [\"official\"]}, {\"dimension\": \"agri_year\", \"op\": \"eq\", \"values\": [\"2018-19\"]}], \"order_by\": {\"field\": \"value\", \"direction\": \"desc\"}, \"limit\": 30}}"
+}

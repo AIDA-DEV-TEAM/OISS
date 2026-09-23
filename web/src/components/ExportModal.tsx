@@ -6,21 +6,26 @@
  * file — filters, period, row count, dataset versions, origin mix and caveats —
  * before anything is generated.
  *
- * Replaces ExportModalStub and its dual `open`/`isOpen` prop pair with one
- * spelling.
+ * The panel hands over the query spec that produced it, not the context it
+ * believes it has. The dialog previews that panel's own context and the
+ * backend derives the file's context by running the spec itself, so the two
+ * cannot drift apart.
  */
 import { useEffect, useState } from 'react';
 
-import type { ExportContext, ExportFormat, ExportType } from '@/api/contracts';
-import { useCreateExport } from '@/api/exports';
+import type { ExportFormat, ExportType } from '@/api/client';
+import { exportDownloadUrl, useCreateExport, useExportLimits } from '@/api/exports';
 import { CaveatList } from '@/components/provenance';
 import { Figure, cn } from '@/components/primitives';
 import { ProvenanceNote } from '@/components/ProvenanceNote';
 import { ErrorState } from '@/components/states';
+import { filterPhrase } from '@/lib/exportContext';
+import type { PanelExport } from '@/lib/exportContext';
 import { formatBytes } from '@/lib/format';
 
+
 const FORMATS: Array<{ id: ExportFormat; label: string; detail: string }> = [
-  { id: 'csv', label: 'CSV', detail: 'Rows plus a companion context file.' },
+  { id: 'csv', label: 'CSV', detail: 'Rows under a commented context header.' },
   { id: 'xlsx', label: 'Excel', detail: 'Data, Context and Caveats as separate sheets.' },
   { id: 'pdf', label: 'PDF', detail: 'Titled report with caveats as footnotes.' },
   { id: 'json', label: 'JSON', detail: 'The query response verbatim, context included.' },
@@ -31,15 +36,17 @@ export interface ExportModalProps {
   open: boolean;
   onClose: () => void;
   exportType: ExportType;
-  context: ExportContext | null;
+  panel: PanelExport | null;
 }
 
-export function ExportModal({ open, onClose, exportType, context }: ExportModalProps) {
+export function ExportModal({ open, onClose, exportType, panel }: ExportModalProps) {
   const [format, setFormat] = useState<ExportFormat>('csv');
   const [includeContext, setIncludeContext] = useState(true);
   const [includeCaveats, setIncludeCaveats] = useState(true);
   const [includeRecords, setIncludeRecords] = useState(true);
   const create = useCreateExport();
+  // The backend enforces the ceiling; the dialog only warns with its figure.
+  const ceiling = useExportLimits().data?.row_ceiling;
 
   // Re-open on a different panel starts a fresh dialog, not the last result.
   useEffect(() => {
@@ -56,10 +63,17 @@ export function ExportModal({ open, onClose, exportType, context }: ExportModalP
     return () => document.removeEventListener('keydown', onKey);
   }, [open, onClose]);
 
-  if (!open || !context) return null;
+  if (!open || !panel) return null;
+
+  const context = panel.context;
 
   const tabular = format !== 'png';
   const result = create.data;
+  const totalRows =
+    context.matching_row_count ?? context.underlying_row_count ?? context.row_count;
+  const isCeilingExceeded =
+    Boolean(context.truncated) || (ceiling !== undefined && totalRows > ceiling);
+  const ceilingLabel = ceiling?.toLocaleString() ?? 'the export limit';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -101,12 +115,23 @@ export function ExportModal({ open, onClose, exportType, context }: ExportModalP
                 <Figure>{formatBytes(result.size_bytes)}</Figure> · reference{' '}
                 <Figure>{result.export_id}</Figure> · context attached
               </p>
-              <button
-                type="button"
-                className="mt-3 rounded border border-primary bg-primary px-3 py-1.5 text-body font-medium text-surface transition-colors duration-state hover:bg-primary-hover"
+              {result.context.truncated && (
+                <p className="mt-2 text-caption font-medium text-warning">
+                  Truncated at {result.context.row_count.toLocaleString()} of{' '}
+                  {(
+                    result.context.matching_row_count ??
+                    result.context.underlying_row_count
+                  )?.toLocaleString()}{' '}
+                  rows
+                </p>
+              )}
+              <a
+                href={exportDownloadUrl(result.export_id)}
+                download={result.filename}
+                className="mt-3 inline-block rounded border border-primary bg-primary px-3 py-1.5 text-body font-medium text-surface transition-colors duration-state hover:bg-primary-hover"
               >
                 Download
-              </button>
+              </a>
             </div>
           ) : (
             <>
@@ -173,21 +198,38 @@ export function ExportModal({ open, onClose, exportType, context }: ExportModalP
                 </div>
               </fieldset>
 
+              {isCeilingExceeded && (
+                <div
+                  role="alert"
+                  className="mt-4 rounded border border-warning/30 bg-warning-bg px-card py-3 text-caption text-warning"
+                >
+                  <p className="font-semibold">Warning: Export row ceiling exceeded</p>
+                  <p className="mt-0.5">
+                    This selection matches {totalRows.toLocaleString()} rows. The export will be
+                    truncated at {ceilingLabel} rows.
+                  </p>
+                </div>
+              )}
+
               <section className="mt-4 rounded border border-line bg-surface-alt px-card py-3">
                 <h3 className="text-caption font-medium uppercase tracking-header text-ink-subtle">
                   Context that travels with the file
                 </h3>
                 <dl className="mt-2 grid grid-cols-1 gap-x-gutter gap-y-2 sm:grid-cols-2">
                   <Pair term="Rows">
-                    <Figure>{context.row_count.toLocaleString('en-IN')}</Figure>
+                    {isCeilingExceeded ? (
+                      <span className="text-warning font-medium">
+                        Truncated at {ceilingLabel} of {totalRows.toLocaleString()} rows
+                      </span>
+                    ) : (
+                      <Figure>{(context.underlying_row_count ?? context.row_count).toLocaleString('en-IN')}</Figure>
+                    )}
                   </Pair>
                   <Pair term="Period">{context.period ?? '—'}</Pair>
                   <Pair term="Filters">
                     {context.filters.length === 0
                       ? 'None'
-                      : context.filters
-                          .map((f) => `${f.dimension}: ${f.values.join(', ')}`)
-                          .join(' · ')}
+                      : context.filters.map(filterPhrase).join(' · ')}
                   </Pair>
                   <Pair term="Source datasets">
                     {context.source_datasets.length === 0
@@ -223,12 +265,22 @@ export function ExportModal({ open, onClose, exportType, context }: ExportModalP
               disabled={create.isPending}
               onClick={() =>
                 create.mutate({
-                  export_type: exportType,
+                  exportType,
                   format,
-                  context: {
-                    ...context,
-                    caveats: includeCaveats ? context.caveats : [],
-                  },
+                  panelTitle: context.panel_title,
+                  querySpec: panel.spec ?? null,
+                  // Only sent when the panel has no spec for the backend to
+                  // run; then the file records that its context was supplied.
+                  payload: panel.spec
+                    ? null
+                    : {
+                        rows: panel.rows ?? [],
+                        context: { ...context },
+                        caveats: context.caveats,
+                      },
+                  includeContext,
+                  includeCaveats,
+                  includeRecords: tabular && includeRecords,
                 })
               }
               className="rounded border border-primary bg-primary px-3 py-1.5 text-body font-medium text-surface transition-colors duration-state hover:bg-primary-hover disabled:opacity-60"

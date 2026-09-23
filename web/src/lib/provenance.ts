@@ -9,6 +9,12 @@
  * This replaces the per-figure Synthetic / Analytical Estimate chips: a column
  * of figures each wearing a badge is unreadable, and the statement belongs to
  * the panel rather than to any one number.
+ *
+ * The backend owns the wording (app/exports/provenance.py) and sends it as
+ * `applied_context.provenance_notes`, because an exported file has to carry
+ * the same line and a screen and a file must not word it differently. The
+ * derivation below is the fallback for panels still fed by fixtures, which
+ * have no backend context to quote.
  */
 import type { AppliedContext } from '@/api/client';
 
@@ -28,7 +34,7 @@ export interface ProvenanceSignals {
 /** The exact wording. Kept here so no component can invent its own phrasing. */
 const WORDING = {
   synthetic: 'Representative dataset modelled on DE&S Price Statistics, 2013-19',
-  model: 'Analytical estimates',
+  model: 'Analytical Estimates',
   aggregated: 'District figures aggregated from block-level data',
 } as const;
 
@@ -49,6 +55,17 @@ export function provenanceNotes(signals: ProvenanceSignals): string[] {
   if (present(signals.dataOrigin, 'model')) notes.push(WORDING.model);
   if (present(signals.grainSource, 'aggregated_from_blocks')) notes.push(WORDING.aggregated);
   return notes;
+}
+
+/**
+ * The notes for a backend result: the ones it sent, or -- for an older or
+ * fixture-shaped context that carries none -- the same lines derived here.
+ */
+export function notesFor(context: AppliedContext | null | undefined): string[] {
+  if (context?.provenance_notes && context.provenance_notes.length > 0) {
+    return context.provenance_notes;
+  }
+  return notesFromContext(context);
 }
 
 /** Pulls the same signals out of a backend `applied_context`. */

@@ -1,0 +1,364 @@
+{
+ "_source": "Captured from POST /narrative/dashboard (TestClient, no language model configured, so both are template-rendered) for each view's default spec; not hand-written.",
+ "price": {
+  "narrative": "Average price, 2013-14 to 2024-25 (Crop: Paddy (CR17); Price type: Farm harvest (farm_harvest); Data origin: synthetic): 1,814.78 Rs/quintal, across 30 districts with data. Highest: Nayagarh (1,820.63 Rs/quintal), Kalahandi (1,818.13 Rs/quintal), Subarnapur (1,816.3 Rs/quintal). Lowest: Jagatsinghpur (1,814.38 Rs/quintal), Keonjhar (1,814.38 Rs/quintal), Deogarh (1,814.38 Rs/quintal). It was 2,337.79 Rs/quintal in 2023-24 and 2,477.18 Rs/quintal in 2024-25.",
+  "narrative_source": "template",
+  "model": null,
+  "facts_used": [
+   {
+    "label": "Average price",
+    "value": 1814.7767407407414,
+    "unit": "Rs/quintal",
+    "scope": "whole selection"
+   },
+   {
+    "label": "Districts with data",
+    "value": 30.0,
+    "unit": "districts",
+    "scope": null
+   },
+   {
+    "label": "Average price",
+    "value": 2337.7866666666664,
+    "unit": "Rs/quintal",
+    "scope": "2023-24"
+   },
+   {
+    "label": "Average price",
+    "value": 2477.183111111111,
+    "unit": "Rs/quintal",
+    "scope": "2024-25"
+   },
+   {
+    "label": "Change year on year",
+    "value": 5.962752993334632,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   },
+   {
+    "label": "Highest: Nayagarh",
+    "value": 1820.6291666666668,
+    "unit": "Rs/quintal",
+    "scope": "rank 1"
+   },
+   {
+    "label": "Highest: Kalahandi",
+    "value": 1818.1294444444447,
+    "unit": "Rs/quintal",
+    "scope": "rank 2"
+   },
+   {
+    "label": "Highest: Subarnapur",
+    "value": 1816.2961111111113,
+    "unit": "Rs/quintal",
+    "scope": "rank 3"
+   },
+   {
+    "label": "Lowest: Jagatsinghpur",
+    "value": 1814.378888888889,
+    "unit": "Rs/quintal",
+    "scope": "rank 30"
+   },
+   {
+    "label": "Lowest: Keonjhar",
+    "value": 1814.3788888888892,
+    "unit": "Rs/quintal",
+    "scope": "rank 29"
+   },
+   {
+    "label": "Lowest: Deogarh",
+    "value": 1814.3788888888894,
+    "unit": "Rs/quintal",
+    "scope": "rank 28"
+   },
+   {
+    "label": "Largest change: Mayurbhanj",
+    "value": 5.962913586231975,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   },
+   {
+    "label": "Largest change: Khordha",
+    "value": 5.962913586231957,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   },
+   {
+    "label": "Largest change: Sambalpur",
+    "value": 5.962913586231957,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   }
+  ],
+  "caveats": [
+   {
+    "code": "PROJECTED_LEVELS",
+    "severity": "warning",
+    "message": "540 synthetic rows sit on projected annual levels, for years after the last published price statistics.",
+    "affected_rows": 540
+   },
+   {
+    "code": "SYNTHETIC_DATA",
+    "severity": "warning",
+    "message": "1080 of 1080 underlying rows are synthetic, generated for the demonstration and not published by DE&S.",
+    "affected_rows": 1080
+   }
+  ],
+  "applied_context": {
+   "metric": "avg_price",
+   "metric_label": "Average price",
+   "unit": "Rs/quintal",
+   "dimensions": [],
+   "filters": [
+    {
+     "dimension": "crop",
+     "op": "eq",
+     "values": [
+      "CR17"
+     ],
+     "dimension_label": "Crop",
+     "values_display": [
+      "Paddy (CR17)"
+     ]
+    },
+    {
+     "dimension": "price_type",
+     "op": "eq",
+     "values": [
+      "farm_harvest"
+     ],
+     "dimension_label": "Price type",
+     "values_display": [
+      "Farm harvest (farm_harvest)"
+     ]
+    },
+    {
+     "dimension": "data_origin",
+     "op": "eq",
+     "values": [
+      "synthetic"
+     ],
+     "dimension_label": "Data origin",
+     "values_display": [
+      "synthetic"
+     ]
+    }
+   ],
+   "period": {
+    "from": "2013-14",
+    "to": "2024-25"
+   },
+   "relation": "analytics.v_price",
+   "source_datasets": [
+    {
+     "dataset_version_id": "synthetic_monthly_prices@cbb63a20c8ef",
+     "dataset_name": "synthetic_monthly_prices",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\synthetic\\synthetic_monthly_prices.csv",
+     "layer": "raw"
+    }
+   ],
+   "data_origin": {
+    "official": 0,
+    "synthetic": 1080
+   },
+   "grain_source": {},
+   "row_count": 10,
+   "underlying_row_count": 1080,
+   "generated_at": "2026-09-22T21:35:35.467476+00:00",
+   "provenance_notes": [
+    "Representative dataset modelled on DE&S Price Statistics, 2013-19"
+   ]
+  },
+  "data_origin": {
+   "official": 0,
+   "synthetic": 1080
+  },
+  "served_from_cache": false,
+  "llm_calls": [
+   {
+    "purpose": "narrative",
+    "model": "gemini-2.5-flash",
+    "served_from_cache": false,
+    "outcome": "unavailable",
+    "error": "gemini-2.5-flash could not be reached"
+   }
+  ]
+ },
+ "agriculture": {
+  "narrative": "Production, 2022-23 to 2024-25 (Crop: Paddy (CR17); Season: Winter): 442,545,882 qtl, across 30 districts with data. Highest: Mayurbhanj (37,000,183 qtl), Bargarh (36,079,221 qtl), Ganjam (35,463,660 qtl). Lowest: Jharsuguda (3,058,680 qtl), Gajapati (3,570,236 qtl), Kandhamal (3,639,529 qtl). It was 145,569,200 qtl in 2023-24 and 145,788,600 qtl in 2024-25.",
+  "narrative_source": "template",
+  "model": null,
+  "facts_used": [
+   {
+    "label": "Production",
+    "value": 442545882.0,
+    "unit": "qtl",
+    "scope": "whole selection"
+   },
+   {
+    "label": "Districts with data",
+    "value": 30.0,
+    "unit": "districts",
+    "scope": null
+   },
+   {
+    "label": "Production",
+    "value": 145569200.0,
+    "unit": "qtl",
+    "scope": "2023-24"
+   },
+   {
+    "label": "Production",
+    "value": 145788600.0,
+    "unit": "qtl",
+    "scope": "2024-25"
+   },
+   {
+    "label": "Change year on year",
+    "value": 0.15071869598788754,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   },
+   {
+    "label": "Highest: Mayurbhanj",
+    "value": 37000183.0,
+    "unit": "qtl",
+    "scope": "rank 1"
+   },
+   {
+    "label": "Highest: Bargarh",
+    "value": 36079221.0,
+    "unit": "qtl",
+    "scope": "rank 2"
+   },
+   {
+    "label": "Highest: Ganjam",
+    "value": 35463660.0,
+    "unit": "qtl",
+    "scope": "rank 3"
+   },
+   {
+    "label": "Lowest: Jharsuguda",
+    "value": 3058680.0,
+    "unit": "qtl",
+    "scope": "rank 30"
+   },
+   {
+    "label": "Lowest: Gajapati",
+    "value": 3570236.0,
+    "unit": "qtl",
+    "scope": "rank 29"
+   },
+   {
+    "label": "Lowest: Kandhamal",
+    "value": 3639529.0,
+    "unit": "qtl",
+    "scope": "rank 28"
+   },
+   {
+    "label": "Largest change: Khordha",
+    "value": 32.36358934574606,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   },
+   {
+    "label": "Largest change: Angul",
+    "value": -20.352624219895645,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   },
+   {
+    "label": "Largest change: Nabarangpur",
+    "value": -19.48003822674702,
+    "unit": "%",
+    "scope": "2023-24 to 2024-25"
+   }
+  ],
+  "caveats": [
+   {
+    "code": "AGGREGATED_FROM_BLOCKS",
+    "severity": "info",
+    "message": "90 rows were aggregated from block-level records because DE&S published no district figure; yields are recomputed as total production over total area.",
+    "affected_rows": 90
+   }
+  ],
+  "applied_context": {
+   "metric": "production",
+   "metric_label": "Production",
+   "unit": "qtl",
+   "dimensions": [],
+   "filters": [
+    {
+     "dimension": "crop",
+     "op": "eq",
+     "values": [
+      "CR17"
+     ],
+     "dimension_label": "Crop",
+     "values_display": [
+      "Paddy (CR17)"
+     ]
+    },
+    {
+     "dimension": "season",
+     "op": "eq",
+     "values": [
+      "Winter"
+     ],
+     "dimension_label": "Season",
+     "values_display": [
+      "Winter"
+     ]
+    }
+   ],
+   "period": {
+    "from": "2022-23",
+    "to": "2024-25"
+   },
+   "relation": "analytics.v_district_crop_ayp",
+   "source_datasets": [
+    {
+     "dataset_version_id": "earas_2022_23_block_paddy@33743b3c4831",
+     "dataset_name": "earas_2022_23_block_paddy",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2022-23\\blockwise_paddy_AYP_2022-23.dta",
+     "layer": "raw"
+    },
+    {
+     "dataset_version_id": "earas_2023_24_district_paddy@5e8bdea5ea67",
+     "dataset_name": "earas_2023_24_district_paddy",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\raw\\earas\\2023-24\\dist_paddy_AYP_2023-24.csv",
+     "layer": "raw"
+    },
+    {
+     "dataset_version_id": "earas_2024_25_district_crop_ayp@3087f1ec29e3",
+     "dataset_name": "earas_2024_25_district_crop_ayp",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\earas_2024_25_district_crop_ayp_raw.csv",
+     "layer": "raw"
+    }
+   ],
+   "data_origin": {
+    "official": 270,
+    "synthetic": 0
+   },
+   "grain_source": {},
+   "row_count": 10,
+   "underlying_row_count": 270,
+   "generated_at": "2026-09-22T21:35:35.951144+00:00",
+   "provenance_notes": []
+  },
+  "data_origin": {
+   "official": 270,
+   "synthetic": 0
+  },
+  "served_from_cache": false,
+  "llm_calls": [
+   {
+    "purpose": "narrative",
+    "model": "gemini-2.5-flash",
+    "served_from_cache": false,
+    "outcome": "unavailable",
+    "error": "gemini-2.5-flash could not be reached"
+   }
+  ]
+ }
+}

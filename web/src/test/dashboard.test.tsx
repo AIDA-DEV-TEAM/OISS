@@ -52,7 +52,7 @@ describe('Dashboard — Interactive Analytics (RFP Area 3)', () => {
     expect(screen.getByRole('tab', { name: /Agriculture \/ EARAS/i })).toBeTruthy();
 
     // Applied context strip
-    expect(await screen.findByText('Source datasets')).toBeTruthy();
+    expect(await screen.findByText('Active dataset versions')).toBeTruthy();
     expect(await screen.findByText(/Rows shown/i)).toBeTruthy();
   });
 
@@ -77,7 +77,7 @@ describe('Dashboard — Interactive Analytics (RFP Area 3)', () => {
   });
 
   it('asserts the known figure end-to-end: paddy production 2023-24 renders as 174.83 lakh MT', async () => {
-    mount(['/dashboard?view=agriculture&from=2023-24&to=2023-24&crops=CR17']);
+    mount(['/dashboard?view=agriculture&from=2023-24&to=2023-24&crop=CR17']);
 
     // The KPI card label
     expect(await screen.findByText('Total Production')).toBeTruthy();
@@ -110,7 +110,7 @@ describe('Dashboard — Interactive Analytics (RFP Area 3)', () => {
     // Forecast empty state with analytical estimate hedging
     expect(await screen.findByText(/Actual against model estimate/i)).toBeTruthy();
     // Published model output discloses itself once, in the panel header.
-    expect(await screen.findByText(/^Analytical estimates$/i)).toBeTruthy();
+    expect(await screen.findByText(/^Analytical Estimates$/)).toBeTruthy();
   });
 
   it('switches between Price and Agriculture views via the view tab buttons', async () => {
@@ -156,5 +156,48 @@ describe('Dashboard — Interactive Analytics (RFP Area 3)', () => {
     expect(await screen.findByText(/Context that travels with the file/i)).toBeTruthy();
     expect(screen.getByLabelText(/Excel/i)).toBeTruthy();
     expect(screen.getByLabelText(/Chart image/i)).toBeTruthy();
+  });
+
+  it('offers one crop at a time, and only the crops the view holds data for', async () => {
+    mount(['/dashboard?view=agriculture']);
+
+    const picker = (await screen.findByLabelText(/^Crop:/i)) as HTMLSelectElement;
+    await waitFor(() => expect(picker.disabled).toBe(false));
+    // A single-choice list, built from the crops with area on record.
+    expect(picker.multiple).toBe(false);
+    expect(Array.from(picker.options).map((o) => o.textContent)).toEqual([
+      'Mustard',
+      'Paddy',
+      'Potato',
+    ]);
+
+    fireEvent.change(picker, { target: { value: 'CR18' } });
+    expect(picker.value).toBe('CR18');
+  });
+
+  it('asks for seasons only where seasons exist, and for one price series at a time', async () => {
+    mount(['/dashboard?view=price']);
+    expect(await screen.findByLabelText(/^Series:/i)).toBeTruthy();
+    expect(screen.queryByLabelText(/^Season:/i)).toBeNull();
+
+    fireEvent.click(screen.getByRole('tab', { name: /Agriculture \/ EARAS/i }));
+    const season = (await screen.findByLabelText(/^Season:/i)) as HTMLSelectElement;
+    // The crop reports' Total row repeats the seasons' sum and is not offered.
+    expect(Array.from(season.options).map((o) => o.value)).toEqual([
+      '',
+      'Autumn',
+      'Winter',
+      'Summer',
+    ]);
+    expect(screen.queryByLabelText(/^Series:/i)).toBeNull();
+  });
+
+  it('describes the view from its SQL facts and says what wrote the description', async () => {
+    mount(['/dashboard?view=agriculture']);
+
+    expect(await screen.findByText(/What this view shows/i)).toBeTruthy();
+    expect(await screen.findByText(/442,545,882 qtl, across 30 districts with data/i)).toBeTruthy();
+    expect(screen.getByText(/Stated from the figures by a template/i)).toBeTruthy();
+    expect(screen.getByText(/Facts used/i)).toBeTruthy();
   });
 });

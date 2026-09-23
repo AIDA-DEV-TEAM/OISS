@@ -1,0 +1,6 @@
+{
+  "key": "04535724809dde6a792b6216ae754441e32881c801abe2cf1714e02d81af7ff2",
+  "model": "fixture",
+  "created_at": "2026-09-22T20:19:53+00:00",
+  "response": "{\"action\": \"query\", \"spec\": {\"metric\": \"avg_price\", \"dimensions\": [\"district\"], \"filters\": [{\"dimension\": \"crop\", \"op\": \"eq\", \"values\": [\"CR18\"]}, {\"dimension\": \"price_type\", \"op\": \"eq\", \"values\": [\"farm_harvest\"]}, {\"dimension\": \"data_origin\", \"op\": \"eq\", \"values\": [\"official\"]}, {\"dimension\": \"agri_year\", \"op\": \"eq\", \"values\": [\"2018-19\"]}], \"order_by\": {\"field\": \"value\", \"direction\": \"desc\"}, \"limit\": 30}}"
+}

@@ -52,14 +52,20 @@ export function AppliedContextStrip({
       )}
       aria-label="Applied context"
     >
-      <Item label="Source datasets">
+      {/* Every figure above comes from these versions, and only these: a query
+          counts one active version per dataset. Naming them is what makes the
+          number on screen traceable to a file. */}
+      <Item label="Active dataset versions">
         {sources.length === 0 ? (
           <span className="text-ink-muted">None</span>
         ) : sources.length === 1 ? (
-          sources[0].dataset_name
+          <span title={sources[0].dataset_version_id}>{sources[0].dataset_name}</span>
         ) : (
-          <span title={sources.map((source) => source.dataset_name).join(', ')}>
-            <Figure>{sources.length}</Figure> datasets
+          <span
+            title={sources.map((source) => source.dataset_version_id).join(', ')}
+          >
+            <Figure>{sources.length}</Figure> versions ·{' '}
+            {sources.map((source) => source.dataset_name).join(', ')}
           </span>
         )}
       </Item>

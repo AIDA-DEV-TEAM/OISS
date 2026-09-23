@@ -5,6 +5,8 @@ import { PADDY_CROP_ID } from './constants';
 
 export type DashboardView = 'price' | 'agriculture';
 export type PriceType = 'farm_harvest' | 'wholesale';
+/** Which price series the price view reads. The two are never averaged together. */
+export type PriceSeries = 'synthetic' | 'official';
 export type StateSeriesMetric = 'production' | 'area' | 'yield_rate';
 
 export interface DashboardFilters {
@@ -12,9 +14,12 @@ export interface DashboardFilters {
   from: string;
   to: string;
   districts: string[]; // empty means all 30 districts
-  crops: string[]; // default ['CR17']
-  season: string; // e.g. 'Winter'
+  // One crop at a time: every panel describes the same crop, and no figure
+  // blends two crops' prices or yields.
+  crop: string;
+  season: string; // e.g. 'Winter'; empty means all seasons
   priceType: PriceType;
+  priceSeries: PriceSeries;
   landUseDistrict: string; // for the 9-fold district chart
   stateSeriesMetric: StateSeriesMetric;
 }
@@ -34,15 +39,10 @@ export function useDashboardFilters() {
     return raw.split(',').filter(Boolean);
   }, [searchParams]);
 
-  const crops = useMemo(() => {
-    const raw = searchParams.get('crops');
-    if (!raw) return [PADDY_CROP_ID];
-    const list = raw.split(',').filter(Boolean);
-    return list.length > 0 ? list : [PADDY_CROP_ID];
-  }, [searchParams]);
-
+  const crop = searchParams.get('crop') || PADDY_CROP_ID;
   const season = searchParams.get('season') || (view === 'agriculture' ? 'Winter' : '');
   const priceType = (searchParams.get('price_type') as PriceType) || 'farm_harvest';
+  const priceSeries = (searchParams.get('series') as PriceSeries) || 'synthetic';
   const landUseDistrict = searchParams.get('lu_dist') || 'OD04'; // Bargarh
   const stateSeriesMetric = (searchParams.get('ss_metric') as StateSeriesMetric) || 'production';
 
@@ -52,13 +52,14 @@ export function useDashboardFilters() {
       from,
       to,
       districts,
-      crops,
+      crop,
       season,
       priceType,
+      priceSeries,
       landUseDistrict,
       stateSeriesMetric,
     }),
-    [view, from, to, districts, crops, season, priceType, landUseDistrict, stateSeriesMetric],
+    [view, from, to, districts, crop, season, priceType, priceSeries, landUseDistrict, stateSeriesMetric],
   );
 
   const updateFilters = useCallback(
@@ -83,12 +84,9 @@ export function useDashboardFilters() {
           }
         }
 
-        if (updates.crops !== undefined) {
-          if (updates.crops.length === 0 || (updates.crops.length === 1 && updates.crops[0] === PADDY_CROP_ID)) {
-            next.delete('crops');
-          } else {
-            next.set('crops', updates.crops.join(','));
-          }
+        if (updates.crop !== undefined) {
+          if (updates.crop === PADDY_CROP_ID) next.delete('crop');
+          else next.set('crop', updates.crop);
         }
 
         if (updates.season !== undefined) {
@@ -99,6 +97,11 @@ export function useDashboardFilters() {
         if (updates.priceType !== undefined) {
           if (updates.priceType === 'farm_harvest') next.delete('price_type');
           else next.set('price_type', updates.priceType);
+        }
+
+        if (updates.priceSeries !== undefined) {
+          if (updates.priceSeries === 'synthetic') next.delete('series');
+          else next.set('series', updates.priceSeries);
         }
 
         if (updates.landUseDistrict !== undefined) {

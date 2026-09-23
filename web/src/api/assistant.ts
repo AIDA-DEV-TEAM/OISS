@@ -1,37 +1,32 @@
 /**
- * Adapter: conversational assistant (RFP area 5).
+ * Adapter: conversational assistant (RFP area 5). Real, as of task 6.
  *
- * Mocked until task 6 builds POST /assistant/ask. The predefined questions ship
- * with cached answers so the demo is identical every time and survives the
- * provider being unreachable, which is what prompt 6 asks for.
+ * The backend turns a free-text question into a validated query spec, runs
+ * it, and returns a paragraph whose every number was checked against the
+ * rows. Starter questions answer from the backend's shipped response cache,
+ * so the demo works with no model key and no network.
  */
 import { useMutation, useQuery } from '@tanstack/react-query';
 
-import type { AssistantAnswer } from '@/api/contracts';
-import { USE_MOCKS } from '@/mocks/config';
-import { mockAssistantAsk, mockAssistantQuestions } from '@/mocks/assistant';
+import type { AssistantAnswer, StarterQuestion } from '@/api/client';
+import { api } from '@/api/client';
 
-export interface PredefinedQuestion {
-  question_id: string;
-  question: string;
+export function fetchStarterQuestions(): Promise<StarterQuestion[]> {
+  return api.assistantQuestions().then((page) => page.items);
 }
 
-export function fetchAssistantQuestions(): Promise<PredefinedQuestion[]> {
-  if (USE_MOCKS) return mockAssistantQuestions();
-  throw new Error('GET /assistant/questions is not implemented yet (task 6).');
+export function askAssistant(question: string): Promise<AssistantAnswer> {
+  return api.ask(question);
 }
 
-export function askAssistant(questionId: string): Promise<AssistantAnswer> {
-  if (USE_MOCKS) return mockAssistantAsk(questionId);
-  throw new Error('POST /assistant/ask is not implemented yet (task 6).');
-}
-
-export function useAssistantQuestions() {
-  return useQuery({ queryKey: ['assistant-questions'], queryFn: fetchAssistantQuestions });
+export function useStarterQuestions() {
+  return useQuery({
+    queryKey: ['assistant-questions'],
+    queryFn: fetchStarterQuestions,
+    staleTime: Infinity,
+  });
 }
 
 export function useAskAssistant() {
-  return useMutation<AssistantAnswer, Error, string>({
-    mutationFn: (questionId) => askAssistant(questionId),
-  });
+  return useMutation<AssistantAnswer, Error, string>({ mutationFn: askAssistant });
 }

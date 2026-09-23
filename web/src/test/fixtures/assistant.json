@@ -1,0 +1,1165 @@
+{
+ "_source": "Captured from the backend (TestClient, shipped LLM cache, provider unreachable) by the assistant task; not hand-written. records_preview is cut to its first 5 rows to keep the file small.",
+ "questions": {
+  "items": [
+   {
+    "question_id": "district-compare-paddy-yield",
+    "question": "Which districts had the highest paddy yield in 2024-25?"
+   },
+   {
+    "question_id": "trend-paddy-production",
+    "question": "How has paddy production changed since 1993-94?"
+   },
+   {
+    "question_id": "leading-lagging-price",
+    "question": "Which districts lead and lag on farm-harvest prices for potato in 2018-19?"
+   },
+   {
+    "question_id": "fhp-wholesale-gap",
+    "question": "What is the gap between farm-harvest and wholesale prices?"
+   },
+   {
+    "question_id": "paddy-price-msp",
+    "question": "What is the average price of paddy in Cuttack?"
+   },
+   {
+    "question_id": "block-level-prices-declined",
+    "question": "What were block-level wholesale prices in Bargarh in 2023-24?"
+   }
+  ],
+  "total": 6,
+  "page": 1,
+  "size": 6
+ },
+ "answers": {
+  "Which districts lead and lag on farm-harvest prices for potato in 2018-19?": {
+   "question": "Which districts lead and lag on farm-harvest prices for potato in 2018-19?",
+   "status": "answered",
+   "answer": "In the official 2018-19 figures, Malkangiri led on the farm-harvest price of potato at 1,583 Rs/quintal, followed by Nayagarh at 1,480 and Boudh at 1,400 Rs/quintal. Khordha lagged at 815 Rs/quintal, behind Kalahandi at 900 and Kandhamal at 950 Rs/quintal.",
+   "answer_source": "model",
+   "limitation": null,
+   "interpretation": {
+    "metric": "avg_price",
+    "metric_label": "Average price",
+    "unit": "Rs/quintal",
+    "dimensions": [
+     {
+      "id": "district",
+      "label": "District"
+     }
+    ],
+    "filters": [
+     {
+      "dimension": "crop",
+      "op": "eq",
+      "values": [
+       "CR18"
+      ],
+      "dimension_label": "Crop",
+      "values_display": [
+       "Potato (CR18)"
+      ]
+     },
+     {
+      "dimension": "price_type",
+      "op": "eq",
+      "values": [
+       "farm_harvest"
+      ],
+      "dimension_label": "Price type",
+      "values_display": [
+       "Farm harvest (farm_harvest)"
+      ]
+     },
+     {
+      "dimension": "data_origin",
+      "op": "eq",
+      "values": [
+       "official"
+      ],
+      "dimension_label": "Data origin",
+      "values_display": [
+       "official"
+      ]
+     },
+     {
+      "dimension": "agri_year",
+      "op": "eq",
+      "values": [
+       "2018-19"
+      ],
+      "dimension_label": "Agricultural year",
+      "values_display": [
+       "2018-19"
+      ]
+     }
+    ],
+    "period": "2018-19",
+    "order": "By value, highest first",
+    "limit": 30,
+    "corrected": false,
+    "model": "fixture"
+   },
+   "query_spec": {
+    "metric": "avg_price",
+    "dimensions": [
+     "district"
+    ],
+    "filters": [
+     {
+      "dimension": "crop",
+      "op": "eq",
+      "values": [
+       "CR18"
+      ]
+     },
+     {
+      "dimension": "price_type",
+      "op": "eq",
+      "values": [
+       "farm_harvest"
+      ]
+     },
+     {
+      "dimension": "data_origin",
+      "op": "eq",
+      "values": [
+       "official"
+      ]
+     },
+     {
+      "dimension": "agri_year",
+      "op": "eq",
+      "values": [
+       "2018-19"
+      ]
+     }
+    ],
+    "period": null,
+    "order_by": {
+     "field": "value",
+     "direction": "desc"
+    },
+    "limit": 30,
+    "include_records": false
+   },
+   "chart_spec": {
+    "kind": "bar",
+    "x_key": "district",
+    "y_key": "value",
+    "unit": "Rs/quintal",
+    "series_label": "Average price",
+    "data": [
+     {
+      "district": "Malkangiri",
+      "value": 1583.0
+     },
+     {
+      "district": "Nayagarh",
+      "value": 1480.0
+     },
+     {
+      "district": "Boudh",
+      "value": 1400.0
+     },
+     {
+      "district": "Subarnapur",
+      "value": 1398.0
+     },
+     {
+      "district": "Dhenkanal",
+      "value": 1385.0
+     },
+     {
+      "district": "Gajapati",
+      "value": 1374.0
+     },
+     {
+      "district": "Deogarh",
+      "value": 1367.0
+     },
+     {
+      "district": "Koraput",
+      "value": 1355.0
+     },
+     {
+      "district": "Ganjam",
+      "value": 1274.0
+     },
+     {
+      "district": "Angul",
+      "value": 1267.0
+     },
+     {
+      "district": "Rayagada",
+      "value": 1250.0
+     },
+     {
+      "district": "Bargarh",
+      "value": 1246.0
+     },
+     {
+      "district": "Nuapada",
+      "value": 1246.0
+     },
+     {
+      "district": "Jagatsinghpur",
+      "value": 1240.0
+     },
+     {
+      "district": "Nabarangpur",
+      "value": 1239.0
+     },
+     {
+      "district": "Bhadrak",
+      "value": 1230.0
+     },
+     {
+      "district": "Puri",
+      "value": 1229.0
+     },
+     {
+      "district": "Sundargarh",
+      "value": 1170.0
+     },
+     {
+      "district": "Mayurbhanj",
+      "value": 1142.0
+     },
+     {
+      "district": "Keonjhar",
+      "value": 1127.0
+     },
+     {
+      "district": "Balangir",
+      "value": 1100.0
+     },
+     {
+      "district": "Cuttack",
+      "value": 1077.0
+     },
+     {
+      "district": "Balasore",
+      "value": 1050.0
+     },
+     {
+      "district": "Kendrapara",
+      "value": 1025.0
+     },
+     {
+      "district": "Sambalpur",
+      "value": 1016.0
+     },
+     {
+      "district": "Jajpur",
+      "value": 1000.0
+     },
+     {
+      "district": "Jharsuguda",
+      "value": 982.0
+     },
+     {
+      "district": "Kandhamal",
+      "value": 950.0
+     },
+     {
+      "district": "Kalahandi",
+      "value": 900.0
+     },
+     {
+      "district": "Khordha",
+      "value": 815.0
+     }
+    ]
+   },
+   "applied_filters": [
+    {
+     "dimension": "crop",
+     "op": "eq",
+     "values": [
+      "CR18"
+     ],
+     "dimension_label": "Crop",
+     "values_display": [
+      "Potato (CR18)"
+     ]
+    },
+    {
+     "dimension": "price_type",
+     "op": "eq",
+     "values": [
+      "farm_harvest"
+     ],
+     "dimension_label": "Price type",
+     "values_display": [
+      "Farm harvest (farm_harvest)"
+     ]
+    },
+    {
+     "dimension": "data_origin",
+     "op": "eq",
+     "values": [
+      "official"
+     ],
+     "dimension_label": "Data origin",
+     "values_display": [
+      "official"
+     ]
+    },
+    {
+     "dimension": "agri_year",
+     "op": "eq",
+     "values": [
+      "2018-19"
+     ],
+     "dimension_label": "Agricultural year",
+     "values_display": [
+      "2018-19"
+     ]
+    }
+   ],
+   "source_datasets": [
+    {
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "dataset_name": "price_statistics_2020",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv",
+     "layer": "raw"
+    }
+   ],
+   "period": "2018-19",
+   "rows": [
+    {
+     "district": "Malkangiri",
+     "district_id": "OD21",
+     "value": 1583.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Nayagarh",
+     "district_id": "OD24",
+     "value": 1480.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Boudh",
+     "district_id": "OD06",
+     "value": 1400.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Subarnapur",
+     "district_id": "OD29",
+     "value": 1398.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Dhenkanal",
+     "district_id": "OD09",
+     "value": 1385.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Gajapati",
+     "district_id": "OD10",
+     "value": 1374.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Deogarh",
+     "district_id": "OD08",
+     "value": 1367.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Koraput",
+     "district_id": "OD20",
+     "value": 1355.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Ganjam",
+     "district_id": "OD11",
+     "value": 1274.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Angul",
+     "district_id": "OD01",
+     "value": 1267.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Rayagada",
+     "district_id": "OD27",
+     "value": 1250.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Bargarh",
+     "district_id": "OD04",
+     "value": 1246.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Nuapada",
+     "district_id": "OD25",
+     "value": 1246.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Jagatsinghpur",
+     "district_id": "OD12",
+     "value": 1240.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Nabarangpur",
+     "district_id": "OD23",
+     "value": 1239.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Bhadrak",
+     "district_id": "OD05",
+     "value": 1230.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Puri",
+     "district_id": "OD26",
+     "value": 1229.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Sundargarh",
+     "district_id": "OD30",
+     "value": 1170.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Mayurbhanj",
+     "district_id": "OD22",
+     "value": 1142.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Keonjhar",
+     "district_id": "OD18",
+     "value": 1127.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Balangir",
+     "district_id": "OD02",
+     "value": 1100.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Cuttack",
+     "district_id": "OD07",
+     "value": 1077.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Balasore",
+     "district_id": "OD03",
+     "value": 1050.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Kendrapara",
+     "district_id": "OD17",
+     "value": 1025.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Sambalpur",
+     "district_id": "OD28",
+     "value": 1016.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Jajpur",
+     "district_id": "OD13",
+     "value": 1000.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Jharsuguda",
+     "district_id": "OD14",
+     "value": 982.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Kandhamal",
+     "district_id": "OD16",
+     "value": 950.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Kalahandi",
+     "district_id": "OD15",
+     "value": 900.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "district": "Khordha",
+     "district_id": "OD19",
+     "value": 815.0,
+     "unit": "Rs/quintal"
+    }
+   ],
+   "records_preview": [
+    {
+     "agri_year": "2018-19",
+     "month": "2018-19",
+     "district_id": "OD01",
+     "district_name": "Angul",
+     "crop_id": "CR18",
+     "crop_name": "Potato",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1267.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "ok",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2018-19",
+     "month": "2018-19",
+     "district_id": "OD02",
+     "district_name": "Balangir",
+     "crop_id": "CR18",
+     "crop_name": "Potato",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1100.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "ok",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2018-19",
+     "month": "2018-19",
+     "district_id": "OD03",
+     "district_name": "Balasore",
+     "crop_id": "CR18",
+     "crop_name": "Potato",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1050.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "ok",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2018-19",
+     "month": "2018-19",
+     "district_id": "OD04",
+     "district_name": "Bargarh",
+     "crop_id": "CR18",
+     "crop_name": "Potato",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1246.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "ok",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2018-19",
+     "month": "2018-19",
+     "district_id": "OD05",
+     "district_name": "Bhadrak",
+     "crop_id": "CR18",
+     "crop_name": "Potato",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1230.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "ok",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    }
+   ],
+   "records_total": 30,
+   "caveats": [],
+   "applied_context": {
+    "metric": "avg_price",
+    "metric_label": "Average price",
+    "unit": "Rs/quintal",
+    "dimensions": [
+     "district"
+    ],
+    "filters": [
+     {
+      "dimension": "crop",
+      "op": "eq",
+      "values": [
+       "CR18"
+      ],
+      "dimension_label": "Crop",
+      "values_display": [
+       "Potato (CR18)"
+      ]
+     },
+     {
+      "dimension": "price_type",
+      "op": "eq",
+      "values": [
+       "farm_harvest"
+      ],
+      "dimension_label": "Price type",
+      "values_display": [
+       "Farm harvest (farm_harvest)"
+      ]
+     },
+     {
+      "dimension": "data_origin",
+      "op": "eq",
+      "values": [
+       "official"
+      ],
+      "dimension_label": "Data origin",
+      "values_display": [
+       "official"
+      ]
+     },
+     {
+      "dimension": "agri_year",
+      "op": "eq",
+      "values": [
+       "2018-19"
+      ],
+      "dimension_label": "Agricultural year",
+      "values_display": [
+       "2018-19"
+      ]
+     }
+    ],
+    "period": null,
+    "relation": "analytics.v_price",
+    "source_datasets": [
+     {
+      "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+      "dataset_name": "price_statistics_2020",
+      "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv",
+      "layer": "raw"
+     }
+    ],
+    "data_origin": {
+     "official": 30,
+     "synthetic": 0
+    },
+    "grain_source": {},
+    "row_count": 30,
+    "underlying_row_count": 30,
+    "generated_at": "2026-09-22T20:26:45.733600+00:00",
+    "provenance_notes": []
+   },
+   "data_origin": {
+    "official": 30,
+    "synthetic": 0
+   },
+   "grain_source": {},
+   "provenance_notes": [],
+   "llm_calls": [
+    {
+     "purpose": "interpret",
+     "model": "fixture",
+     "served_from_cache": true,
+     "outcome": "ok",
+     "error": null
+    },
+    {
+     "purpose": "answer",
+     "model": "fixture",
+     "served_from_cache": true,
+     "outcome": "ok",
+     "error": null
+    }
+   ],
+   "served_from_cache": true
+  },
+  "What is the average price of paddy in Cuttack?": {
+   "question": "What is the average price of paddy in Cuttack?",
+   "status": "answered",
+   "answer": "The official farm-harvest price of paddy in Cuttack rose from 1,310 Rs/quintal in 2013-14 to 1,750 Rs/quintal in 2018-19, passing 1,410 in 2015-16 and 1,550 in 2017-18. These are not observed market prices: the publication records paddy at the Minimum Support Price, so the series shows what procurement paid rather than what the market found.",
+   "answer_source": "model",
+   "limitation": null,
+   "interpretation": {
+    "metric": "avg_price",
+    "metric_label": "Average price",
+    "unit": "Rs/quintal",
+    "dimensions": [
+     {
+      "id": "agri_year",
+      "label": "Agricultural year"
+     }
+    ],
+    "filters": [
+     {
+      "dimension": "district",
+      "op": "eq",
+      "values": [
+       "OD07"
+      ],
+      "dimension_label": "District",
+      "values_display": [
+       "Cuttack (OD07)"
+      ]
+     },
+     {
+      "dimension": "crop",
+      "op": "eq",
+      "values": [
+       "CR17"
+      ],
+      "dimension_label": "Crop",
+      "values_display": [
+       "Paddy (CR17)"
+      ]
+     },
+     {
+      "dimension": "price_type",
+      "op": "eq",
+      "values": [
+       "farm_harvest"
+      ],
+      "dimension_label": "Price type",
+      "values_display": [
+       "Farm harvest (farm_harvest)"
+      ]
+     },
+     {
+      "dimension": "data_origin",
+      "op": "eq",
+      "values": [
+       "official"
+      ],
+      "dimension_label": "Data origin",
+      "values_display": [
+       "official"
+      ]
+     }
+    ],
+    "period": "2013-14 to 2018-19",
+    "order": "By agricultural year, ascending",
+    "limit": 100,
+    "corrected": false,
+    "model": "fixture"
+   },
+   "query_spec": {
+    "metric": "avg_price",
+    "dimensions": [
+     "agri_year"
+    ],
+    "filters": [
+     {
+      "dimension": "district",
+      "op": "eq",
+      "values": [
+       "OD07"
+      ]
+     },
+     {
+      "dimension": "crop",
+      "op": "eq",
+      "values": [
+       "CR17"
+      ]
+     },
+     {
+      "dimension": "price_type",
+      "op": "eq",
+      "values": [
+       "farm_harvest"
+      ]
+     },
+     {
+      "dimension": "data_origin",
+      "op": "eq",
+      "values": [
+       "official"
+      ]
+     }
+    ],
+    "period": null,
+    "order_by": {
+     "field": "agri_year",
+     "direction": "asc"
+    },
+    "limit": 100,
+    "include_records": false
+   },
+   "chart_spec": {
+    "kind": "line",
+    "x_key": "agri_year",
+    "y_key": "value",
+    "unit": "Rs/quintal",
+    "series_label": "Average price",
+    "data": [
+     {
+      "agri_year": "2013-14",
+      "value": 1310.0
+     },
+     {
+      "agri_year": "2014-15",
+      "value": 1360.0
+     },
+     {
+      "agri_year": "2015-16",
+      "value": 1410.0
+     },
+     {
+      "agri_year": "2016-17",
+      "value": 1470.0
+     },
+     {
+      "agri_year": "2017-18",
+      "value": 1550.0
+     },
+     {
+      "agri_year": "2018-19",
+      "value": 1750.0
+     }
+    ]
+   },
+   "applied_filters": [
+    {
+     "dimension": "district",
+     "op": "eq",
+     "values": [
+      "OD07"
+     ],
+     "dimension_label": "District",
+     "values_display": [
+      "Cuttack (OD07)"
+     ]
+    },
+    {
+     "dimension": "crop",
+     "op": "eq",
+     "values": [
+      "CR17"
+     ],
+     "dimension_label": "Crop",
+     "values_display": [
+      "Paddy (CR17)"
+     ]
+    },
+    {
+     "dimension": "price_type",
+     "op": "eq",
+     "values": [
+      "farm_harvest"
+     ],
+     "dimension_label": "Price type",
+     "values_display": [
+      "Farm harvest (farm_harvest)"
+     ]
+    },
+    {
+     "dimension": "data_origin",
+     "op": "eq",
+     "values": [
+      "official"
+     ],
+     "dimension_label": "Data origin",
+     "values_display": [
+      "official"
+     ]
+    }
+   ],
+   "source_datasets": [
+    {
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "dataset_name": "price_statistics_2020",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv",
+     "layer": "raw"
+    }
+   ],
+   "period": "2013-14 to 2018-19",
+   "rows": [
+    {
+     "agri_year": "2013-14",
+     "value": 1310.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "agri_year": "2014-15",
+     "value": 1360.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "agri_year": "2015-16",
+     "value": 1410.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "agri_year": "2016-17",
+     "value": 1470.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "agri_year": "2017-18",
+     "value": 1550.0,
+     "unit": "Rs/quintal"
+    },
+    {
+     "agri_year": "2018-19",
+     "value": 1750.0,
+     "unit": "Rs/quintal"
+    }
+   ],
+   "records_preview": [
+    {
+     "agri_year": "2013-14",
+     "month": "2013-14",
+     "district_id": "OD07",
+     "district_name": "Cuttack",
+     "crop_id": "CR17",
+     "crop_name": "Paddy",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1310.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "provisional",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2014-15",
+     "month": "2014-15",
+     "district_id": "OD07",
+     "district_name": "Cuttack",
+     "crop_id": "CR17",
+     "crop_name": "Paddy",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1360.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "provisional",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2015-16",
+     "month": "2015-16",
+     "district_id": "OD07",
+     "district_name": "Cuttack",
+     "crop_id": "CR17",
+     "crop_name": "Paddy",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1410.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "provisional",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2016-17",
+     "month": "2016-17",
+     "district_id": "OD07",
+     "district_name": "Cuttack",
+     "crop_id": "CR17",
+     "crop_name": "Paddy",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1470.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "provisional",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    },
+    {
+     "agri_year": "2017-18",
+     "month": "2017-18",
+     "district_id": "OD07",
+     "district_name": "Cuttack",
+     "crop_id": "CR17",
+     "crop_name": "Paddy",
+     "price_type": "farm_harvest",
+     "price_rs_per_quintal": 1550.0,
+     "unit": "Rs/quintal",
+     "data_origin": "official",
+     "value_status": "provisional",
+     "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+     "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv"
+    }
+   ],
+   "records_total": 6,
+   "caveats": [
+    {
+     "code": "MSP_SUBSTITUTED",
+     "severity": "info",
+     "message": "6 paddy price rows are the Minimum Support Price, which the report prints in place of an observed market price.",
+     "affected_rows": 6
+    }
+   ],
+   "applied_context": {
+    "metric": "avg_price",
+    "metric_label": "Average price",
+    "unit": "Rs/quintal",
+    "dimensions": [
+     "agri_year"
+    ],
+    "filters": [
+     {
+      "dimension": "district",
+      "op": "eq",
+      "values": [
+       "OD07"
+      ],
+      "dimension_label": "District",
+      "values_display": [
+       "Cuttack (OD07)"
+      ]
+     },
+     {
+      "dimension": "crop",
+      "op": "eq",
+      "values": [
+       "CR17"
+      ],
+      "dimension_label": "Crop",
+      "values_display": [
+       "Paddy (CR17)"
+      ]
+     },
+     {
+      "dimension": "price_type",
+      "op": "eq",
+      "values": [
+       "farm_harvest"
+      ],
+      "dimension_label": "Price type",
+      "values_display": [
+       "Farm harvest (farm_harvest)"
+      ]
+     },
+     {
+      "dimension": "data_origin",
+      "op": "eq",
+      "values": [
+       "official"
+      ],
+      "dimension_label": "Data origin",
+      "values_display": [
+       "official"
+      ]
+     }
+    ],
+    "period": null,
+    "relation": "analytics.v_price",
+    "source_datasets": [
+     {
+      "dataset_version_id": "price_statistics_2020@7b601ba6d90c",
+      "dataset_name": "price_statistics_2020",
+      "source_file": "C:\\Users\\AnshKumar\\Desktop\\OISS-PoC\\data\\extracted\\price_statistics_odisha_2020_raw_long.csv",
+      "layer": "raw"
+     }
+    ],
+    "data_origin": {
+     "official": 6,
+     "synthetic": 0
+    },
+    "grain_source": {},
+    "row_count": 6,
+    "underlying_row_count": 6,
+    "generated_at": "2026-09-22T20:26:45.932430+00:00",
+    "provenance_notes": []
+   },
+   "data_origin": {
+    "official": 6,
+    "synthetic": 0
+   },
+   "grain_source": {},
+   "provenance_notes": [],
+   "llm_calls": [
+    {
+     "purpose": "interpret",
+     "model": "fixture",
+     "served_from_cache": true,
+     "outcome": "ok",
+     "error": null
+    },
+    {
+     "purpose": "answer",
+     "model": "fixture",
+     "served_from_cache": true,
+     "outcome": "ok",
+     "error": null
+    }
+   ],
+   "served_from_cache": true
+  },
+  "What were block-level wholesale prices in Bargarh in 2023-24?": {
+   "question": "What were block-level wholesale prices in Bargarh in 2023-24?",
+   "status": "declined",
+   "answer": "This cannot be answered from the loaded data.",
+   "answer_source": "model",
+   "limitation": "Prices are held at district grain only, so there is no block-level price for Bargarh or any other district. Official prices also end at 2018-19; later years exist only as synthetic figures.",
+   "interpretation": null,
+   "query_spec": null,
+   "chart_spec": null,
+   "applied_filters": [],
+   "source_datasets": [],
+   "period": null,
+   "rows": [],
+   "records_preview": [],
+   "records_total": 0,
+   "caveats": [],
+   "applied_context": null,
+   "data_origin": {},
+   "grain_source": {},
+   "provenance_notes": [],
+   "llm_calls": [
+    {
+     "purpose": "interpret",
+     "model": "fixture",
+     "served_from_cache": true,
+     "outcome": "ok",
+     "error": null
+    }
+   ],
+   "served_from_cache": true
+  },
+  "How much rain fell in Puri last year?": {
+   "question": "How much rain fell in Puri last year?",
+   "status": "unavailable",
+   "answer": "The language model could not be reached and this question has not been answered before, so it could not be interpreted. The starter questions answer from the stored cache.",
+   "answer_source": null,
+   "limitation": "gemini-2.5-flash could not be reached",
+   "interpretation": null,
+   "query_spec": null,
+   "chart_spec": null,
+   "applied_filters": [],
+   "source_datasets": [],
+   "period": null,
+   "rows": [],
+   "records_preview": [],
+   "records_total": 0,
+   "caveats": [],
+   "applied_context": null,
+   "data_origin": {},
+   "grain_source": {},
+   "provenance_notes": [],
+   "llm_calls": [
+    {
+     "purpose": "interpret",
+     "model": "gemini-2.5-flash",
+     "served_from_cache": false,
+     "outcome": "unavailable",
+     "error": "gemini-2.5-flash could not be reached"
+    }
+   ],
+   "served_from_cache": false
+  }
+ }
+}

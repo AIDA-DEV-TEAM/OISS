@@ -6,6 +6,9 @@
  * backend does not send. Nothing here is invented.
  */
 import fixtures from '@/test/fixtures/backend.json';
+import sandbox from '@/test/fixtures/sandbox.json';
+import assistant from '@/test/fixtures/assistant.json';
+import narrative from '@/test/fixtures/narrative.json';
 
 export const VERSION_ID = 'earas_2022_23_block_paddy@33743b3c4831';
 
@@ -62,7 +65,14 @@ function handleQuery(spec: Record<string, any>) {
       rows = [{ value: 174828800.0, unit: 'qtl', grain_source: 'published_district' }];
     }
   } else if (metric === 'area') {
-    if (dimensions.includes('district')) {
+    if (dimensions.includes('crop')) {
+      // The agriculture view's crop list: crops with area on record.
+      rows = [
+        { crop: 'Paddy', crop_id: 'CR17', value: 12496000.0 },
+        { crop: 'Potato', crop_id: 'CR18', value: 35000.0 },
+        { crop: 'Mustard', crop_id: 'CR14', value: 52000.0 },
+      ];
+    } else if (dimensions.includes('district')) {
       rows = [
         { district: 'Bargarh', district_id: 'OD04', value: 215000.0, grain_source: 'published_district' },
         { district: 'Sambalpur', district_id: 'OD28', value: 178000.0, grain_source: 'published_district' },
@@ -122,7 +132,7 @@ function handleQuery(spec: Record<string, any>) {
     } else if (dimensions.includes('crop')) {
       rows = [
         { crop: 'Paddy', crop_id: 'CR17', value: 2183.0 },
-        { crop: 'Wheat', crop_id: 'CR29', value: 2450.0 },
+        { crop: 'Wheat', crop_id: 'CR23', value: 2450.0 },
       ];
     } else if (dimensions.includes('price_type')) {
       rows = [
@@ -203,7 +213,83 @@ function handleRecords(_spec: Record<string, any>) {
   };
 }
 
+/** Two exports as GET /exports returns them, with the context they carry. */
+const exportRecords = [
+  {
+    export_id: 'exp-4c1f2a9b77de',
+    export_type: 'dashboard_panel',
+    format: 'xlsx',
+    status: 'completed',
+    filename: 'district_price_comparison_exp-4c1f2a9b77de.xlsx',
+    size_bytes: 24_918,
+    created_at: '2026-02-14T06:41:05+00:00',
+    context: {
+      panel_title: 'District Price Comparison',
+      metric: 'avg_price',
+      metric_label: 'Average price',
+      unit: 'Rs/quintal',
+      dimensions: ['district'],
+      // As the backend describes them: labels from the masters, not the browser.
+      filters: [
+        {
+          dimension: 'crop',
+          op: 'in',
+          values: ['CR01'],
+          dimension_label: 'Crop',
+          values_display: ['Arhar (CR01)'],
+        },
+      ],
+      period: { from: '2017-18', to: '2018-19' },
+      period_label: '2017-18 to 2018-19',
+      relation: 'analytics.v_price',
+      source_datasets: defaultSourceDatasets,
+      data_origin: { official: 60 },
+      grain_source: {},
+      row_count: 22,
+      underlying_row_count: 60,
+      provenance_notes: [],
+      caveats: [],
+      context_origin: 'derived',
+      generated_at: '2026-02-14T06:41:05+00:00',
+    },
+  },
+  {
+    export_id: 'exp-90b3ee15c204',
+    export_type: 'model_output',
+    format: 'json',
+    status: 'completed',
+    filename: 'minor_crop_yield_estimates_exp-90b3ee15c204.json',
+    size_bytes: 9_402,
+    created_at: '2026-02-14T06:52:31+00:00',
+    context: {
+      panel_title: 'Minor-crop yield estimates',
+      period_label: '2024-25',
+      filters: [],
+      source_datasets: [],
+      data_origin: { model: 18 },
+      grain_source: {},
+      row_count: 18,
+      underlying_row_count: 18,
+      provenance_notes: ['Analytical Estimates'],
+      caveats: [],
+      context_origin: 'supplied by the calling surface',
+      generated_at: '2026-02-14T06:52:31+00:00',
+    },
+  },
+];
+
 const routes: Array<{ match: RegExp; handler: Handler }> = [
+  {
+    match: /\/api\/exports(\?|$)/,
+    handler: () => ({
+      items: exportRecords,
+      total: exportRecords.length,
+      page: 1,
+      size: 50,
+    }),
+  },
+  // As GET /exports/limits answers: the ceiling the export service enforces.
+  { match: /\/api\/exports\/limits$/, handler: () => ({ row_ceiling: 100_000 }) },
   { match: /\/api\/health$/, handler: () => fixtures.health },
   { match: /\/api\/datasets(\?|$)/, handler: () => fixtures.datasets },
   { match: /\/validation\/summary$/, handler: () => fixtures.validationSummary },
@@ -240,6 +326,37 @@ const routes: Array<{ match: RegExp; handler: Handler }> = [
       return handleQuery(body);
     },
   },
+  // Captured from the backend; see the fixture's _source.
+  { match: /\/api\/dashboard\/forecasts$/, handler: () => sandbox.forecasts },
+  { match: /\/api\/sandbox\/model-config$/, handler: () => sandbox.modelConfig },
+  { match: /\/api\/sandbox\/datasets$/, handler: () => sandbox.datasets },
+  // A run the model service answered, except for its held-out records (422).
+  { match: /\/api\/sandbox\/runs$/, handler: () => sandbox.runWithWarnings.status },
+  {
+    match: /\/api\/sandbox\/runs\/[^/]+\/results$/,
+    handler: () => sandbox.runWithWarnings.results,
+  },
+  { match: /\/api\/sandbox\/runs\/[^/]+$/, handler: () => sandbox.runWithWarnings.status },
+  { match: /\/api\/assistant\/questions$/, handler: () => assistant.questions },
+  {
+    match: /\/api\/narrative\/dashboard$/,
+    handler: (_url, init) => {
+      // Captured for each view's default spec; the price view asks about prices.
+      const { query_spec } = init?.body ? JSON.parse(String(init.body)) : { query_spec: {} };
+      return query_spec?.metric === 'avg_price' ? narrative.price : narrative.agriculture;
+    },
+  },
+  {
+    match: /\/api\/assistant\/ask$/,
+    handler: (_url, init) => {
+      // Captured answers, keyed by question; anything else gets the captured
+      // "model unreachable" answer, which is what the backend returns for a
+      // question it has not seen with no model configured.
+      const { question } = init?.body ? JSON.parse(String(init.body)) : { question: '' };
+      const answers: Record<string, unknown> = assistant.answers;
+      return answers[question] ?? answers['How much rain fell in Puri last year?'];
+    },
+  },
 ];
 
 export function installFetchStub(): void {
@@ -251,7 +368,7 @@ export function installFetchStub(): void {
     const ordered = [...routes].sort((a, b) => b.match.source.length - a.match.source.length);
     for (const route of ordered) {
       if (route.match.test(url.pathname + url.search)) {
-        const body = route.handler(url, init);
+        const body = await route.handler(url, init);
         if (body === undefined) {
           return new Response(JSON.stringify({ detail: 'not found', code: 'not_found' }), {
             status: 404,

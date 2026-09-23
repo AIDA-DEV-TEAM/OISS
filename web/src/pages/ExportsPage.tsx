@@ -8,8 +8,8 @@
  */
 import { useState } from 'react';
 
-import type { ExportRecord } from '@/api/contracts';
-import { useRecentExports } from '@/api/exports';
+import type { ExportRecord } from '@/api/client';
+import { exportDownloadUrl, useRecentExports } from '@/api/exports';
 import { DataTable } from '@/components/DataTable';
 import type { Column } from '@/components/DataTable';
 import { Drawer } from '@/components/Drawer';
@@ -18,6 +18,7 @@ import { Badge, Card, DefinitionList, Figure } from '@/components/primitives';
 import { CaveatList } from '@/components/provenance';
 import { ProvenanceNote } from '@/components/ProvenanceNote';
 import { AsyncPanel } from '@/components/states';
+import { filterPhrase } from '@/lib/exportContext';
 import { formatBytes, formatTimestamp } from '@/lib/format';
 
 const FORMAT_LABEL: Record<string, string> = {
@@ -39,6 +40,12 @@ const TYPE_LABEL: Record<string, string> = {
 export function ExportsPage() {
   const exports = useRecentExports();
   const [selected, setSelected] = useState<ExportRecord | null>(null);
+
+  // Context fields an export may legitimately lack — a chart image has no
+  // caveats, a payload-built file has no dataset versions — read once here.
+  const filters = selected?.context.filters ?? [];
+  const sources = selected?.context.source_datasets ?? [];
+  const caveats = selected?.context.caveats ?? [];
 
   const columns: Array<Column<ExportRecord>> = [
     {
@@ -93,14 +100,15 @@ export function ExportsPage() {
       key: 'download',
       header: 'Download',
       width: '120px',
-      render: () => (
-        <button
-          type="button"
+      render: (row) => (
+        <a
+          href={exportDownloadUrl(row.export_id)}
+          download={row.filename}
           onClick={(event) => event.stopPropagation()}
-          className="rounded border border-line bg-surface px-2.5 py-1 text-caption font-medium text-primary transition-colors duration-state hover:bg-primary-subtle"
+          className="inline-block rounded border border-line bg-surface px-2.5 py-1 text-caption font-medium text-primary transition-colors duration-state hover:bg-primary-subtle"
         >
           Download
-        </button>
+        </a>
       ),
     },
   ];
@@ -180,27 +188,36 @@ export function ExportsPage() {
                   { term: 'Panel', value: selected.context.panel_title, wide: true },
                   {
                     term: 'Rows',
-                    value: <Figure>{selected.context.row_count.toLocaleString('en-IN')}</Figure>,
+                    value: selected.context.truncated ? (
+                      <span className="text-warning font-medium">
+                        Truncated at {selected.context.row_count.toLocaleString()} of{' '}
+                        {(
+                          selected.context.matching_row_count ??
+                          selected.context.underlying_row_count
+                        )?.toLocaleString()}{' '}
+                        rows
+                      </span>
+                    ) : (
+                      <Figure>{selected.context.row_count.toLocaleString('en-IN')}</Figure>
+                    ),
                   },
-                  { term: 'Period', value: selected.context.period ?? '—' },
+                  { term: 'Period', value: selected.context.period_label ?? '—' },
                   {
                     term: 'Filters',
                     value:
-                      selected.context.filters.length === 0
+                      filters.length === 0
                         ? 'None'
-                        : selected.context.filters
-                            .map((f) => `${f.dimension}: ${f.values.join(', ')}`)
-                            .join(' · '),
+                        : filters.map(filterPhrase).join(' · '),
                     wide: true,
                   },
                   {
                     term: 'Source datasets',
                     value:
-                      selected.context.source_datasets.length === 0 ? (
+                      sources.length === 0 ? (
                         'None'
                       ) : (
                         <ul className="space-y-0.5">
-                          {selected.context.source_datasets.map((source) => (
+                          {sources.map((source) => (
                             <li key={source.dataset_version_id}>
                               <code className="text-caption">{source.dataset_version_id}</code>
                             </li>
@@ -209,13 +226,20 @@ export function ExportsPage() {
                       ),
                     wide: true,
                   },
+                  {
+                    term: 'Context',
+                    // "derived" means the service ran the query itself; a file
+                    // built from a surface without a spec says so instead.
+                    value: selected.context.context_origin ?? 'derived',
+                    wide: true,
+                  },
                 ]}
               />
             </Card>
 
-            {selected.context.caveats.length > 0 && (
+            {caveats.length > 0 && (
               <Card title="Caveats" description="Recorded in the file alongside the rows.">
-                <CaveatList caveats={selected.context.caveats} />
+                <CaveatList caveats={caveats} />
               </Card>
             )}
           </div>

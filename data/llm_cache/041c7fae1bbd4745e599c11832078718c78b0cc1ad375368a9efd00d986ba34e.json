@@ -1,0 +1,6 @@
+{
+  "key": "041c7fae1bbd4745e599c11832078718c78b0cc1ad375368a9efd00d986ba34e",
+  "model": "fixture",
+  "created_at": "2026-09-22T20:19:53+00:00",
+  "response": "{\"action\": \"query\", \"spec\": {\"metric\": \"production\", \"dimensions\": [\"agri_year\"], \"filters\": [{\"dimension\": \"crop\", \"op\": \"eq\", \"values\": [\"CR17\"]}, {\"dimension\": \"grain_source\", \"op\": \"eq\", \"values\": [\"published_state\"]}], \"period\": {\"from\": \"1993-94\"}, \"order_by\": {\"field\": \"agri_year\", \"direction\": \"asc\"}, \"limit\": 100}}"
+}

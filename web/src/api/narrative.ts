@@ -1,26 +1,24 @@
 /**
- * Adapter: grounded dashboard narrative (RFP area 4).
+ * Adapter: dashboard narrative (RFP area 4). Real, as of task 6.
  *
- * Mocked until task 6 builds POST /narrative/dashboard. The fact bundle behind
- * it, POST /query/narrative-facts, is real today — task 6 hands that bundle to
- * the model and post-validates every number in the prose against it.
+ * The backend computes the view's facts in SQL and has the model describe
+ * them, checking every number it writes against those facts. With no model
+ * available it states the same facts from a template, and says which wrote it.
  */
 import { useQuery } from '@tanstack/react-query';
 
-import type { DashboardNarrative } from '@/api/contracts';
-import { USE_MOCKS } from '@/mocks/config';
-import { mockDashboardNarrative } from '@/mocks/narrative';
+import type { DashboardNarrative, QuerySpec } from '@/api/client';
+import { api } from '@/api/client';
 
-export type NarrativeView = 'price' | 'agriculture';
-
-export function fetchDashboardNarrative(view: NarrativeView): Promise<DashboardNarrative> {
-  if (USE_MOCKS) return mockDashboardNarrative(view);
-  throw new Error('POST /narrative/dashboard is not implemented yet (task 6).');
+export function fetchDashboardNarrative(spec: QuerySpec): Promise<DashboardNarrative> {
+  return api.narrative(spec);
 }
 
-export function useDashboardNarrative(view: NarrativeView) {
+/** Keyed by the view's spec, so a filter change asks for a fresh narrative. */
+export function useDashboardNarrative(spec: QuerySpec) {
   return useQuery({
-    queryKey: ['dashboard-narrative', view],
-    queryFn: () => fetchDashboardNarrative(view),
+    queryKey: ['dashboard-narrative', spec],
+    queryFn: () => fetchDashboardNarrative(spec),
+    staleTime: Infinity,
   });
 }

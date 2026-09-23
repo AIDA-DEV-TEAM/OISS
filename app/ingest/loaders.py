@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Callable, Optional
+from typing import Callable, Optional, Sequence
 
 import duckdb
 import pandas as pd
@@ -25,6 +25,7 @@ from app.masters import periods
 from app.masters.crop_master import CROP_MASTER, resolve_crop, write_crop_master_csv
 from app.masters.districts import ALIASES_PATH, MASTER_PATH, district_master, resolve_district
 from app.masters.normalise import normalise_key
+from app.masters.price_types import PRICE_TYPE_ALIASES, PRICE_TYPE_MASTER
 from app.ingest.readers import SOURCES, SourceSpec, read_source, sha256_of
 from app.validation import rules as R
 from app.validation.rules import Finding, RuleContext
@@ -95,7 +96,7 @@ LAND_USE_NINE = (
     "Net area sown",
 )
 
-PRICE_TYPES = {"FARMHARVEST": "farm_harvest", "WHOLESALE": "wholesale"}
+PRICE_TYPES = PRICE_TYPE_ALIASES
 
 CELL_STATUS_TO_VALUE_STATUS = {
     "ok": "ok",
@@ -1166,34 +1167,45 @@ def populate_analytics(
         append_rows(con, "analytics.dim_period", periods.period_rows(pd.concat(period_frames)))
 
     for result in results:
-        target = result.spec.target_table
         staged = con.execute(f"SELECT * FROM {result.spec.staging_table}").df()
-        if staged.empty:
-            continue
-        if target == "fact_state_series":
-            # The period is year-grain there, so its 'season' is null; the real
-            # season lives in its own fact column.
-            staged = staged.drop(columns=["season"]).rename(
-                columns={"season_label": "season"}
-            )
-        elif "is_state_total" in staged.columns:
-            # State totals stay in staging for the reconciliation checks but are
-            # never mixed into district-grain analytics.
-            staged = staged[~staged["is_state_total"].astype(bool)]
-        wanted = list(FACT_COLUMNS[target])
-        missing = [column for column in wanted if column not in staged.columns]
-        if missing:
-            raise ValueError(f"{result.spec.name}: staging is missing {missing}")
-        frame = staged[wanted].sort_values(
-            wanted[:6], kind="stable", ignore_index=True
-        )
-        append_rows(con, f"analytics.{target}", frame)
+        frame = fact_frame(result.spec.target_table, staged, result.spec.name)
+        if frame is not None:
+            append_rows(con, f"analytics.{result.spec.target_table}", frame)
 
+
+
+def fact_frame(
+    target: str, staged: pd.DataFrame, label: str
+) -> Optional[pd.DataFrame]:
+    """Shape a staging frame into rows the fact table accepts.
+
+    Shared by the batch build and by upload promotion so a promoted row is
+    identical to the one the build would have written. Returns None when there
+    is nothing to load.
+    """
+    if staged.empty:
+        return None
+    if target == "fact_state_series":
+        # The period is year-grain there, so its 'season' is null; the real
+        # season lives in its own fact column.
+        staged = staged.drop(columns=["season"]).rename(columns={"season_label": "season"})
+    elif "is_state_total" in staged.columns:
+        # State totals stay in staging for the reconciliation checks but are
+        # never mixed into district-grain analytics.
+        staged = staged[~staged["is_state_total"].astype(bool)]
+    if staged.empty:
+        return None
+    wanted = list(FACT_COLUMNS[target])
+    missing = [column for column in wanted if column not in staged.columns]
+    if missing:
+        raise ValueError(f"{label}: staging is missing {missing}")
+    return staged[wanted].sort_values(wanted[:6], kind="stable", ignore_index=True)
 
 def load_masters(con: duckdb.DuckDBPyConnection, loaded_at: datetime) -> dict[str, str]:
-    """Load dim_district, dim_crop and dim_block, and version the master files."""
+    """Load dim_district, dim_crop, dim_price_type and dim_block, and version the master files."""
     append_rows(con, "analytics.dim_district", district_master())
     append_rows(con, "analytics.dim_crop", CROP_MASTER)
+    append_rows(con, "analytics.dim_price_type", PRICE_TYPE_MASTER)
     blocks_frame, lookup = build_block_dimension()
     append_rows(con, "analytics.dim_block", blocks_frame)
 
@@ -1440,6 +1452,123 @@ def build(db_path: Optional[Path] = None) -> dict[str, object]:
             "UPDATE analytics.load_run SET summary_json = ? WHERE run_id = ?",
             [json.dumps(summary, default=str), run_id],
         )
+        # Written last, so a build that fails part-way leaves no version for
+        # the backend to accept.
+        db.write_schema_version(con)
         return summary
     finally:
         con.close()
+
+# --------------------------------------------------------------------------
+# Unregistered uploads
+# --------------------------------------------------------------------------
+# Columns whose name says they hold a district, so an unregistered file still
+# gets its district names checked against the master.
+_DISTRICT_HINTS = ("district_as_published", "district", "district_name", "dist")
+
+# A column counts as numeric when this share of its populated cells parse as
+# numbers. Naming alone is not enough: the published extracts carry a
+# `raw_value` column of markers such as "-" and "S", which a name hint reads as
+# numeric and then condemns every row of a perfectly good file.
+_NUMERIC_RATIO = 0.8
+
+# Published markers that mean "no value here", not "bad value". The batch
+# loader blanks these before type-checking; an unregistered file gets the same
+# treatment so the same file does not fail one path and pass the other.
+_PUBLISHED_MARKERS = {"", "-", "--", "---", "S", "NA", "N/A", "NIL", "nil", "na"}
+
+
+def _columns_matching(frame: pd.DataFrame, hints: Sequence[str]) -> list[str]:
+    """Columns whose normalised name contains one of ``hints``."""
+    out: list[str] = []
+    for column in frame.columns:
+        lowered = str(column).strip().lower()
+        if any(hint in lowered for hint in hints):
+            out.append(column)
+    return out
+
+
+def _without_markers(series: pd.Series) -> pd.Series:
+    """The column with published annotations removed.
+
+    Two kinds. A whole-cell marker such as "-" or "S" means there is no value,
+    and becomes null. A trailing footnote marker such as the "*" on "1310*",
+    which flags an MSP substitution in the price tables, annotates a number that
+    is otherwise perfectly good, so only the marker is dropped.
+    """
+    stripped = series.astype("string").str.strip()
+    stripped = stripped.str.replace(r"[*†‡§¶]+$", "", regex=True).str.strip()
+    return stripped.mask(stripped.isin(_PUBLISHED_MARKERS), pd.NA)
+
+
+def _numeric_columns(frame: pd.DataFrame) -> list[str]:
+    """Columns that actually hold numbers, judged from the values themselves."""
+    numeric: list[str] = []
+    for column in frame.columns:
+        values = _without_markers(frame[column])
+        populated = values.notna().sum()
+        if populated == 0:
+            continue
+        parsed = _numeric(values).notna().sum()
+        if parsed / populated >= _NUMERIC_RATIO:
+            numeric.append(column)
+    return numeric
+
+
+def process_unregistered_source(
+    spec: SourceSpec,
+    path: Optional[Path] = None,
+) -> StageResult:
+    """Validate a file that matches no declared schema.
+
+    The same readers and the same rules as :func:`process_source`; what it
+    cannot do is transform, because there is no declared shape to transform
+    into. So it reports the generic problems that hold for any table -- text in
+    a numeric column, duplicate rows, gaps, and district names absent from the
+    master -- and stages nothing.
+    """
+    source_path = Path(path) if path is not None else spec.path
+    ctx = RuleContext(spec.name, ())
+    raw = read_source(spec, source_path)
+
+    findings: list[Finding] = []
+    # Blank the published markers first, exactly as the batch transforms do, so
+    # "-" reads as absent rather than as text in a numeric column.
+    cleaned = raw.copy()
+    for column in cleaned.columns:
+        cleaned[column] = _without_markers(cleaned[column])
+
+    numeric = _numeric_columns(cleaned)
+    if numeric:
+        findings += R.check_type_mismatch(cleaned, numeric, ctx)
+        findings += R.check_missing_value(cleaned, numeric, ctx)
+    # Whole-row duplicates: with no declared key, the row itself is the key.
+    findings += R.check_duplicate_key(raw, list(raw.columns), ctx)
+    for column in _columns_matching(raw, _DISTRICT_HINTS):
+        findings += R.check_unknown_district(raw, column, ctx)
+
+    bad = R.quarantine_index(findings)
+    quarantined = raw.loc[sorted(bad & set(raw.index))].copy()
+    if not quarantined.empty:
+        reasons: dict[int, list[str]] = {}
+        for finding in findings:
+            if finding.severity != "error":
+                continue
+            head = finding.row_ref.split("|", 1)[0]
+            if head.startswith("row="):
+                reasons.setdefault(int(head[4:]), []).append(finding.rule_code)
+        quarantined["quarantine_rules"] = [
+            ",".join(sorted(set(reasons.get(index, [])))) for index in quarantined.index
+        ]
+
+    digest = sha256_of(source_path)
+    return StageResult(
+        spec=spec,
+        dataset_version_id=dataset_version_id(spec.name, digest),
+        sha256=digest,
+        source_path=source_path,
+        raw=raw,
+        staged=raw.iloc[0:0],
+        quarantined=quarantined,
+        findings=findings,
+    )

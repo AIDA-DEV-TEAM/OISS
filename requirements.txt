@@ -5,6 +5,14 @@ pydantic==2.13.5
 python-multipart==0.0.32
 uvicorn==0.53.0
 
+# exports (RFP area 8): Excel, PDF and server-rendered chart images
+openpyxl==3.1.5
+reportlab==4.4.4
+matplotlib==3.10.7
+
+# sandbox (RFP areas 6-7): client for the external model service. Also what
+# FastAPI's TestClient runs on, so the tests need it too.
+httpx==0.28.1
+
 # tests
 pytest==9.1.1
-httpx==0.28.1

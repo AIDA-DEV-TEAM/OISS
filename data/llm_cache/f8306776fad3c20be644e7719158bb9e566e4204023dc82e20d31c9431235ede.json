@@ -1,0 +1,6 @@
+{
+  "key": "f8306776fad3c20be644e7719158bb9e566e4204023dc82e20d31c9431235ede",
+  "model": "fixture",
+  "created_at": "2026-09-22T20:19:54+00:00",
+  "response": "{\"action\": \"refuse\", \"limitation\": \"Prices are held at district grain only, so there is no block-level price for Bargarh or any other district. Official prices also end at 2018-19; later years exist only as synthetic figures.\"}"
+}

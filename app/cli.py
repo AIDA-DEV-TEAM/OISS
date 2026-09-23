@@ -6,7 +6,31 @@ import json
 import sys
 from pathlib import Path
 
-from app.config import DB_PATH
+from app.config import DB_PATH, ROOT
+
+
+def _venv_hint(missing: ModuleNotFoundError) -> str:
+    """What to do when the interpreter running this has no dependencies."""
+    windows = sys.platform == "win32"
+    venv = ROOT / ".venv" / ("Scripts" if windows else "bin") / ("python.exe" if windows else "python")
+    lines = [
+        f"{missing.name!r} is not installed for {sys.executable}.",
+        "",
+        "This is the interpreter, not the code: `python` on your PATH is not the",
+        "project virtualenv. Run the build with the virtualenv's interpreter:",
+        "",
+        f"    {venv} -m app.cli build",
+    ]
+    if not venv.exists():
+        lines += [
+            "",
+            "There is no .venv here yet. Create one and install the pinned",
+            "dependencies first:",
+            "",
+            "    python -m venv .venv",
+            f"    {venv} -m pip install -r requirements.txt",
+        ]
+    return "\n".join(lines)
 
 
 def _print_summary(summary: dict) -> None:
@@ -61,10 +85,21 @@ def main(argv: list[str] | None = None) -> int:
     build_parser.add_argument("--db", type=Path, default=DB_PATH)
     build_parser.add_argument("--json", action="store_true", help="emit the summary as JSON")
 
+    seed_parser = sub.add_parser(
+        "seed-assistant", help="record the starter questions into the shipped LLM cache"
+    )
+    seed_parser.add_argument("--db", type=Path, default=DB_PATH)
+
     args = parser.parse_args(argv)
 
     if args.command == "build":
-        from app.ingest.loaders import build
+        try:
+            from app.ingest.loaders import build
+        except ModuleNotFoundError as missing:
+            # Almost always the project virtualenv is not on PATH, and a bare
+            # ModuleNotFoundError sends people looking for a bug in the code.
+            print(_venv_hint(missing), file=sys.stderr)
+            return 2
 
         summary = build(args.db)
         if args.json:
@@ -72,6 +107,20 @@ def main(argv: list[str] | None = None) -> int:
         else:
             _print_summary(summary)
         return 0 if summary["status"] == "succeeded" else 1
+
+    if args.command == "seed-assistant":
+        from app import db
+        from app.assistant.seed import seed
+        from app.config import LLM_CACHE_DIR
+
+        con = db.connect(args.db)
+        try:
+            for item in seed(con, LLM_CACHE_DIR):
+                print(f"{item['status']:>9}  {item['question_id']}")
+        finally:
+            con.close()
+        print(f"cache: {LLM_CACHE_DIR}")
+        return 0
 
     return 2
 

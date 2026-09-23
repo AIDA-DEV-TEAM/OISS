@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useAvailableCrops } from '@/hooks/useAvailableCrops';
 
 import {
   AGRI_YEARS,
-  ALL_CROPS,
   ALL_DISTRICTS,
   PADDY_CROP_ID,
   PRICE_TYPES,
@@ -18,31 +19,35 @@ export interface DashboardFilterBarProps {
 
 export function DashboardFilterBar({ filters, onUpdate, onReset }: DashboardFilterBarProps) {
   const [districtMenuOpen, setDistrictMenuOpen] = useState(false);
-  const [cropMenuOpen, setCropMenuOpen] = useState(false);
   const [districtSearch, setDistrictSearch] = useState('');
-  const [cropSearch, setCropSearch] = useState('');
 
   const filteredDistricts = ALL_DISTRICTS.filter((d) =>
     d.name.toLowerCase().includes(districtSearch.toLowerCase()),
   );
 
-  const filteredCrops = ALL_CROPS.filter((c) =>
-    c.name.toLowerCase().includes(cropSearch.toLowerCase()),
-  );
+  // Only crops this view holds data for; the list changes with the view, the
+  // price type and the series.
+  const availableCrops = useAvailableCrops({
+    view: filters.view,
+    priceType: filters.priceType,
+    priceSeries: filters.priceSeries,
+  });
+
+  // A crop carried over from another view (or a wholesale switch) that has no
+  // data here falls back to paddy, which every view holds, rather than leaving
+  // every panel empty.
+  useEffect(() => {
+    const crops = availableCrops.data;
+    if (crops && crops.length > 0 && !crops.some((c) => c.id === filters.crop)) {
+      onUpdate({ crop: crops.some((c) => c.id === PADDY_CROP_ID) ? PADDY_CROP_ID : crops[0].id });
+    }
+  }, [availableCrops.data, filters.crop, onUpdate]);
 
   const toggleDistrict = (id: string) => {
     const next = filters.districts.includes(id)
       ? filters.districts.filter((d) => d !== id)
       : [...filters.districts, id];
     onUpdate({ districts: next });
-  };
-
-  const toggleCrop = (id: string) => {
-    const next = filters.crops.includes(id)
-      ? filters.crops.filter((c) => c !== id)
-      : [...filters.crops, id];
-    // Keep at least one crop selected
-    onUpdate({ crops: next.length > 0 ? next : [PADDY_CROP_ID] });
   };
 
   return (
@@ -88,14 +93,14 @@ export function DashboardFilterBar({ filters, onUpdate, onReset }: DashboardFilt
           </span>
           <button
             type="button"
-            onClick={() => onUpdate({ from: '2023-24', to: '2024-25', crops: [PADDY_CROP_ID], districts: [] })}
+            onClick={() => onUpdate({ from: '2023-24', to: '2024-25', crop: PADDY_CROP_ID, districts: [] })}
             className="rounded border border-line bg-surface px-2.5 py-1 text-caption text-ink hover:bg-surface-alt"
           >
             Latest Paddy (All Districts)
           </button>
           <button
             type="button"
-            onClick={() => onUpdate({ crops: [PADDY_CROP_ID] })}
+            onClick={() => onUpdate({ crop: PADDY_CROP_ID })}
             className="rounded border border-line bg-surface px-2.5 py-1 text-caption text-ink hover:bg-surface-alt"
           >
             Paddy Only
@@ -156,7 +161,6 @@ export function DashboardFilterBar({ filters, onUpdate, onReset }: DashboardFilt
             type="button"
             onClick={() => {
               setDistrictMenuOpen(!districtMenuOpen);
-              setCropMenuOpen(false);
             }}
             className="inline-flex items-center gap-1.5 rounded border border-line bg-surface px-3 py-1.5 text-body text-ink hover:border-line-strong focus:outline-none focus:ring-1 focus:ring-primary"
           >
@@ -217,92 +221,67 @@ export function DashboardFilterBar({ filters, onUpdate, onReset }: DashboardFilt
           )}
         </div>
 
-        {/* Crop Multi-select Dropdown */}
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => {
-              setCropMenuOpen(!cropMenuOpen);
-              setDistrictMenuOpen(false);
-            }}
-            className="inline-flex items-center gap-1.5 rounded border border-line bg-surface px-3 py-1.5 text-body text-ink hover:border-line-strong focus:outline-none focus:ring-1 focus:ring-primary"
-          >
-            <span className="text-caption font-medium uppercase tracking-header text-ink-subtle">Crops:</span>
-            <span className="font-medium">
-              {filters.crops.length === 1
-                ? ALL_CROPS.find((c) => c.id === filters.crops[0])?.name || filters.crops[0]
-                : `${filters.crops.length} selected`}
-            </span>
-            <span className="text-ink-muted">▼</span>
-          </button>
-
-          {cropMenuOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 max-h-80 w-64 overflow-y-auto rounded-card border border-line bg-surface p-2 shadow-lg">
-              <input
-                type="text"
-                placeholder="Filter crops..."
-                value={cropSearch}
-                onChange={(e) => setCropSearch(e.target.value)}
-                className="mb-2 w-full rounded border border-line px-2 py-1 text-caption text-ink focus:outline-none focus:ring-1 focus:ring-primary"
-              />
-              <div className="mb-2 flex items-center justify-between border-b border-line pb-1.5 text-caption">
-                <button
-                  type="button"
-                  onClick={() => onUpdate({ crops: [PADDY_CROP_ID] })}
-                  className="text-primary hover:underline"
-                >
-                  Paddy only
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onUpdate({ crops: ALL_CROPS.map((c) => c.id) })}
-                  className="text-ink-muted hover:underline"
-                >
-                  Select all
-                </button>
-              </div>
-              <div className="space-y-1">
-                {filteredCrops.map((c) => {
-                  const checked = filters.crops.includes(c.id);
-                  return (
-                    <label
-                      key={c.id}
-                      className="flex cursor-pointer items-center gap-2 rounded px-1.5 py-1 text-body text-ink hover:bg-surface-alt"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={checked}
-                        onChange={() => toggleCrop(c.id)}
-                        className="rounded border-line text-primary focus:ring-primary"
-                      />
-                      <span>{c.name}</span>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Season Selector */}
+        {/* Crop: one at a time, from the crops this view holds */}
         <div className="flex items-center gap-1.5">
-          <label htmlFor="filter-season" className="text-caption font-medium uppercase tracking-header text-ink-subtle">
-            Season:
+          <label htmlFor="filter-crop" className="text-caption font-medium uppercase tracking-header text-ink-subtle">
+            Crop:
           </label>
           <select
-            id="filter-season"
-            value={filters.season}
-            onChange={(e) => onUpdate({ season: e.target.value })}
-            className="rounded border border-line bg-surface px-2.5 py-1.5 text-body font-normal text-ink focus:border-primary focus:outline-none"
+            id="filter-crop"
+            value={filters.crop}
+            disabled={!availableCrops.data}
+            onChange={(e) => onUpdate({ crop: e.target.value })}
+            className="rounded border border-line bg-surface px-2.5 py-1.5 text-body font-normal text-ink focus:border-primary focus:outline-none disabled:opacity-60"
           >
-            <option value="">All seasons</option>
-            {SEASONS.map((s) => (
-              <option key={s} value={s}>
-                {s}
+            {(availableCrops.data ?? [{ id: filters.crop, name: 'Loading crops…' }]).map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
               </option>
             ))}
           </select>
         </div>
+
+        {/* Season: crop estimates only; prices have no season */}
+        {filters.view === 'agriculture' && (
+          <div className="flex items-center gap-1.5">
+            <label htmlFor="filter-season" className="text-caption font-medium uppercase tracking-header text-ink-subtle">
+              Season:
+            </label>
+            <select
+              id="filter-season"
+              value={filters.season}
+              onChange={(e) => onUpdate({ season: e.target.value })}
+              className="rounded border border-line bg-surface px-2.5 py-1.5 text-body font-normal text-ink focus:border-primary focus:outline-none"
+            >
+              <option value="">All seasons</option>
+              {SEASONS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* Price series: official and synthetic are never averaged together */}
+        {filters.view === 'price' && (
+          <div className="flex items-center gap-1.5">
+            <label htmlFor="filter-series" className="text-caption font-medium uppercase tracking-header text-ink-subtle">
+              Series:
+            </label>
+            <select
+              id="filter-series"
+              value={filters.priceSeries}
+              onChange={(e) =>
+                onUpdate({ priceSeries: e.target.value as DashboardFilters['priceSeries'] })
+              }
+              className="rounded border border-line bg-surface px-2.5 py-1.5 text-body font-normal text-ink focus:border-primary focus:outline-none"
+            >
+              <option value="synthetic">Synthetic monthly (modelled)</option>
+              <option value="official">Official annual (DE&amp;S)</option>
+            </select>
+          </div>
+        )}
 
         {/* Price Type (only relevant for Price view) */}
         {filters.view === 'price' && (

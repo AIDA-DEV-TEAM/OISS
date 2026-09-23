@@ -34,6 +34,7 @@ class ScopeStats:
     row_count: int = 0
     official_rows: int = 0
     synthetic_rows: int = 0
+    model_rows: int = 0
     projected_rows: int = 0
     imputed_rows: int = 0
     msp_rows: int = 0
@@ -51,6 +52,7 @@ def collect_scope(
         "count(*) AS row_count",
         "count(*) FILTER (WHERE data_origin = 'official') AS official_rows",
         "count(*) FILTER (WHERE data_origin = 'synthetic') AS synthetic_rows",
+        "count(*) FILTER (WHERE data_origin = 'model') AS model_rows",
         "list(DISTINCT dataset_version_id) AS dataset_version_ids",
         "list(DISTINCT agri_year) AS years",
     ]
@@ -73,6 +75,7 @@ def collect_scope(
         row_count=int(row["row_count"]),
         official_rows=int(row["official_rows"]),
         synthetic_rows=int(row["synthetic_rows"]),
+        model_rows=int(row.get("model_rows") or 0),
         projected_rows=int(row.get("projected_rows") or 0),
         imputed_rows=int(row.get("imputed_rows") or 0),
         msp_rows=int(row.get("msp_rows") or 0),

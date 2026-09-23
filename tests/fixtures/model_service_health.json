@@ -1,0 +1,1 @@
+{"status":"healthy","model_loaded":true,"model_name":"Tuned Gradient Boosting Regressor","target_variable":"Yield_rate_qtl_per_ha","output_label":"Analytical Estimates","test_r2_score":0.661}

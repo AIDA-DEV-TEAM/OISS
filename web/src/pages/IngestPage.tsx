@@ -17,6 +17,7 @@ import { Badge, Card, Figure, StatCard, cn } from '@/components/primitives';
 import { CaveatList } from '@/components/provenance';
 import { AsyncPanel, ErrorState, LoadingState } from '@/components/states';
 import { DatasetMetadata } from '@/features/ingest/DatasetMetadata';
+import { DuplicateNotice } from '@/features/ingest/DuplicateNotice';
 import { QuarantinePanel } from '@/features/ingest/QuarantinePanel';
 import { SchemaPreview } from '@/features/ingest/SchemaPreview';
 import { ValidationFindings } from '@/features/ingest/ValidationFindings';
@@ -146,6 +147,7 @@ export function IngestPage() {
   const [datasetName, setDatasetName] = useState('');
   const [result, setResult] = useState<IngestResult | null>(null);
   const [schemaMatch, setSchemaMatch] = useState<SchemaMatch | null>(null);
+  const [dataOrigin, setDataOrigin] = useState('');
 
   const datasets = useDatasets();
   const schemas = useIngestSchemas();
@@ -187,6 +189,7 @@ export function IngestPage() {
   async function handleFile(chosen: File) {
     setFile(chosen);
     setResult(null);
+    setDataOrigin('');
     setParseError(null);
     setParsed(null);
     try {
@@ -210,11 +213,17 @@ export function IngestPage() {
       datasetName,
       file: payload,
       filename: name,
+      // Only an unregistered file carries a declared origin; a registered
+      // dataset takes it from its own definition and the backend ignores this.
+      dataOrigin: datasetName ? undefined : dataOrigin,
     });
     setResult(response);
   }
 
   const uploadFindings = (result?.findings ?? []) as ValidationFinding[];
+  // An unregistered file cannot be ingested until its origin is declared: the
+  // backend rejects it with 422, so the button says so rather than round-trips.
+  const originMissing = Boolean(parsed) && !datasetName && !dataOrigin;
 
   return (
     <>
@@ -310,6 +319,8 @@ export function IngestPage() {
               datasetName={datasetName}
               match={schemaMatch}
               parsed={Boolean(parsed)}
+              dataOrigin={dataOrigin}
+              onDataOriginChange={setDataOrigin}
               onDatasetNameChange={setDatasetName}
               onFile={handleFile}
               file={file}
@@ -339,13 +350,23 @@ export function IngestPage() {
                   <button
                     type="button"
                     onClick={() => void handleUpload()}
-                    disabled={upload.isPending || !datasetName}
+                    disabled={upload.isPending || originMissing}
                     className="w-full rounded border border-primary bg-primary px-3 py-2 text-body font-medium text-white transition-colors duration-state hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {upload.isPending
                       ? 'Validating…'
-                      : `Validate and ingest as ${datasetName}`}
+                      : datasetName
+                        ? `Validate and ingest as ${datasetName}`
+                        : 'Validate as an unregistered file'}
                   </button>
+                  {!datasetName && (
+                    <p className="mt-1 text-caption text-ink-subtle">
+                      No declared schema matched, so the file is checked for the problems
+                      that hold for any table: types, duplicate rows, gaps, and district
+                      names.
+                      {originMissing && ' Declare its data origin on the left to continue.'}
+                    </p>
+                  )}
                 </div>
               )}
               {file && !parsed && !parseError && (
@@ -362,7 +383,9 @@ export function IngestPage() {
 
           {parsed && <SchemaPreview parsed={parsed} />}
 
-          {result && (
+          {result?.duplicate_of && <DuplicateNotice versionId={result.duplicate_of} />}
+
+          {result && !result.duplicate_of && (
             <>
               <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
                 <StatCard label="Rows read" value={formatCount(result.rows_read)} />

@@ -2,7 +2,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { api } from '@/api/client';
-import type { IngestResult } from '@/api/client';
+import type { ActivationResult, IngestResult } from '@/api/client';
 
 export const keys = {
   health: ['health'] as const,
@@ -85,15 +85,26 @@ export function useIngestSchemas() {
   });
 }
 
+export function useSetActive() {
+  const client = useQueryClient();
+  return useMutation<ActivationResult, Error, { versionId: string; active: boolean }>({
+    mutationFn: ({ versionId, active }) => api.setActive(versionId, active),
+    onSuccess: () => {
+      // Which version is active changes what every query counts.
+      void client.invalidateQueries();
+    },
+  });
+}
+
 export function useUpload() {
   const client = useQueryClient();
   return useMutation<
     IngestResult,
     Error,
-    { datasetName: string; file: File | Blob; filename: string }
+    { datasetName: string; file: File | Blob; filename: string; dataOrigin?: string }
   >({
-    mutationFn: ({ datasetName, file, filename }) =>
-      api.upload(datasetName, file, filename),
+    mutationFn: ({ datasetName, file, filename, dataOrigin }) =>
+      api.upload(datasetName, file, filename, dataOrigin),
     onSuccess: () => {
       // An upload registers a new dataset version, so the picker is stale.
       void client.invalidateQueries({ queryKey: keys.datasets });

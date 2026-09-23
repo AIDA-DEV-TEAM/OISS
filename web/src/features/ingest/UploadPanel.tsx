@@ -7,6 +7,10 @@
  * default to whichever dataset sorted first, which silently pointed a price CSV
  * at the block land-use schema. The file's columns now choose, and when nothing
  * fits the panel says so instead of guessing.
+ *
+ * A file with no declared schema also has no declared origin, so the uploader
+ * states it here. The system never guesses whether data is official or
+ * synthetic: that claim travels with every figure the file later produces.
  */
 import { useRef, useState } from 'react';
 import type { DragEvent } from 'react';
@@ -24,6 +28,8 @@ export function UploadPanel({
   datasetName,
   match,
   parsed,
+  dataOrigin,
+  onDataOriginChange,
   onDatasetNameChange,
   onFile,
   file,
@@ -35,6 +41,9 @@ export function UploadPanel({
   match: SchemaMatch | null;
   /** True once a file has been parsed, so the panel can explain the outcome. */
   parsed: boolean;
+  /** Declared origin for an unregistered file; empty until the uploader picks. */
+  dataOrigin: string;
+  onDataOriginChange: (origin: string) => void;
   onDatasetNameChange: (name: string) => void;
   onFile: (file: File) => void;
   file: File | null;
@@ -102,6 +111,33 @@ export function UploadPanel({
             </p>
           )}
         </div>
+
+        {parsed && !datasetName && (
+          <div>
+            <label
+              htmlFor="data-origin"
+              className="block text-caption font-medium text-ink-muted"
+            >
+              Data origin <span className="text-error">*</span>
+            </label>
+            <select
+              id="data-origin"
+              required
+              value={dataOrigin}
+              onChange={(event) => onDataOriginChange(event.target.value)}
+              aria-describedby="data-origin-help"
+              className="mt-1 w-full rounded border border-line bg-surface px-2 py-1.5 text-body text-ink"
+            >
+              <option value="">Choose one</option>
+              <option value="official">Official</option>
+              <option value="synthetic">Synthetic</option>
+            </select>
+            <p id="data-origin-help" className="mt-1 text-caption text-ink-subtle">
+              Official: published or supplied by a statistical authority. Synthetic:
+              generated for demonstration and never to be read as a real measurement.
+            </p>
+          </div>
+        )}
 
         <div
           onDragOver={(event) => {

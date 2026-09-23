@@ -37,7 +37,7 @@ class SourceSpec:
 
     name: str
     path: Path
-    source_type: str  # 'csv' | 'stata'
+    source_type: str  # 'csv' | 'stata' | 'excel'
     data_origin: str  # 'official' | 'synthetic'
     target_table: str
     expected_columns: tuple[str, ...]
@@ -80,6 +80,16 @@ def looks_like_stata(content: bytes) -> bool:
     )
 
 
+# xlsx/xlsm are zip containers; xls is an OLE2 compound file.
+_ZIP_MAGIC = bytes([0x50, 0x4B, 0x03, 0x04])
+_OLE2_MAGIC = bytes([0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1])
+
+
+def looks_like_excel(content: bytes) -> bool:
+    """True for a workbook, whatever the file is called."""
+    return content.startswith(_ZIP_MAGIC) or content.startswith(_OLE2_MAGIC)
+
+
 def detect_source_type(filename: str, content: bytes) -> str:
     """Pick the reader from the uploaded file itself, never from the target.
 
@@ -90,8 +100,14 @@ def detect_source_type(filename: str, content: bytes) -> str:
     """
     if looks_like_stata(content):
         return "stata"
-    if len(content) < 3 and Path(filename).suffix.lower() == ".dta":
-        return "stata"
+    if looks_like_excel(content):
+        return "excel"
+    if len(content) < 3:
+        suffix = Path(filename).suffix.lower()
+        if suffix == ".dta":
+            return "stata"
+        if suffix in {".xlsx", ".xlsm", ".xls"}:
+            return "excel"
     return "csv"
 
 
@@ -105,6 +121,11 @@ def read_source(spec: SourceSpec, path: Optional[Path] = None) -> pd.DataFrame:
     if spec.source_type == "stata":
         frame = pd.read_stata(target, convert_categoricals=False)
         frame = frame.astype("string")
+    elif spec.source_type == "excel":
+        # A workbook's first sheet, read as text like every other source so the
+        # validation rules see the value exactly as published.
+        frame = pd.read_excel(target, sheet_name=0, dtype="string")
+        frame = frame.replace("", pd.NA)
     elif spec.source_type == "csv":
         frame = pd.read_csv(
             target, dtype="string", encoding=spec.encoding, keep_default_na=False
